@@ -148,6 +148,7 @@ def ias_thresh(conf_dict, n_class, alpha, w=None, gamma=1.0):
 
 import ever as er
 from tqdm import tqdm
+from utils.VisSeg import VisSeg
 
 COLOR_MAP = OrderedDict(
     Background=(255, 255, 255),
@@ -163,7 +164,8 @@ palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 def generate_pseudo(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(), logger=None):
     logger.info('Start generate pseudo labels: %s' % save_dir)
-    viz_op = er.viz.VisualizeSegmm(os.path.join(save_dir, 'vis'), palette)
+    # viz_op = er.viz.VisualizeSegmm(os.path.join(save_dir, 'vis'), palette)
+    viz_op = VisSeg(palette, os.path.join(save_dir, 'vis'))
     os.makedirs(os.path.join(save_dir, 'pred'), exist_ok=True)
     model.eval()
     cls_thresh = np.ones(n_class)*0.9
@@ -191,7 +193,7 @@ def generate_pseudo(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(
             logit_amax = np.amax(logit, axis=2)
             label_cls_thresh = np.apply_along_axis(lambda x: [cls_thresh[e] for e in x], 1, label)
             ignore_index = logit_amax < label_cls_thresh
-            viz_op(label, fname)
+            viz_op.Vis(label, fname)
             label += 1
             label[ignore_index] = 0
             imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
