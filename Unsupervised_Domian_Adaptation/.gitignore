@@ -3,6 +3,7 @@
 *.iml
 out
 gen
-./log/
 LoveDA
 /.vscode/
+pseudo_label
+*.pth

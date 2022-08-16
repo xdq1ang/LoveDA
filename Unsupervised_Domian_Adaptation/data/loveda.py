@@ -100,7 +100,7 @@ class LoveDALoader(DataLoader, ConfigurableMixin):
                                        sampler=sampler,
                                        num_workers=self.config.num_workers,
                                        pin_memory=True,
-                                       drop_last=True
+                                       drop_last=self.config.drop_last
                                        )
     def set_default_config(self):
         self.config.update(dict(
