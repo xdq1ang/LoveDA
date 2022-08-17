@@ -135,6 +135,19 @@ def seed_worker(worker_id):
 
 
 def ias_thresh(conf_dict, n_class, alpha, w=None, gamma=1.0):
+    # 如果权重不存在，则自动生成为[1,1,1,1,1,1,1]
+    # 此项目中 
+    # conf_dict形如 = {  0: [0.9],
+    #                1: [0.9, 0.1],
+    #                2: [0.9, 0.2],
+    #                3: [0.9, 0.3],
+    #                4: [0.9, 0.4],
+    #                5: [0.9, 0.5, 0.6],
+    #                6: [0.9]  }
+    # w = cls_thresh = [0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9] 
+    # n_class = 7
+    # alpha = 0.2
+    # gamma = 8.0
     if w is None:
         w = np.ones(n_class)
     # threshold
@@ -165,21 +178,34 @@ palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 def generate_pseudo(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(), logger=None):
     logger.info('Start generate pseudo labels: %s' % save_dir)
     # viz_op = er.viz.VisualizeSegmm(os.path.join(save_dir, 'vis'), palette)
+    # 标签可视化类
     viz_op = VisSeg(palette, os.path.join(save_dir, 'vis'))
     os.makedirs(os.path.join(save_dir, 'pred'), exist_ok=True)
+    # 模型验证模式，不会更新参数
     model.eval()
+    # 概率阈值为0.9
     cls_thresh = np.ones(n_class)*0.9
     for image, labels in tqdm(target_loader):
         out = model(image.cuda())
+        # 如果out是tuple则取第0个元素，不是则直接取out
         logits = out[0] if isinstance(out, tuple) else out
         max_items = logits.max(dim=1)
+        # 预测结果
         label_pred = max_items[1].data.cpu().numpy()
         logits_pred = max_items[0].data.cpu().numpy()
 
+         # 把每个像素的预测概率保存到字典中
+         #{ 0: [0.9],
+         #  1: [0.9, 0.1],
+         #  2: [0.9, 0.2],
+         #  3: [0.9, 0.3],
+         #  4: [0.9, 0.4],
+         #  5: [0.9, 0.5, 0.6],
+         #  6: [0.9]}
         logits_cls_dict = {c: [cls_thresh[c]] for c in range(n_class)}
         for cls in range(n_class):
             logits_cls_dict[cls].extend(logits_pred[label_pred == cls].astype(np.float16))
-        # instance adaptive selector
+        # instance adaptive selector 实例自适应选择
         tmp_cls_thresh = ias_thresh(logits_cls_dict, n_class, pseudo_dict['pl_alpha'],  w=cls_thresh, gamma=pseudo_dict['pl_gamma'])
         beta = pseudo_dict['pl_beta']
         cls_thresh = beta*cls_thresh + (1-beta)*tmp_cls_thresh
@@ -189,13 +215,19 @@ def generate_pseudo(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(
         for _i, fname in enumerate(labels['fname']):
             # save pseudo label
             logit = np_logits[_i].transpose(1,2,0)
+            # 像素值最大的通道
             label = np.argmax(logit, axis=2)
+            # 每个像素点通道维度上的最大值
             logit_amax = np.amax(logit, axis=2)
+            # 如果某个像素点的所有通道的概率值都小于label_cls_thresh中特定阈值，则忽略该像素点(标签设置为0)
             label_cls_thresh = np.apply_along_axis(lambda x: [cls_thresh[e] for e in x], 1, label)
             ignore_index = logit_amax < label_cls_thresh
+            
+            # 保存ignore低于阈值的像素点前的图片 
             viz_op.Vis(label, fname)
             label += 1
             label[ignore_index] = 0
+            # 保存ignore低于阈值的像素点后的图片 
             imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
 
     return os.path.join(save_dir, 'pred')
