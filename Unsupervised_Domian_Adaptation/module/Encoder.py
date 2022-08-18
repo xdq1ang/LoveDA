@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+from module.DensePPM import DensePPM
 
 
 class PPMBilinear(nn.Module):
@@ -107,8 +108,10 @@ class Deeplabv2(er.ERModule):
                     self.layer5 = self._make_pred_layer(Classifier_Module, self.config.inchannels, [6, 12, 18, 24], [6, 12, 18, 24], self.config.num_classes)
                     self.layer6 = self._make_pred_layer(Classifier_Module, self.config.inchannels, [6, 12, 18, 24], [6, 12, 18, 24], self.config.num_classes)
         else:
-            if self.config.use_ppm:
+            if self.config.use_ppm == 'ppm':
                 self.cls_pred = PPMBilinear(**self.config.ppm)
+            elif self.config.use_ppm == 'denseppm':
+                self.cls_pred = DensePPM(**config['ppm'])
             else:
                 self.cls_pred = self._make_pred_layer(Classifier_Module, self.config.inchannels, [6, 12, 18, 24], [6, 12, 18, 24], self.config.num_classes)
 
