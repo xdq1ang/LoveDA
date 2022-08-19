@@ -24,6 +24,7 @@ def evaluate(model, cfg, is_training=False, ckpt_path=None, logger=None):
     print(cfg.EVAL_DATA_CONFIG)
     eval_dataloader = LoveDALoader(cfg.EVAL_DATA_CONFIG)
     metric_op = er.metric.PixelMetric(len(COLOR_MAP.keys()), logdir=cfg.SNAPSHOT_DIR, logger=logger)
+    mIoU=[]
     with torch.no_grad():
         for ret, ret_gt in tqdm(eval_dataloader):
             ret = ret.to(torch.device('cuda'))
@@ -36,6 +37,11 @@ def evaluate(model, cfg, is_training=False, ckpt_path=None, logger=None):
             y_true = cls_gt[mask].ravel()
             y_pred = cls[mask].ravel()
             metric_op.forward(y_true, y_pred)
+            # 计算miou
+            confusion_matrix = metric_op._total.toarray()
+            iou_per_class = metric_op.compute_iou_per_class(confusion_matrix)
+            miou = iou_per_class.mean()
+            mIoU.append(miou)
             
             if cfg.SNAPSHOT_DIR is not None:
                 for fname, pred in zip(ret_gt['fname'], cls):
@@ -43,24 +49,25 @@ def evaluate(model, cfg, is_training=False, ckpt_path=None, logger=None):
 
     metric_op.summary_all()
     torch.cuda.empty_cache()
+    return np.nanmean(np.array(mIoU))
 
 
 
 if __name__ == '__main__':
     seed_torch(2333)
-    ckpt_path = './log/CBST_2Urban.pth'
+    ckpt_path = './log/iast_training_step_20000/2urban/URBAN20000.pth'
     from module.Encoder import Deeplabv2
-    cfg = import_config('st.cbst.2urban')
+    cfg = import_config('st.iast.2urban')
     logger = get_console_file_logger(name='Baseline', logdir=cfg.SNAPSHOT_DIR)
     model = Deeplabv2(dict(
         backbone=dict(
-            resnet_type='resnet50',
-            output_stride=16,
-            pretrained=True,
-        ),
+                resnet_type='resnet50',
+                output_stride=16,
+                pretrained=True,
+            ),
         multi_layer=False,
         cascade=False,
-        use_ppm=True,
+        use_ppm='ppm',
         ppm=dict(
             num_classes=7,
             use_aux=False,
@@ -68,4 +75,4 @@ if __name__ == '__main__':
         inchannels=2048,
         num_classes=7
     )).cuda()
-    evaluate_nj(model, cfg, False, ckpt_path, logger)
+    evaluate(model, cfg, False, ckpt_path, logger)

@@ -11,6 +11,7 @@ from utils.tools import COLOR_MAP
 from ever.core.iterator import Iterator
 from tqdm import tqdm
 from torch.nn.utils import clip_grad
+import wandb
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 
@@ -23,6 +24,13 @@ args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 def main():
+    # 初始化wandb
+    wandbLogger = wandb.init(
+        project="UDA",
+        notes="IAST + DensePPM",
+        tags=["领域自适应", "语义分割"],
+        resume="allow",
+    )
     # 创建快照文件夹
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
     logger = get_console_file_logger(name='ISAT', logdir=cfg.SNAPSHOT_DIR)
@@ -126,18 +134,21 @@ def main():
                 text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f'% (
                     i_iter, loss, lr)
                 logger.info(text)
+                wandbLogger.log({'src_seg_loss': loss, "seg_model_lr": lr})
             # 训练步数大于NUM_STEPS_STOP时，保存模型，验证模型，退出训练。
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                miou = evaluate(model, cfg, True, ckpt_path, logger)
+                wandbLogger.log({'src_seg_loss': loss, 'tar_mIoU': miou})
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                miou = evaluate(model, cfg, True, ckpt_path, logger)
+                wandbLogger.log({'src_seg_loss': loss, 'tar_mIoU': miou})
                 model.train()
         else:
             # PSEUDO learning
@@ -248,16 +259,24 @@ def main():
                 text += 'lr = %.3f ' % lr
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
+                wandbLogger.log({'src_seg_loss': loss_dict['seg_loss'].item(),
+                                 'target_seg_loss':loss_dict['target_seg_loss'].item(),
+                                 'adv_loss':loss_dict['adv_loss'].item(),
+                                 'dis_loss': discriminator_loss.item(),
+                                'seg_model_lr':lr,
+                                 'dis_model_lr': lr_D})
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                miou = evaluate(model, cfg, True, ckpt_path, logger)
+                wandbLogger.log({'tar_mIoU': miou})
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                miou = evaluate(model, cfg, True, ckpt_path, logger)
+                wandbLogger.log({'tar_mIoU': miou})
                 model.train()
 
 if __name__ == '__main__':
