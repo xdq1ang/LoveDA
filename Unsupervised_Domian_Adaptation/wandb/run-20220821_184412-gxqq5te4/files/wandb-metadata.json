@@ -1,0 +1,26 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.6.15",
+    "heartbeatAt": "2022-08-21T10:44:16.459866",
+    "startedAt": "2022-08-21T10:44:12.937672",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--config_path=base.2urban"
+    ],
+    "state": "running",
+    "program": "E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/Baseline_train.py",
+    "codePath": "Unsupervised_Domian_Adaptation\\Baseline_train.py",
+    "git": {
+        "remote": "git@github.com:xdq1ang/LoveDA.git",
+        "commit": "aee2996427582551476394ff7d972dc52cc018b7"
+    },
+    "email": "1519445973@qq.com",
+    "root": "E:/xdqiangCode/LoveDA",
+    "host": "DESKTOP-RKA10IP",
+    "username": "xdqiang",
+    "executable": "D:\\Program Files\\ANACONDA3\\envs\\LoveDA\\python.exe"
+}

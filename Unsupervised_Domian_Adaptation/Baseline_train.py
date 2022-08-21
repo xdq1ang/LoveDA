@@ -11,6 +11,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from eval import evaluate
 import torch.nn as nn
+import wandb
 import torch.backends.cudnn as cudnn
 parser = argparse.ArgumentParser(description='Run Baseline methods.')
 
@@ -22,6 +23,13 @@ cfg = import_config(args.config_path)
 
 
 def main():
+    # 初始化wandb
+    wandbLogger = wandb.init(
+        project="UDA",
+        notes="DeepLabV2_PPM",
+        tags=["领域自适应", "语义分割"],
+        resume="allow",
+    )
     """Create the model and start the training."""
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
     logger = get_console_file_logger(name='Deeplabv2', logdir=cfg.SNAPSHOT_DIR)
@@ -79,16 +87,19 @@ def main():
             text = 'iter = %d, loss_seg = %.3f, lr = %.3f'% (
                 i_iter, loss, lr)
             logger.info(text)
+            wandbLogger.log({'src_seg_loss': loss, "seg_model_lr": lr})
         if i_iter >= cfg.NUM_STEPS_STOP - 1:
             print('save model ...')
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
             torch.save(model.state_dict(), ckpt_path)
-            evaluate(model, cfg, True, ckpt_path, logger)
+            miou = evaluate(model, cfg, True, ckpt_path, logger)
+            wandbLogger.log({'src_seg_loss': loss, 'tar_mIoU': miou})
             break
         if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
             torch.save(model.state_dict(), ckpt_path)
-            evaluate(model, cfg, True, ckpt_path, logger)
+            miou = evaluate(model, cfg, True, ckpt_path, logger)
+            wandbLogger.log({'src_seg_loss': loss, 'tar_mIoU': miou})
             model.train()
 
 

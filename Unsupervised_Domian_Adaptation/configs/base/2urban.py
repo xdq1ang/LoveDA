@@ -15,11 +15,11 @@ SNAPSHOT_DIR = './log/baseline/2urban'
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005
 LEARNING_RATE = 1e-3
-NUM_STEPS = 15000
-NUM_STEPS_STOP = 15000  # Use damping instead of early stopping
+NUM_STEPS = 25000
+NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
 PREHEAT_STEPS = 0
 POWER = 0.9
-EVAL_EVERY=2000
+EVAL_EVERY=700
 TARGET_SET = TARGET_SET
 SOURCE_DATA_CONFIG = dict(
     image_dir=source_dir['image_dir'],
@@ -41,6 +41,7 @@ SOURCE_DATA_CONFIG = dict(
     training=True,
     batch_size=16,
     num_workers=2,
+    drop_last=True
 )
 TARGET_DATA_CONFIG=TARGET_DATA_CONFIG
 EVAL_DATA_CONFIG=EVAL_DATA_CONFIG

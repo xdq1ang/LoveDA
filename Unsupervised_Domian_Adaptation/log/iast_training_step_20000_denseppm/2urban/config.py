@@ -17,7 +17,7 @@ NUM_STEPS = 25000
 NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
 PREHEAT_STEPS = int(NUM_STEPS / 20)
 POWER = 0.9
-EVAL_EVERY=2000
+EVAL_EVERY=700
 
 DISCRIMINATOR = dict(
     lambda_kldreg_weight= 0.1,
