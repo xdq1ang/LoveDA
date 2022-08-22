@@ -1,0 +1,52 @@
+2022-08-22 18:56:06 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 18:56:06 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 18:56:06 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 18:56:06 INFO saving file wandb-metadata.json with policy now
+2022-08-22 18:57:43 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 18:57:44 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 18:57:44 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 18:57:44 INFO saving file wandb-metadata.json with policy now
+2022-08-22 18:58:12 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 18:58:12 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 18:58:12 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 18:58:12 INFO saving file wandb-metadata.json with policy now
+2022-08-22 18:58:29 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 18:58:30 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 18:58:30 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 18:58:30 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:08:17 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:08:17 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:08:17 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:08:17 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:10:21 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:10:22 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:10:22 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:10:22 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:13:19 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:13:20 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:13:20 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:13:20 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:13:47 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:13:49 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:13:49 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:13:49 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:14:29 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:14:30 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:14:30 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:14:30 INFO saving file wandb-metadata.json with policy now
+2022-08-22 19:26:46 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220822_192006-3d4ua53h\run-3d4ua53h.wandb
+2022-08-22 19:26:51 ERROR 409 response executing GraphQL.
+2022-08-22 19:26:51 ERROR {"errors":[{"message":"run xdqiang/UDA/3d4ua53h was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2022-08-22 19:27:39 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220822_192006-3d4ua53h\run-3d4ua53h.wandb
+2022-08-22 19:27:40 ERROR 409 response executing GraphQL.
+2022-08-22 19:27:40 ERROR {"errors":[{"message":"run xdqiang/UDA/3d4ua53h was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2022-08-22 19:28:07 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220822_192006-3d4ua53h\run-3d4ua53h.wandb
+2022-08-22 19:28:08 ERROR 409 response executing GraphQL.
+2022-08-22 19:28:08 ERROR {"errors":[{"message":"run xdqiang/UDA/3d4ua53h was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2022-08-22 19:28:15 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220822_192006-3d4ua53h\run-3d4ua53h.wandb
+2022-08-22 19:28:18 ERROR 409 response executing GraphQL.
+2022-08-22 19:28:18 ERROR {"errors":[{"message":"run xdqiang/UDA/3d4ua53h was previously created and deleted; try a new run name","path":["upsertBucket"]}],"data":{"upsertBucket":null}}
+2022-08-22 19:35:25 INFO open for scan: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\run-1229f76j.wandb
+2022-08-22 19:35:26 INFO watching files in: E:\xdqiangCode\LoveDA\Unsupervised_Domian_Adaptation\wandb\run-20220819_202335-1229f76j\files
+2022-08-22 19:35:26 INFO run started: 1229f76j with start time 1660911815
+2022-08-22 19:35:26 INFO saving file wandb-metadata.json with policy now

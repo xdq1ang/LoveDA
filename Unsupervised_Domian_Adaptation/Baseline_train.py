@@ -35,24 +35,41 @@ def main():
     logger = get_console_file_logger(name='Deeplabv2', logdir=cfg.SNAPSHOT_DIR)
     # Create Network
     
+    # model = Deeplabv2(dict(
+    #   backbone=dict(
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
+    #         multi_layer=False,
+    #         cascade=False,
+    #         use_ppm="ppm",
+    #         ppm=dict(
+    #             num_classes=7,
+    #             use_aux=False,
+    #             norm_layer=nn.BatchNorm2d,
+    #         ),
+    #         inchannels=2048,
+    #         num_classes=7
+    # ))
     model = Deeplabv2(dict(
-      backbone=dict(
-                resnet_type='resnet50',
-                output_stride=16,
-                pretrained=True,
-            ),
-            multi_layer=False,
-            cascade=False,
-            use_ppm=False,
-            ppm=dict(
-                num_classes=7,
-                use_aux=False,
-                norm_layer=nn.BatchNorm2d,
-            ),
-            inchannels=2048,
-            num_classes=7
+        backbone=dict(
+            resnet_type='resnet50',
+            output_stride=16,
+            pretrained=True,
+        ),
+        multi_layer=False,
+        cascade=False,
+        use_ppm='denseppm',
+        ppm=dict(
+            in_channels=2048,
+            num_classes=7,
+            reduction_dim=64,
+            pool_sizes=[2, 3, 4, 5]
+        ),
+        inchannels=2048,
+        num_classes=7
     ))
-    
     model.train()
     model.cuda()
     #cudnn.enabled = True

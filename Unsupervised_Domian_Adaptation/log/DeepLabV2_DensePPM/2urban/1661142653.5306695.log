@@ -1,0 +1,1238 @@
+2022-08-22 12:30:54, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:30:54, INFO:Deeplabv2:#params: 37354311, 37.354 M
+2022-08-22 12:30:54, INFO:Deeplabv2:epochs ~= 235.294
+2022-08-22 12:31:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:31:05, INFO:Deeplabv2:iter = 0, loss_seg = 1.961, lr = 0.001
+2022-08-22 12:31:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:31:43, INFO:Deeplabv2:iter = 50, loss_seg = 0.817, lr = 0.001
+2022-08-22 12:32:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:32:25, INFO:Deeplabv2:iter = 100, loss_seg = 0.567, lr = 0.001
+2022-08-22 12:33:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:33:02, INFO:Deeplabv2:iter = 150, loss_seg = 0.616, lr = 0.001
+2022-08-22 12:33:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:33:43, INFO:Deeplabv2:iter = 200, loss_seg = 0.679, lr = 0.001
+2022-08-22 12:34:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:34:19, INFO:Deeplabv2:iter = 250, loss_seg = 0.653, lr = 0.001
+2022-08-22 12:35:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:35:01, INFO:Deeplabv2:iter = 300, loss_seg = 0.509, lr = 0.001
+2022-08-22 12:35:41, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:35:42, INFO:Deeplabv2:iter = 350, loss_seg = 0.654, lr = 0.001
+2022-08-22 12:36:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:36:18, INFO:Deeplabv2:iter = 400, loss_seg = 0.560, lr = 0.001
+2022-08-22 12:36:59, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:37:00, INFO:Deeplabv2:iter = 450, loss_seg = 0.566, lr = 0.001
+2022-08-22 12:37:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:37:36, INFO:Deeplabv2:iter = 500, loss_seg = 0.710, lr = 0.001
+2022-08-22 12:38:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:38:17, INFO:Deeplabv2:iter = 550, loss_seg = 0.717, lr = 0.001
+2022-08-22 12:38:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:38:59, INFO:Deeplabv2:iter = 600, loss_seg = 0.645, lr = 0.001
+2022-08-22 12:39:35, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:39:35, INFO:Deeplabv2:iter = 650, loss_seg = 0.533, lr = 0.001
+2022-08-22 12:40:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:40:17, INFO:Deeplabv2:iter = 700, loss_seg = 0.928, lr = 0.001
+2022-08-22 12:41:54, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.3675 | 0.53747 |  0.47129  | 0.62528 |
+|   1   | 0.48035 | 0.64896 |  0.63414  | 0.66449 |
+|   2   | 0.40433 | 0.57583 |  0.78147  | 0.45587 |
+|   3   | 0.57062 | 0.72662 |  0.75716  | 0.69845 |
+|   4   | 0.41585 | 0.58742 |  0.73529  | 0.48907 |
+|   5   | 0.45951 | 0.62968 |  0.58289  | 0.68464 |
+|   6   | 0.48093 | 0.64949 |  0.72813  | 0.58619 |
+|  mean | 0.45416 | 0.62221 |  0.67005  | 0.60057 |
+|   OA  | 0.61467 |    -    |     -     |    -    |
+| Kappa | 0.52369 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 12:42:30, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:42:31, INFO:Deeplabv2:iter = 750, loss_seg = 0.484, lr = 0.001
+2022-08-22 12:43:12, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:43:12, INFO:Deeplabv2:iter = 800, loss_seg = 0.469, lr = 0.001
+2022-08-22 12:43:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:43:53, INFO:Deeplabv2:iter = 850, loss_seg = 0.526, lr = 0.001
+2022-08-22 12:44:30, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:44:30, INFO:Deeplabv2:iter = 900, loss_seg = 0.784, lr = 0.001
+2022-08-22 12:45:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:45:12, INFO:Deeplabv2:iter = 950, loss_seg = 0.538, lr = 0.001
+2022-08-22 12:45:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:45:48, INFO:Deeplabv2:iter = 1000, loss_seg = 0.633, lr = 0.001
+2022-08-22 12:46:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:46:30, INFO:Deeplabv2:iter = 1050, loss_seg = 0.401, lr = 0.001
+2022-08-22 12:47:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:47:06, INFO:Deeplabv2:iter = 1100, loss_seg = 0.675, lr = 0.001
+2022-08-22 12:47:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:47:48, INFO:Deeplabv2:iter = 1150, loss_seg = 0.448, lr = 0.001
+2022-08-22 12:48:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:48:29, INFO:Deeplabv2:iter = 1200, loss_seg = 0.582, lr = 0.001
+2022-08-22 12:49:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:49:06, INFO:Deeplabv2:iter = 1250, loss_seg = 0.680, lr = 0.001
+2022-08-22 12:49:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:49:47, INFO:Deeplabv2:iter = 1300, loss_seg = 0.577, lr = 0.001
+2022-08-22 12:50:23, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:50:24, INFO:Deeplabv2:iter = 1350, loss_seg = 0.503, lr = 0.001
+2022-08-22 12:51:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:51:05, INFO:Deeplabv2:iter = 1400, loss_seg = 0.538, lr = 0.001
+2022-08-22 12:52:37, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.39553 | 0.56685 |  0.46826  | 0.71803 |
+|   1   |  0.4843 | 0.65256 |  0.70611  | 0.60656 |
+|   2   | 0.43333 | 0.60465 |  0.77894  |  0.4941 |
+|   3   | 0.59804 | 0.74846 |  0.80775  | 0.69729 |
+|   4   | 0.42009 | 0.59163 |  0.72067  | 0.50179 |
+|   5   | 0.46969 | 0.63917 |  0.59809  | 0.68631 |
+|   6   | 0.46637 | 0.63608 |  0.76944  | 0.54212 |
+|  mean | 0.46676 |  0.6342 |  0.69275  |  0.6066 |
+|   OA  | 0.62391 |    -    |     -     |    -    |
+| Kappa | 0.53303 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 12:53:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:53:19, INFO:Deeplabv2:iter = 1450, loss_seg = 0.432, lr = 0.001
+2022-08-22 12:53:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:53:55, INFO:Deeplabv2:iter = 1500, loss_seg = 0.483, lr = 0.001
+2022-08-22 12:54:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:54:37, INFO:Deeplabv2:iter = 1550, loss_seg = 0.615, lr = 0.001
+2022-08-22 12:55:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:55:13, INFO:Deeplabv2:iter = 1600, loss_seg = 0.554, lr = 0.001
+2022-08-22 12:55:54, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:55:55, INFO:Deeplabv2:iter = 1650, loss_seg = 0.435, lr = 0.001
+2022-08-22 12:56:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:56:36, INFO:Deeplabv2:iter = 1700, loss_seg = 0.455, lr = 0.001
+2022-08-22 12:57:12, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:57:13, INFO:Deeplabv2:iter = 1750, loss_seg = 0.391, lr = 0.001
+2022-08-22 12:57:54, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:57:54, INFO:Deeplabv2:iter = 1800, loss_seg = 0.461, lr = 0.001
+2022-08-22 12:58:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:58:31, INFO:Deeplabv2:iter = 1850, loss_seg = 0.499, lr = 0.001
+2022-08-22 12:59:12, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:59:12, INFO:Deeplabv2:iter = 1900, loss_seg = 0.376, lr = 0.001
+2022-08-22 12:59:49, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 12:59:49, INFO:Deeplabv2:iter = 1950, loss_seg = 0.385, lr = 0.001
+2022-08-22 13:00:30, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:00:30, INFO:Deeplabv2:iter = 2000, loss_seg = 0.485, lr = 0.001
+2022-08-22 13:01:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:01:12, INFO:Deeplabv2:iter = 2050, loss_seg = 0.481, lr = 0.001
+2022-08-22 13:01:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:01:49, INFO:Deeplabv2:iter = 2100, loss_seg = 0.470, lr = 0.001
+2022-08-22 13:03:21, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.40109 | 0.57254 |  0.47683  | 0.71632 |
+|   1   |  0.4903 | 0.65799 |  0.71326  | 0.61067 |
+|   2   | 0.44533 | 0.61623 |  0.80231  | 0.50022 |
+|   3   | 0.59589 | 0.74678 |  0.75121  |  0.7424 |
+|   4   | 0.41475 | 0.58632 |  0.72579  | 0.49181 |
+|   5   | 0.48481 | 0.65302 |  0.64138  | 0.66509 |
+|   6   | 0.49403 | 0.66134 |  0.78117  | 0.57338 |
+|  mean | 0.47517 | 0.64203 |  0.69885  | 0.61427 |
+|   OA  | 0.63495 |    -    |     -     |    -    |
+| Kappa | 0.54667 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:04:02, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:04:02, INFO:Deeplabv2:iter = 2150, loss_seg = 0.433, lr = 0.001
+2022-08-22 13:04:38, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:04:39, INFO:Deeplabv2:iter = 2200, loss_seg = 0.473, lr = 0.001
+2022-08-22 13:05:20, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:05:20, INFO:Deeplabv2:iter = 2250, loss_seg = 0.362, lr = 0.001
+2022-08-22 13:06:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:06:02, INFO:Deeplabv2:iter = 2300, loss_seg = 0.438, lr = 0.001
+2022-08-22 13:06:38, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:06:38, INFO:Deeplabv2:iter = 2350, loss_seg = 0.415, lr = 0.001
+2022-08-22 13:07:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:07:20, INFO:Deeplabv2:iter = 2400, loss_seg = 0.388, lr = 0.001
+2022-08-22 13:07:56, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:07:57, INFO:Deeplabv2:iter = 2450, loss_seg = 0.277, lr = 0.001
+2022-08-22 13:08:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:08:38, INFO:Deeplabv2:iter = 2500, loss_seg = 0.375, lr = 0.001
+2022-08-22 13:09:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:09:19, INFO:Deeplabv2:iter = 2550, loss_seg = 0.520, lr = 0.001
+2022-08-22 13:09:56, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:09:56, INFO:Deeplabv2:iter = 2600, loss_seg = 0.335, lr = 0.001
+2022-08-22 13:10:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:10:37, INFO:Deeplabv2:iter = 2650, loss_seg = 0.471, lr = 0.001
+2022-08-22 13:11:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:11:14, INFO:Deeplabv2:iter = 2700, loss_seg = 0.656, lr = 0.001
+2022-08-22 13:11:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:11:56, INFO:Deeplabv2:iter = 2750, loss_seg = 0.375, lr = 0.001
+2022-08-22 13:12:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:12:32, INFO:Deeplabv2:iter = 2800, loss_seg = 0.546, lr = 0.001
+2022-08-22 13:14:04, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37736 | 0.54795 |  0.46067  | 0.67602 |
+|   1   | 0.51495 | 0.67983 |  0.65843  | 0.70266 |
+|   2   | 0.48124 | 0.64978 |  0.72266  | 0.59025 |
+|   3   |  0.6189 | 0.76459 |  0.81503  | 0.72003 |
+|   4   | 0.39696 | 0.56832 |  0.76782  | 0.45111 |
+|   5   |  0.4578 | 0.62807 |  0.71678  | 0.55889 |
+|   6   |  0.5158 | 0.68056 |  0.77407  | 0.60721 |
+|  mean | 0.48043 | 0.64559 |  0.70221  | 0.61517 |
+|   OA  | 0.63524 |    -    |     -     |    -    |
+| Kappa | 0.54666 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:14:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:14:45, INFO:Deeplabv2:iter = 2850, loss_seg = 0.470, lr = 0.001
+2022-08-22 13:15:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:15:27, INFO:Deeplabv2:iter = 2900, loss_seg = 0.419, lr = 0.001
+2022-08-22 13:16:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:16:03, INFO:Deeplabv2:iter = 2950, loss_seg = 0.497, lr = 0.001
+2022-08-22 13:16:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:16:45, INFO:Deeplabv2:iter = 3000, loss_seg = 0.383, lr = 0.001
+2022-08-22 13:17:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:17:22, INFO:Deeplabv2:iter = 3050, loss_seg = 0.517, lr = 0.001
+2022-08-22 13:18:02, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:18:03, INFO:Deeplabv2:iter = 3100, loss_seg = 0.486, lr = 0.001
+2022-08-22 13:18:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:18:44, INFO:Deeplabv2:iter = 3150, loss_seg = 0.386, lr = 0.001
+2022-08-22 13:19:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:19:21, INFO:Deeplabv2:iter = 3200, loss_seg = 0.410, lr = 0.001
+2022-08-22 13:20:02, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:20:02, INFO:Deeplabv2:iter = 3250, loss_seg = 0.377, lr = 0.001
+2022-08-22 13:20:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:20:39, INFO:Deeplabv2:iter = 3300, loss_seg = 0.588, lr = 0.001
+2022-08-22 13:21:20, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:21:21, INFO:Deeplabv2:iter = 3350, loss_seg = 0.404, lr = 0.001
+2022-08-22 13:22:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:22:02, INFO:Deeplabv2:iter = 3400, loss_seg = 0.367, lr = 0.001
+2022-08-22 13:22:38, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:22:39, INFO:Deeplabv2:iter = 3450, loss_seg = 0.326, lr = 0.001
+2022-08-22 13:23:20, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:23:20, INFO:Deeplabv2:iter = 3500, loss_seg = 0.475, lr = 0.001
+2022-08-22 13:24:52, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37863 | 0.54929 |  0.46914  | 0.66248 |
+|   1   |  0.5241 | 0.68775 |  0.64164  | 0.74101 |
+|   2   | 0.48096 | 0.64952 |  0.77006  | 0.56161 |
+|   3   |  0.6132 | 0.76023 |  0.82358  | 0.70592 |
+|   4   |  0.4255 | 0.59699 |  0.69756  | 0.52176 |
+|   5   | 0.48151 | 0.65003 |  0.65294  | 0.64714 |
+|   6   |  0.4936 | 0.66096 |  0.79416  | 0.56602 |
+|  mean | 0.48536 | 0.65068 |  0.69273  | 0.62942 |
+|   OA  | 0.63549 |    -    |     -     |    -    |
+| Kappa | 0.54977 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:25:28, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:25:29, INFO:Deeplabv2:iter = 3550, loss_seg = 0.351, lr = 0.001
+2022-08-22 13:26:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:26:10, INFO:Deeplabv2:iter = 3600, loss_seg = 0.434, lr = 0.001
+2022-08-22 13:26:46, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:26:47, INFO:Deeplabv2:iter = 3650, loss_seg = 0.398, lr = 0.001
+2022-08-22 13:27:28, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:27:28, INFO:Deeplabv2:iter = 3700, loss_seg = 0.463, lr = 0.001
+2022-08-22 13:28:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:28:10, INFO:Deeplabv2:iter = 3750, loss_seg = 0.482, lr = 0.001
+2022-08-22 13:28:46, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:28:46, INFO:Deeplabv2:iter = 3800, loss_seg = 0.368, lr = 0.001
+2022-08-22 13:29:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:29:28, INFO:Deeplabv2:iter = 3850, loss_seg = 0.356, lr = 0.001
+2022-08-22 13:30:04, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:30:04, INFO:Deeplabv2:iter = 3900, loss_seg = 0.344, lr = 0.001
+2022-08-22 13:30:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:30:46, INFO:Deeplabv2:iter = 3950, loss_seg = 0.285, lr = 0.001
+2022-08-22 13:31:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:31:27, INFO:Deeplabv2:iter = 4000, loss_seg = 0.364, lr = 0.001
+2022-08-22 13:32:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:32:04, INFO:Deeplabv2:iter = 4050, loss_seg = 0.461, lr = 0.001
+2022-08-22 13:32:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:32:45, INFO:Deeplabv2:iter = 4100, loss_seg = 0.408, lr = 0.001
+2022-08-22 13:33:22, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:33:22, INFO:Deeplabv2:iter = 4150, loss_seg = 0.479, lr = 0.001
+2022-08-22 13:34:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:34:03, INFO:Deeplabv2:iter = 4200, loss_seg = 0.384, lr = 0.001
+2022-08-22 13:35:35, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.3823 | 0.55313 |  0.45902  | 0.69579 |
+|   1   | 0.52299 | 0.68679 |  0.67377  | 0.70033 |
+|   2   | 0.46136 | 0.63141 |  0.78026  | 0.53026 |
+|   3   |  0.6195 | 0.76505 |  0.81422  | 0.72148 |
+|   4   | 0.38909 |  0.5602 |  0.73384  | 0.45302 |
+|   5   | 0.46672 | 0.63641 |  0.68772  | 0.59223 |
+|   6   | 0.50405 | 0.67026 |  0.78288  | 0.58596 |
+|  mean |  0.478  | 0.64332 |  0.70453  |  0.6113 |
+|   OA  | 0.63387 |    -    |     -     |    -    |
+| Kappa | 0.54455 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:36:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:36:17, INFO:Deeplabv2:iter = 4250, loss_seg = 0.317, lr = 0.001
+2022-08-22 13:36:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:36:53, INFO:Deeplabv2:iter = 4300, loss_seg = 0.382, lr = 0.001
+2022-08-22 13:37:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:37:35, INFO:Deeplabv2:iter = 4350, loss_seg = 0.468, lr = 0.001
+2022-08-22 13:38:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:38:11, INFO:Deeplabv2:iter = 4400, loss_seg = 0.425, lr = 0.001
+2022-08-22 13:38:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:38:53, INFO:Deeplabv2:iter = 4450, loss_seg = 0.270, lr = 0.001
+2022-08-22 13:39:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:39:30, INFO:Deeplabv2:iter = 4500, loss_seg = 0.409, lr = 0.001
+2022-08-22 13:40:10, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:40:11, INFO:Deeplabv2:iter = 4550, loss_seg = 0.440, lr = 0.001
+2022-08-22 13:40:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:40:52, INFO:Deeplabv2:iter = 4600, loss_seg = 0.443, lr = 0.001
+2022-08-22 13:41:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:41:29, INFO:Deeplabv2:iter = 4650, loss_seg = 0.350, lr = 0.001
+2022-08-22 13:42:10, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:42:10, INFO:Deeplabv2:iter = 4700, loss_seg = 0.476, lr = 0.001
+2022-08-22 13:42:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:42:47, INFO:Deeplabv2:iter = 4750, loss_seg = 0.436, lr = 0.001
+2022-08-22 13:43:28, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:43:28, INFO:Deeplabv2:iter = 4800, loss_seg = 0.399, lr = 0.001
+2022-08-22 13:44:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:44:10, INFO:Deeplabv2:iter = 4850, loss_seg = 0.393, lr = 0.001
+2022-08-22 13:44:46, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:44:47, INFO:Deeplabv2:iter = 4900, loss_seg = 0.317, lr = 0.001
+2022-08-22 13:46:18, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37813 | 0.54876 |  0.46752  | 0.66418 |
+|   1   | 0.51705 | 0.68165 |  0.67149  | 0.69211 |
+|   2   | 0.48964 | 0.65739 |   0.7452  |  0.5881 |
+|   3   | 0.63823 | 0.77917 |  0.80797  | 0.75236 |
+|   4   |  0.3679 |  0.5379 |  0.72875  | 0.42627 |
+|   5   |  0.4692 | 0.63871 |  0.69746  | 0.58909 |
+|   6   | 0.51943 | 0.68372 |  0.76445  | 0.61841 |
+|  mean |  0.4828 | 0.64676 |  0.69755  | 0.61865 |
+|   OA  |  0.6393 |    -    |     -     |    -    |
+| Kappa | 0.55218 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:46:59, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:47:00, INFO:Deeplabv2:iter = 4950, loss_seg = 0.423, lr = 0.001
+2022-08-22 13:47:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:47:36, INFO:Deeplabv2:iter = 5000, loss_seg = 0.412, lr = 0.001
+2022-08-22 13:48:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:48:18, INFO:Deeplabv2:iter = 5050, loss_seg = 0.307, lr = 0.001
+2022-08-22 13:48:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:48:59, INFO:Deeplabv2:iter = 5100, loss_seg = 0.336, lr = 0.001
+2022-08-22 13:49:35, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:49:36, INFO:Deeplabv2:iter = 5150, loss_seg = 0.333, lr = 0.001
+2022-08-22 13:50:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:50:17, INFO:Deeplabv2:iter = 5200, loss_seg = 0.457, lr = 0.001
+2022-08-22 13:50:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:50:54, INFO:Deeplabv2:iter = 5250, loss_seg = 0.366, lr = 0.001
+2022-08-22 13:51:35, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:51:35, INFO:Deeplabv2:iter = 5300, loss_seg = 0.454, lr = 0.001
+2022-08-22 13:52:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:52:12, INFO:Deeplabv2:iter = 5350, loss_seg = 0.489, lr = 0.001
+2022-08-22 13:52:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:52:53, INFO:Deeplabv2:iter = 5400, loss_seg = 0.280, lr = 0.001
+2022-08-22 13:53:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:53:35, INFO:Deeplabv2:iter = 5450, loss_seg = 0.512, lr = 0.001
+2022-08-22 13:54:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:54:12, INFO:Deeplabv2:iter = 5500, loss_seg = 0.390, lr = 0.001
+2022-08-22 13:54:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:54:53, INFO:Deeplabv2:iter = 5550, loss_seg = 0.361, lr = 0.001
+2022-08-22 13:55:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:55:30, INFO:Deeplabv2:iter = 5600, loss_seg = 0.564, lr = 0.001
+2022-08-22 13:57:02, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.34952 |  0.518  |  0.44879  | 0.61244 |
+|   1   | 0.52602 |  0.6894 |  0.61909  | 0.77772 |
+|   2   | 0.49773 | 0.66465 |  0.72069  | 0.61669 |
+|   3   | 0.64113 | 0.78133 |  0.83877  | 0.73125 |
+|   4   | 0.38635 | 0.55736 |  0.71631  | 0.45615 |
+|   5   | 0.48068 | 0.64927 |  0.64054  | 0.65824 |
+|   6   |  0.4873 | 0.65528 |  0.81333  | 0.54867 |
+|  mean | 0.48125 | 0.64504 |  0.68536  | 0.62874 |
+|   OA  | 0.62753 |    -    |     -     |    -    |
+| Kappa | 0.54167 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 13:57:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:57:43, INFO:Deeplabv2:iter = 5650, loss_seg = 0.346, lr = 0.001
+2022-08-22 13:58:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:58:24, INFO:Deeplabv2:iter = 5700, loss_seg = 0.356, lr = 0.001
+2022-08-22 13:59:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:59:01, INFO:Deeplabv2:iter = 5750, loss_seg = 0.459, lr = 0.001
+2022-08-22 13:59:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 13:59:42, INFO:Deeplabv2:iter = 5800, loss_seg = 0.266, lr = 0.001
+2022-08-22 14:00:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:00:19, INFO:Deeplabv2:iter = 5850, loss_seg = 0.299, lr = 0.001
+2022-08-22 14:01:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:01:00, INFO:Deeplabv2:iter = 5900, loss_seg = 0.311, lr = 0.001
+2022-08-22 14:01:41, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:01:42, INFO:Deeplabv2:iter = 5950, loss_seg = 0.324, lr = 0.001
+2022-08-22 14:02:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:02:19, INFO:Deeplabv2:iter = 6000, loss_seg = 0.460, lr = 0.001
+2022-08-22 14:02:59, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:03:00, INFO:Deeplabv2:iter = 6050, loss_seg = 0.347, lr = 0.001
+2022-08-22 14:03:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:03:37, INFO:Deeplabv2:iter = 6100, loss_seg = 0.340, lr = 0.001
+2022-08-22 14:04:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:04:18, INFO:Deeplabv2:iter = 6150, loss_seg = 0.287, lr = 0.001
+2022-08-22 14:04:54, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:04:55, INFO:Deeplabv2:iter = 6200, loss_seg = 0.464, lr = 0.001
+2022-08-22 14:05:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:05:36, INFO:Deeplabv2:iter = 6250, loss_seg = 0.376, lr = 0.001
+2022-08-22 14:06:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:06:18, INFO:Deeplabv2:iter = 6300, loss_seg = 0.351, lr = 0.001
+2022-08-22 14:07:50, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.3668 | 0.53673 |  0.45944  | 0.64528 |
+|   1   | 0.52663 | 0.68992 |  0.65102  | 0.73377 |
+|   2   | 0.48586 | 0.65398 |  0.76203  | 0.57277 |
+|   3   | 0.61419 | 0.76098 |  0.83481  | 0.69916 |
+|   4   | 0.39185 | 0.56307 |  0.70145  | 0.47029 |
+|   5   | 0.48061 | 0.64921 |  0.63462  | 0.66448 |
+|   6   | 0.48874 | 0.65658 |  0.77863  | 0.56761 |
+|  mean | 0.47924 | 0.64435 |  0.68886  | 0.62191 |
+|   OA  | 0.62968 |    -    |     -     |    -    |
+| Kappa | 0.54236 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 14:08:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:08:26, INFO:Deeplabv2:iter = 6350, loss_seg = 0.389, lr = 0.001
+2022-08-22 14:09:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:09:08, INFO:Deeplabv2:iter = 6400, loss_seg = 0.226, lr = 0.001
+2022-08-22 14:09:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:09:44, INFO:Deeplabv2:iter = 6450, loss_seg = 0.330, lr = 0.001
+2022-08-22 14:10:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:10:26, INFO:Deeplabv2:iter = 6500, loss_seg = 0.442, lr = 0.001
+2022-08-22 14:11:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:11:07, INFO:Deeplabv2:iter = 6550, loss_seg = 0.534, lr = 0.001
+2022-08-22 14:11:43, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:11:44, INFO:Deeplabv2:iter = 6600, loss_seg = 0.389, lr = 0.001
+2022-08-22 14:12:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:12:25, INFO:Deeplabv2:iter = 6650, loss_seg = 0.386, lr = 0.001
+2022-08-22 14:13:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:13:02, INFO:Deeplabv2:iter = 6700, loss_seg = 0.340, lr = 0.001
+2022-08-22 14:13:43, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:13:43, INFO:Deeplabv2:iter = 6750, loss_seg = 0.263, lr = 0.001
+2022-08-22 14:14:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:14:25, INFO:Deeplabv2:iter = 6800, loss_seg = 0.340, lr = 0.001
+2022-08-22 14:15:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:15:02, INFO:Deeplabv2:iter = 6850, loss_seg = 0.357, lr = 0.001
+2022-08-22 14:15:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:15:43, INFO:Deeplabv2:iter = 6900, loss_seg = 0.348, lr = 0.001
+2022-08-22 14:16:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:16:20, INFO:Deeplabv2:iter = 6950, loss_seg = 0.353, lr = 0.001
+2022-08-22 14:17:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:17:01, INFO:Deeplabv2:iter = 7000, loss_seg = 0.212, lr = 0.001
+2022-08-22 14:18:33, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37097 | 0.54118 |   0.4567  | 0.66399 |
+|   1   | 0.52908 | 0.69202 |   0.6705  | 0.71496 |
+|   2   | 0.48592 | 0.65404 |  0.73215  | 0.59098 |
+|   3   | 0.62211 | 0.76704 |  0.83217  | 0.71136 |
+|   4   | 0.38396 | 0.55487 |  0.72942  | 0.44773 |
+|   5   | 0.47037 |  0.6398 |  0.68892  | 0.59721 |
+|   6   | 0.50135 | 0.66786 |  0.76638  | 0.59179 |
+|  mean | 0.48054 | 0.64526 |  0.69661  | 0.61686 |
+|   OA  | 0.63271 |    -    |     -     |    -    |
+| Kappa | 0.54413 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 14:19:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:19:09, INFO:Deeplabv2:iter = 7050, loss_seg = 0.358, lr = 0.001
+2022-08-22 14:19:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:19:51, INFO:Deeplabv2:iter = 7100, loss_seg = 0.428, lr = 0.001
+2022-08-22 14:20:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:20:32, INFO:Deeplabv2:iter = 7150, loss_seg = 0.380, lr = 0.001
+2022-08-22 14:21:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:21:09, INFO:Deeplabv2:iter = 7200, loss_seg = 0.288, lr = 0.001
+2022-08-22 14:21:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:21:50, INFO:Deeplabv2:iter = 7250, loss_seg = 0.319, lr = 0.001
+2022-08-22 14:22:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:22:27, INFO:Deeplabv2:iter = 7300, loss_seg = 0.513, lr = 0.001
+2022-08-22 14:23:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:23:08, INFO:Deeplabv2:iter = 7350, loss_seg = 0.312, lr = 0.001
+2022-08-22 14:23:49, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:23:50, INFO:Deeplabv2:iter = 7400, loss_seg = 0.387, lr = 0.001
+2022-08-22 14:24:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:24:26, INFO:Deeplabv2:iter = 7450, loss_seg = 0.347, lr = 0.001
+2022-08-22 14:25:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:25:08, INFO:Deeplabv2:iter = 7500, loss_seg = 0.330, lr = 0.001
+2022-08-22 14:25:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:25:44, INFO:Deeplabv2:iter = 7550, loss_seg = 0.416, lr = 0.001
+2022-08-22 14:26:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:26:26, INFO:Deeplabv2:iter = 7600, loss_seg = 0.389, lr = 0.001
+2022-08-22 14:27:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:27:07, INFO:Deeplabv2:iter = 7650, loss_seg = 0.398, lr = 0.001
+2022-08-22 14:27:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:27:44, INFO:Deeplabv2:iter = 7700, loss_seg = 0.340, lr = 0.001
+2022-08-22 14:29:16, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.39023 | 0.56139 |  0.47296  | 0.69049 |
+|   1   | 0.51682 | 0.68145 |  0.70189  | 0.66217 |
+|   2   | 0.46299 | 0.63294 |  0.76314  | 0.54069 |
+|   3   | 0.61778 | 0.76374 |  0.82961  | 0.70756 |
+|   4   | 0.37389 | 0.54428 |  0.73056  | 0.43369 |
+|   5   | 0.45995 | 0.63009 |   0.7162  | 0.56247 |
+|   6   | 0.52745 | 0.69063 |  0.73097  |  0.6545 |
+|  mean | 0.47844 |  0.6435 |  0.70648  | 0.60737 |
+|   OA  |  0.6402 |    -    |     -     |    -    |
+| Kappa | 0.55065 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 14:29:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:29:57, INFO:Deeplabv2:iter = 7750, loss_seg = 0.312, lr = 0.001
+2022-08-22 14:30:33, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:30:34, INFO:Deeplabv2:iter = 7800, loss_seg = 0.348, lr = 0.001
+2022-08-22 14:31:15, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:31:15, INFO:Deeplabv2:iter = 7850, loss_seg = 0.369, lr = 0.001
+2022-08-22 14:31:51, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:31:52, INFO:Deeplabv2:iter = 7900, loss_seg = 0.377, lr = 0.001
+2022-08-22 14:32:33, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:32:33, INFO:Deeplabv2:iter = 7950, loss_seg = 0.436, lr = 0.001
+2022-08-22 14:33:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:33:15, INFO:Deeplabv2:iter = 8000, loss_seg = 0.314, lr = 0.001
+2022-08-22 14:33:51, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:33:51, INFO:Deeplabv2:iter = 8050, loss_seg = 0.361, lr = 0.001
+2022-08-22 14:34:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:34:33, INFO:Deeplabv2:iter = 8100, loss_seg = 0.345, lr = 0.001
+2022-08-22 14:35:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:35:09, INFO:Deeplabv2:iter = 8150, loss_seg = 0.297, lr = 0.001
+2022-08-22 14:35:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:35:51, INFO:Deeplabv2:iter = 8200, loss_seg = 0.291, lr = 0.001
+2022-08-22 14:36:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:36:32, INFO:Deeplabv2:iter = 8250, loss_seg = 0.302, lr = 0.001
+2022-08-22 14:37:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:37:09, INFO:Deeplabv2:iter = 8300, loss_seg = 0.306, lr = 0.001
+2022-08-22 14:37:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:37:50, INFO:Deeplabv2:iter = 8350, loss_seg = 0.336, lr = 0.001
+2022-08-22 14:38:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:38:27, INFO:Deeplabv2:iter = 8400, loss_seg = 0.343, lr = 0.001
+2022-08-22 14:39:59, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37468 | 0.54511 |   0.4638  |  0.661  |
+|   1   | 0.53086 | 0.69355 |  0.66276  | 0.72733 |
+|   2   | 0.48077 | 0.64935 |  0.76097  | 0.56629 |
+|   3   | 0.61013 | 0.75786 |  0.83452  | 0.69411 |
+|   4   | 0.35428 |  0.5232 |  0.70538  | 0.41581 |
+|   5   | 0.48448 | 0.65273 |  0.66819  | 0.63797 |
+|   6   | 0.50306 | 0.66938 |  0.76177  | 0.59698 |
+|  mean | 0.47689 |  0.6416 |  0.69391  | 0.61421 |
+|   OA  | 0.63355 |    -    |     -     |    -    |
+| Kappa | 0.54541 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 14:40:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:40:40, INFO:Deeplabv2:iter = 8450, loss_seg = 0.412, lr = 0.001
+2022-08-22 14:41:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:41:21, INFO:Deeplabv2:iter = 8500, loss_seg = 0.289, lr = 0.001
+2022-08-22 14:41:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:41:58, INFO:Deeplabv2:iter = 8550, loss_seg = 0.385, lr = 0.001
+2022-08-22 14:42:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:42:39, INFO:Deeplabv2:iter = 8600, loss_seg = 0.253, lr = 0.001
+2022-08-22 14:43:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:43:16, INFO:Deeplabv2:iter = 8650, loss_seg = 0.369, lr = 0.001
+2022-08-22 14:43:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:43:58, INFO:Deeplabv2:iter = 8700, loss_seg = 0.297, lr = 0.001
+2022-08-22 14:44:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:44:34, INFO:Deeplabv2:iter = 8750, loss_seg = 0.401, lr = 0.001
+2022-08-22 14:45:15, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:45:16, INFO:Deeplabv2:iter = 8800, loss_seg = 0.264, lr = 0.001
+2022-08-22 14:45:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:45:57, INFO:Deeplabv2:iter = 8850, loss_seg = 0.318, lr = 0.001
+2022-08-22 14:46:33, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:46:34, INFO:Deeplabv2:iter = 8900, loss_seg = 0.213, lr = 0.001
+2022-08-22 14:47:15, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:47:15, INFO:Deeplabv2:iter = 8950, loss_seg = 0.263, lr = 0.001
+2022-08-22 14:47:51, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:47:52, INFO:Deeplabv2:iter = 9000, loss_seg = 0.330, lr = 0.001
+2022-08-22 14:48:33, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:48:33, INFO:Deeplabv2:iter = 9050, loss_seg = 0.420, lr = 0.001
+2022-08-22 14:49:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:49:15, INFO:Deeplabv2:iter = 9100, loss_seg = 0.296, lr = 0.001
+2022-08-22 14:50:47, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.3693 | 0.53939 |  0.45754  | 0.65692 |
+|   1   | 0.53659 | 0.69842 |  0.65778  | 0.74441 |
+|   2   | 0.48249 | 0.65092 |  0.73656  | 0.58312 |
+|   3   | 0.63784 | 0.77888 |  0.82952  | 0.73406 |
+|   4   | 0.35478 | 0.52375 |  0.74684  | 0.40328 |
+|   5   | 0.47626 | 0.64523 |  0.68855  | 0.60703 |
+|   6   | 0.50543 | 0.67148 |  0.77811  | 0.59055 |
+|  mean | 0.48038 | 0.64401 |  0.69927  | 0.61705 |
+|   OA  | 0.63495 |    -    |     -     |    -    |
+| Kappa | 0.54735 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 14:51:23, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:51:23, INFO:Deeplabv2:iter = 9150, loss_seg = 0.326, lr = 0.001
+2022-08-22 14:52:04, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:52:05, INFO:Deeplabv2:iter = 9200, loss_seg = 0.265, lr = 0.001
+2022-08-22 14:52:41, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:52:42, INFO:Deeplabv2:iter = 9250, loss_seg = 0.334, lr = 0.001
+2022-08-22 14:53:22, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:53:23, INFO:Deeplabv2:iter = 9300, loss_seg = 0.244, lr = 0.001
+2022-08-22 14:54:04, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:54:04, INFO:Deeplabv2:iter = 9350, loss_seg = 0.428, lr = 0.001
+2022-08-22 14:54:41, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:54:41, INFO:Deeplabv2:iter = 9400, loss_seg = 0.414, lr = 0.001
+2022-08-22 14:55:22, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:55:22, INFO:Deeplabv2:iter = 9450, loss_seg = 0.371, lr = 0.001
+2022-08-22 14:55:59, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:55:59, INFO:Deeplabv2:iter = 9500, loss_seg = 0.296, lr = 0.001
+2022-08-22 14:56:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:56:40, INFO:Deeplabv2:iter = 9550, loss_seg = 0.317, lr = 0.001
+2022-08-22 14:57:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:57:17, INFO:Deeplabv2:iter = 9600, loss_seg = 0.241, lr = 0.001
+2022-08-22 14:57:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:57:59, INFO:Deeplabv2:iter = 9650, loss_seg = 0.275, lr = 0.001
+2022-08-22 14:58:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:58:40, INFO:Deeplabv2:iter = 9700, loss_seg = 0.257, lr = 0.001
+2022-08-22 14:59:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:59:17, INFO:Deeplabv2:iter = 9750, loss_seg = 0.313, lr = 0.001
+2022-08-22 14:59:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 14:59:58, INFO:Deeplabv2:iter = 9800, loss_seg = 0.301, lr = 0.001
+2022-08-22 15:01:31, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38458 | 0.55552 |   0.4575  | 0.70701 |
+|   1   | 0.53026 | 0.69304 |   0.694   | 0.69208 |
+|   2   | 0.48773 | 0.65567 |  0.76442  | 0.57401 |
+|   3   | 0.63459 | 0.77645 |  0.82494  | 0.73335 |
+|   4   | 0.37872 | 0.54938 |  0.73646  | 0.43809 |
+|   5   | 0.47157 | 0.64091 |  0.70477  | 0.58766 |
+|   6   | 0.50032 | 0.66695 |  0.78872  | 0.57775 |
+|  mean | 0.48397 | 0.64827 |  0.71012  | 0.61571 |
+|   OA  | 0.63713 |    -    |     -     |    -    |
+| Kappa | 0.54841 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:02:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:02:07, INFO:Deeplabv2:iter = 9850, loss_seg = 0.303, lr = 0.001
+2022-08-22 15:02:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:02:49, INFO:Deeplabv2:iter = 9900, loss_seg = 0.256, lr = 0.001
+2022-08-22 15:03:30, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:03:30, INFO:Deeplabv2:iter = 9950, loss_seg = 0.333, lr = 0.001
+2022-08-22 15:04:07, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:04:07, INFO:Deeplabv2:iter = 10000, loss_seg = 0.356, lr = 0.001
+2022-08-22 15:04:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:04:49, INFO:Deeplabv2:iter = 10050, loss_seg = 0.240, lr = 0.001
+2022-08-22 15:05:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:05:25, INFO:Deeplabv2:iter = 10100, loss_seg = 0.331, lr = 0.001
+2022-08-22 15:06:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:06:07, INFO:Deeplabv2:iter = 10150, loss_seg = 0.319, lr = 0.001
+2022-08-22 15:06:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:06:48, INFO:Deeplabv2:iter = 10200, loss_seg = 0.327, lr = 0.001
+2022-08-22 15:07:25, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:07:25, INFO:Deeplabv2:iter = 10250, loss_seg = 0.324, lr = 0.001
+2022-08-22 15:08:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:08:07, INFO:Deeplabv2:iter = 10300, loss_seg = 0.369, lr = 0.001
+2022-08-22 15:08:43, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:08:43, INFO:Deeplabv2:iter = 10350, loss_seg = 0.415, lr = 0.001
+2022-08-22 15:09:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:09:25, INFO:Deeplabv2:iter = 10400, loss_seg = 0.353, lr = 0.001
+2022-08-22 15:10:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:10:02, INFO:Deeplabv2:iter = 10450, loss_seg = 0.392, lr = 0.001
+2022-08-22 15:10:43, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:10:43, INFO:Deeplabv2:iter = 10500, loss_seg = 0.262, lr = 0.001
+2022-08-22 15:12:15, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38229 | 0.55313 |  0.47366  | 0.66464 |
+|   1   |  0.5333 | 0.69563 |   0.6821  |  0.7097 |
+|   2   | 0.49147 | 0.65904 |  0.75923  | 0.58221 |
+|   3   | 0.60994 | 0.75772 |  0.80775  | 0.71352 |
+|   4   | 0.39086 | 0.56204 |  0.67516  | 0.48139 |
+|   5   | 0.48796 | 0.65588 |  0.67847  | 0.63474 |
+|   6   | 0.50518 | 0.67125 |  0.76321  | 0.59907 |
+|  mean | 0.48586 | 0.65067 |  0.69137  | 0.62647 |
+|   OA  | 0.63958 |    -    |     -     |    -    |
+| Kappa |  0.5536 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:12:56, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:12:56, INFO:Deeplabv2:iter = 10550, loss_seg = 0.315, lr = 0.001
+2022-08-22 15:13:33, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:13:33, INFO:Deeplabv2:iter = 10600, loss_seg = 0.314, lr = 0.001
+2022-08-22 15:14:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:14:15, INFO:Deeplabv2:iter = 10650, loss_seg = 0.304, lr = 0.001
+2022-08-22 15:14:51, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:14:51, INFO:Deeplabv2:iter = 10700, loss_seg = 0.300, lr = 0.001
+2022-08-22 15:15:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:15:33, INFO:Deeplabv2:iter = 10750, loss_seg = 0.312, lr = 0.001
+2022-08-22 15:16:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:16:14, INFO:Deeplabv2:iter = 10800, loss_seg = 0.253, lr = 0.001
+2022-08-22 15:16:51, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:16:51, INFO:Deeplabv2:iter = 10850, loss_seg = 0.268, lr = 0.001
+2022-08-22 15:17:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:17:33, INFO:Deeplabv2:iter = 10900, loss_seg = 0.340, lr = 0.001
+2022-08-22 15:18:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:18:09, INFO:Deeplabv2:iter = 10950, loss_seg = 0.312, lr = 0.001
+2022-08-22 15:18:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:18:51, INFO:Deeplabv2:iter = 11000, loss_seg = 0.322, lr = 0.001
+2022-08-22 15:19:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:19:32, INFO:Deeplabv2:iter = 11050, loss_seg = 0.271, lr = 0.001
+2022-08-22 15:20:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:20:09, INFO:Deeplabv2:iter = 11100, loss_seg = 0.297, lr = 0.001
+2022-08-22 15:20:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:20:51, INFO:Deeplabv2:iter = 11150, loss_seg = 0.276, lr = 0.001
+2022-08-22 15:21:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:21:27, INFO:Deeplabv2:iter = 11200, loss_seg = 0.293, lr = 0.001
+2022-08-22 15:22:59, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.39134 | 0.56254 |  0.48182  | 0.67575 |
+|   1   | 0.53495 | 0.69702 |  0.69616  | 0.69788 |
+|   2   | 0.48347 | 0.65181 |  0.75568  | 0.57304 |
+|   3   | 0.61462 | 0.76132 |  0.81338  | 0.71552 |
+|   4   |  0.3797 | 0.55041 |  0.72068  | 0.44522 |
+|   5   | 0.48033 | 0.64895 |  0.68916  | 0.61318 |
+|   6   | 0.52181 | 0.68578 |  0.74724  | 0.63366 |
+|  mean |  0.4866 | 0.65112 |  0.70059  | 0.62204 |
+|   OA  | 0.64507 |    -    |     -     |    -    |
+| Kappa |  0.559  |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:23:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:23:41, INFO:Deeplabv2:iter = 11250, loss_seg = 0.355, lr = 0.001
+2022-08-22 15:24:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:24:17, INFO:Deeplabv2:iter = 11300, loss_seg = 0.307, lr = 0.001
+2022-08-22 15:24:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:24:59, INFO:Deeplabv2:iter = 11350, loss_seg = 0.350, lr = 0.001
+2022-08-22 15:25:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:25:40, INFO:Deeplabv2:iter = 11400, loss_seg = 0.319, lr = 0.001
+2022-08-22 15:26:17, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:26:17, INFO:Deeplabv2:iter = 11450, loss_seg = 0.301, lr = 0.001
+2022-08-22 15:26:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:26:59, INFO:Deeplabv2:iter = 11500, loss_seg = 0.248, lr = 0.001
+2022-08-22 15:27:35, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:27:35, INFO:Deeplabv2:iter = 11550, loss_seg = 0.315, lr = 0.001
+2022-08-22 15:28:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:28:17, INFO:Deeplabv2:iter = 11600, loss_seg = 0.266, lr = 0.001
+2022-08-22 15:28:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:28:58, INFO:Deeplabv2:iter = 11650, loss_seg = 0.286, lr = 0.001
+2022-08-22 15:29:35, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:29:35, INFO:Deeplabv2:iter = 11700, loss_seg = 0.337, lr = 0.001
+2022-08-22 15:30:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:30:17, INFO:Deeplabv2:iter = 11750, loss_seg = 0.237, lr = 0.001
+2022-08-22 15:30:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:30:53, INFO:Deeplabv2:iter = 11800, loss_seg = 0.424, lr = 0.001
+2022-08-22 15:31:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:31:35, INFO:Deeplabv2:iter = 11850, loss_seg = 0.374, lr = 0.001
+2022-08-22 15:32:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:32:16, INFO:Deeplabv2:iter = 11900, loss_seg = 0.320, lr = 0.001
+2022-08-22 15:33:48, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38839 | 0.55948 |  0.46292  | 0.70695 |
+|   1   | 0.53049 | 0.69323 |  0.70955  | 0.67765 |
+|   2   | 0.47618 | 0.64515 |  0.76878  | 0.55578 |
+|   3   | 0.59461 | 0.74577 |  0.80087  | 0.69777 |
+|   4   | 0.37315 |  0.5435 |  0.72252  | 0.43557 |
+|   5   | 0.48353 | 0.65187 |  0.70043  |  0.6096 |
+|   6   | 0.49155 | 0.65912 |  0.75704  | 0.58363 |
+|  mean | 0.47684 | 0.64259 |  0.70316  | 0.60956 |
+|   OA  | 0.63345 |    -    |     -     |    -    |
+| Kappa | 0.54344 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:34:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:34:25, INFO:Deeplabv2:iter = 11950, loss_seg = 0.279, lr = 0.001
+2022-08-22 15:35:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:35:06, INFO:Deeplabv2:iter = 12000, loss_seg = 0.288, lr = 0.001
+2022-08-22 15:35:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:35:43, INFO:Deeplabv2:iter = 12050, loss_seg = 0.255, lr = 0.001
+2022-08-22 15:36:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:36:24, INFO:Deeplabv2:iter = 12100, loss_seg = 0.257, lr = 0.001
+2022-08-22 15:37:01, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:37:01, INFO:Deeplabv2:iter = 12150, loss_seg = 0.277, lr = 0.001
+2022-08-22 15:37:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:37:43, INFO:Deeplabv2:iter = 12200, loss_seg = 0.418, lr = 0.001
+2022-08-22 15:38:23, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:38:24, INFO:Deeplabv2:iter = 12250, loss_seg = 0.310, lr = 0.001
+2022-08-22 15:39:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:39:01, INFO:Deeplabv2:iter = 12300, loss_seg = 0.366, lr = 0.001
+2022-08-22 15:39:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:39:42, INFO:Deeplabv2:iter = 12350, loss_seg = 0.294, lr = 0.001
+2022-08-22 15:40:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:40:19, INFO:Deeplabv2:iter = 12400, loss_seg = 0.270, lr = 0.001
+2022-08-22 15:41:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:41:00, INFO:Deeplabv2:iter = 12450, loss_seg = 0.336, lr = 0.001
+2022-08-22 15:41:41, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:41:42, INFO:Deeplabv2:iter = 12500, loss_seg = 0.288, lr = 0.001
+2022-08-22 15:42:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:42:19, INFO:Deeplabv2:iter = 12550, loss_seg = 0.369, lr = 0.001
+2022-08-22 15:43:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:43:00, INFO:Deeplabv2:iter = 12600, loss_seg = 0.287, lr = 0.001
+2022-08-22 15:44:32, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37986 | 0.55058 |  0.47162  |  0.6613 |
+|   1   | 0.54387 | 0.70455 |  0.68755  | 0.72242 |
+|   2   | 0.48685 | 0.65488 |  0.73842  | 0.58832 |
+|   3   | 0.59197 | 0.74369 |  0.81713  | 0.68237 |
+|   4   | 0.36432 | 0.53407 |   0.7128  | 0.42701 |
+|   5   | 0.48384 | 0.65215 |   0.6662  | 0.63868 |
+|   6   | 0.50655 | 0.67246 |   0.7521  | 0.60807 |
+|  mean | 0.47961 | 0.64463 |  0.69226  | 0.61831 |
+|   OA  | 0.63687 |    -    |     -     |    -    |
+| Kappa | 0.54964 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:45:09, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:45:09, INFO:Deeplabv2:iter = 12650, loss_seg = 0.348, lr = 0.001
+2022-08-22 15:45:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:45:50, INFO:Deeplabv2:iter = 12700, loss_seg = 0.367, lr = 0.001
+2022-08-22 15:46:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:46:32, INFO:Deeplabv2:iter = 12750, loss_seg = 0.353, lr = 0.001
+2022-08-22 15:47:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:47:09, INFO:Deeplabv2:iter = 12800, loss_seg = 0.303, lr = 0.001
+2022-08-22 15:47:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:47:50, INFO:Deeplabv2:iter = 12850, loss_seg = 0.344, lr = 0.001
+2022-08-22 15:48:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:48:27, INFO:Deeplabv2:iter = 12900, loss_seg = 0.302, lr = 0.001
+2022-08-22 15:49:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:49:08, INFO:Deeplabv2:iter = 12950, loss_seg = 0.223, lr = 0.001
+2022-08-22 15:49:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:49:45, INFO:Deeplabv2:iter = 13000, loss_seg = 0.306, lr = 0.001
+2022-08-22 15:50:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:50:27, INFO:Deeplabv2:iter = 13050, loss_seg = 0.287, lr = 0.001
+2022-08-22 15:51:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:51:08, INFO:Deeplabv2:iter = 13100, loss_seg = 0.258, lr = 0.001
+2022-08-22 15:51:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:51:45, INFO:Deeplabv2:iter = 13150, loss_seg = 0.277, lr = 0.001
+2022-08-22 15:52:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:52:26, INFO:Deeplabv2:iter = 13200, loss_seg = 0.322, lr = 0.001
+2022-08-22 15:53:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:53:03, INFO:Deeplabv2:iter = 13250, loss_seg = 0.246, lr = 0.001
+2022-08-22 15:53:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:53:45, INFO:Deeplabv2:iter = 13300, loss_seg = 0.372, lr = 0.001
+2022-08-22 15:55:17, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38402 | 0.55493 |  0.46126  | 0.69636 |
+|   1   | 0.53476 | 0.69686 |    0.7    | 0.69376 |
+|   2   | 0.48205 | 0.65052 |  0.74133  | 0.57953 |
+|   3   | 0.60992 |  0.7577 |  0.83716  | 0.69202 |
+|   4   | 0.34026 | 0.50776 |  0.73525  | 0.38777 |
+|   5   | 0.48324 |  0.6516 |  0.70523  | 0.60555 |
+|   6   |  0.4988 |  0.6656 |  0.75152  | 0.59731 |
+|  mean | 0.47615 | 0.64071 |  0.70454  | 0.60747 |
+|   OA  | 0.63435 |    -    |     -     |    -    |
+| Kappa | 0.54436 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 15:55:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:55:58, INFO:Deeplabv2:iter = 13350, loss_seg = 0.363, lr = 0.001
+2022-08-22 15:56:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:56:35, INFO:Deeplabv2:iter = 13400, loss_seg = 0.365, lr = 0.001
+2022-08-22 15:57:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:57:16, INFO:Deeplabv2:iter = 13450, loss_seg = 0.264, lr = 0.000
+2022-08-22 15:57:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:57:53, INFO:Deeplabv2:iter = 13500, loss_seg = 0.394, lr = 0.000
+2022-08-22 15:58:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:58:35, INFO:Deeplabv2:iter = 13550, loss_seg = 0.264, lr = 0.000
+2022-08-22 15:59:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:59:16, INFO:Deeplabv2:iter = 13600, loss_seg = 0.304, lr = 0.000
+2022-08-22 15:59:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 15:59:53, INFO:Deeplabv2:iter = 13650, loss_seg = 0.366, lr = 0.000
+2022-08-22 16:00:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:00:34, INFO:Deeplabv2:iter = 13700, loss_seg = 0.290, lr = 0.000
+2022-08-22 16:01:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:01:11, INFO:Deeplabv2:iter = 13750, loss_seg = 0.356, lr = 0.000
+2022-08-22 16:01:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:01:53, INFO:Deeplabv2:iter = 13800, loss_seg = 0.270, lr = 0.000
+2022-08-22 16:02:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:02:29, INFO:Deeplabv2:iter = 13850, loss_seg = 0.323, lr = 0.000
+2022-08-22 16:03:10, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:03:11, INFO:Deeplabv2:iter = 13900, loss_seg = 0.303, lr = 0.000
+2022-08-22 16:03:52, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:03:52, INFO:Deeplabv2:iter = 13950, loss_seg = 0.205, lr = 0.000
+2022-08-22 16:04:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:04:29, INFO:Deeplabv2:iter = 14000, loss_seg = 0.400, lr = 0.000
+2022-08-22 16:06:01, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.375  | 0.54545 |  0.45048  | 0.69116 |
+|   1   | 0.53961 | 0.70097 |  0.68678  | 0.71575 |
+|   2   | 0.47843 | 0.64722 |   0.7661  | 0.56027 |
+|   3   | 0.61085 | 0.75842 |  0.82922  | 0.69876 |
+|   4   |  0.3545 | 0.52344 |   0.674   | 0.42786 |
+|   5   | 0.49117 | 0.65877 |  0.67353  | 0.64465 |
+|   6   | 0.46685 | 0.63653 |  0.78056  | 0.53738 |
+|  mean | 0.47377 | 0.63869 |  0.69438  | 0.61083 |
+|   OA  |  0.6261 |    -    |     -     |    -    |
+| Kappa | 0.53591 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 16:06:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:06:43, INFO:Deeplabv2:iter = 14050, loss_seg = 0.323, lr = 0.000
+2022-08-22 16:07:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:07:19, INFO:Deeplabv2:iter = 14100, loss_seg = 0.339, lr = 0.000
+2022-08-22 16:08:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:08:01, INFO:Deeplabv2:iter = 14150, loss_seg = 0.241, lr = 0.000
+2022-08-22 16:08:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:08:42, INFO:Deeplabv2:iter = 14200, loss_seg = 0.207, lr = 0.000
+2022-08-22 16:09:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:09:19, INFO:Deeplabv2:iter = 14250, loss_seg = 0.275, lr = 0.000
+2022-08-22 16:10:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:10:00, INFO:Deeplabv2:iter = 14300, loss_seg = 0.297, lr = 0.000
+2022-08-22 16:10:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:10:37, INFO:Deeplabv2:iter = 14350, loss_seg = 0.218, lr = 0.000
+2022-08-22 16:11:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:11:19, INFO:Deeplabv2:iter = 14400, loss_seg = 0.233, lr = 0.000
+2022-08-22 16:12:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:12:00, INFO:Deeplabv2:iter = 14450, loss_seg = 0.308, lr = 0.000
+2022-08-22 16:12:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:12:37, INFO:Deeplabv2:iter = 14500, loss_seg = 0.336, lr = 0.000
+2022-08-22 16:13:18, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:13:19, INFO:Deeplabv2:iter = 14550, loss_seg = 0.244, lr = 0.000
+2022-08-22 16:13:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:13:55, INFO:Deeplabv2:iter = 14600, loss_seg = 0.285, lr = 0.000
+2022-08-22 16:14:36, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:14:37, INFO:Deeplabv2:iter = 14650, loss_seg = 0.269, lr = 0.000
+2022-08-22 16:15:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:15:14, INFO:Deeplabv2:iter = 14700, loss_seg = 0.283, lr = 0.000
+2022-08-22 16:16:46, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38279 | 0.55365 |  0.45869  | 0.69817 |
+|   1   | 0.53605 | 0.69796 |  0.70366  | 0.69234 |
+|   2   | 0.47906 | 0.64779 |  0.74636  | 0.57222 |
+|   3   | 0.58907 |  0.7414 |  0.82688  | 0.67194 |
+|   4   | 0.34155 | 0.50919 |  0.72982  | 0.39099 |
+|   5   | 0.48784 | 0.65577 |  0.68316  | 0.63049 |
+|   6   | 0.47974 | 0.64841 |  0.74648  | 0.57312 |
+|  mean | 0.47087 | 0.63631 |  0.69929  | 0.60418 |
+|   OA  | 0.62838 |    -    |     -     |    -    |
+| Kappa | 0.53725 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 16:17:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:17:27, INFO:Deeplabv2:iter = 14750, loss_seg = 0.237, lr = 0.000
+2022-08-22 16:18:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:18:09, INFO:Deeplabv2:iter = 14800, loss_seg = 0.254, lr = 0.000
+2022-08-22 16:18:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:18:46, INFO:Deeplabv2:iter = 14850, loss_seg = 0.340, lr = 0.000
+2022-08-22 16:19:27, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:19:27, INFO:Deeplabv2:iter = 14900, loss_seg = 0.284, lr = 0.000
+2022-08-22 16:20:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:20:04, INFO:Deeplabv2:iter = 14950, loss_seg = 0.268, lr = 0.000
+2022-08-22 16:20:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:20:45, INFO:Deeplabv2:iter = 15000, loss_seg = 0.312, lr = 0.000
+2022-08-22 16:21:26, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:21:27, INFO:Deeplabv2:iter = 15050, loss_seg = 0.251, lr = 0.000
+2022-08-22 16:22:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:22:04, INFO:Deeplabv2:iter = 15100, loss_seg = 0.283, lr = 0.000
+2022-08-22 16:22:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:22:45, INFO:Deeplabv2:iter = 15150, loss_seg = 0.319, lr = 0.000
+2022-08-22 16:23:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:23:22, INFO:Deeplabv2:iter = 15200, loss_seg = 0.329, lr = 0.000
+2022-08-22 16:24:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:24:03, INFO:Deeplabv2:iter = 15250, loss_seg = 0.257, lr = 0.000
+2022-08-22 16:24:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:24:45, INFO:Deeplabv2:iter = 15300, loss_seg = 0.286, lr = 0.000
+2022-08-22 16:25:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:25:22, INFO:Deeplabv2:iter = 15350, loss_seg = 0.269, lr = 0.000
+2022-08-22 16:26:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:26:03, INFO:Deeplabv2:iter = 15400, loss_seg = 0.236, lr = 0.000
+2022-08-22 16:27:35, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37579 | 0.54629 |   0.4501  | 0.69474 |
+|   1   | 0.54255 | 0.70344 |  0.69782  | 0.70915 |
+|   2   | 0.49168 | 0.65923 |  0.73344  | 0.59866 |
+|   3   | 0.59843 | 0.74877 |  0.84095  |  0.6748 |
+|   4   | 0.37608 |  0.5466 |  0.69764  | 0.44932 |
+|   5   | 0.47548 | 0.64451 |   0.6835  | 0.60972 |
+|   6   | 0.46569 | 0.63545 |  0.76513  | 0.54336 |
+|  mean |  0.4751 | 0.64061 |  0.69551  | 0.61139 |
+|   OA  | 0.62526 |    -    |     -     |    -    |
+| Kappa | 0.53437 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 16:28:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:28:12, INFO:Deeplabv2:iter = 15450, loss_seg = 0.286, lr = 0.000
+2022-08-22 16:28:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:28:53, INFO:Deeplabv2:iter = 15500, loss_seg = 0.260, lr = 0.000
+2022-08-22 16:29:30, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:29:30, INFO:Deeplabv2:iter = 15550, loss_seg = 0.270, lr = 0.000
+2022-08-22 16:30:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:30:12, INFO:Deeplabv2:iter = 15600, loss_seg = 0.365, lr = 0.000
+2022-08-22 16:30:53, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:30:53, INFO:Deeplabv2:iter = 15650, loss_seg = 0.259, lr = 0.000
+2022-08-22 16:31:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:31:30, INFO:Deeplabv2:iter = 15700, loss_seg = 0.236, lr = 0.000
+2022-08-22 16:32:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:32:11, INFO:Deeplabv2:iter = 15750, loss_seg = 0.312, lr = 0.000
+2022-08-22 16:32:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:32:48, INFO:Deeplabv2:iter = 15800, loss_seg = 0.449, lr = 0.000
+2022-08-22 16:33:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:33:30, INFO:Deeplabv2:iter = 15850, loss_seg = 0.391, lr = 0.000
+2022-08-22 16:34:11, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:34:11, INFO:Deeplabv2:iter = 15900, loss_seg = 0.208, lr = 0.000
+2022-08-22 16:34:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:34:48, INFO:Deeplabv2:iter = 15950, loss_seg = 0.219, lr = 0.000
+2022-08-22 16:35:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:35:29, INFO:Deeplabv2:iter = 16000, loss_seg = 0.232, lr = 0.000
+2022-08-22 16:36:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:36:06, INFO:Deeplabv2:iter = 16050, loss_seg = 0.323, lr = 0.000
+2022-08-22 16:36:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:36:48, INFO:Deeplabv2:iter = 16100, loss_seg = 0.212, lr = 0.000
+2022-08-22 16:38:19, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38462 | 0.55557 |  0.46701  | 0.68556 |
+|   1   | 0.53563 | 0.69761 |  0.70318  | 0.69212 |
+|   2   | 0.48724 | 0.65523 |  0.73467  | 0.59129 |
+|   3   | 0.57307 |  0.7286 |   0.8318  | 0.64819 |
+|   4   | 0.35535 | 0.52437 |  0.70337  | 0.41799 |
+|   5   | 0.49206 | 0.65957 |  0.66413  | 0.65508 |
+|   6   | 0.48479 | 0.65301 |  0.74146  | 0.58342 |
+|  mean | 0.47325 | 0.63914 |  0.69223  | 0.61052 |
+|   OA  | 0.63054 |    -    |     -     |    -    |
+| Kappa | 0.54091 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 16:39:00, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:39:01, INFO:Deeplabv2:iter = 16150, loss_seg = 0.267, lr = 0.000
+2022-08-22 16:39:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:39:38, INFO:Deeplabv2:iter = 16200, loss_seg = 0.272, lr = 0.000
+2022-08-22 16:40:19, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:40:19, INFO:Deeplabv2:iter = 16250, loss_seg = 0.244, lr = 0.000
+2022-08-22 16:40:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:40:56, INFO:Deeplabv2:iter = 16300, loss_seg = 0.312, lr = 0.000
+2022-08-22 16:41:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:41:37, INFO:Deeplabv2:iter = 16350, loss_seg = 0.196, lr = 0.000
+2022-08-22 16:42:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:42:14, INFO:Deeplabv2:iter = 16400, loss_seg = 0.250, lr = 0.000
+2022-08-22 16:42:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:42:56, INFO:Deeplabv2:iter = 16450, loss_seg = 0.204, lr = 0.000
+2022-08-22 16:43:37, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:43:37, INFO:Deeplabv2:iter = 16500, loss_seg = 0.317, lr = 0.000
+2022-08-22 16:44:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:44:14, INFO:Deeplabv2:iter = 16550, loss_seg = 0.256, lr = 0.000
+2022-08-22 16:44:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:44:55, INFO:Deeplabv2:iter = 16600, loss_seg = 0.320, lr = 0.000
+2022-08-22 16:45:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:45:32, INFO:Deeplabv2:iter = 16650, loss_seg = 0.247, lr = 0.000
+2022-08-22 16:46:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:46:14, INFO:Deeplabv2:iter = 16700, loss_seg = 0.298, lr = 0.000
+2022-08-22 16:46:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:46:55, INFO:Deeplabv2:iter = 16750, loss_seg = 0.351, lr = 0.000
+2022-08-22 16:47:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:47:32, INFO:Deeplabv2:iter = 16800, loss_seg = 0.288, lr = 0.000
+2022-08-22 16:49:04, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.36781 | 0.53781 |   0.4482  |  0.6722 |
+|   1   | 0.54664 | 0.70687 |  0.67456  | 0.74244 |
+|   2   | 0.48489 |  0.6531 |  0.74043  |  0.5842 |
+|   3   | 0.60007 | 0.75006 |  0.83442  | 0.68119 |
+|   4   |  0.3643 | 0.53404 |  0.70327  | 0.43046 |
+|   5   | 0.47434 | 0.64346 |  0.67784  |  0.6124 |
+|   6   | 0.46756 | 0.63719 |  0.76286  | 0.54707 |
+|  mean | 0.47223 |  0.6375 |  0.69165  | 0.60999 |
+|   OA  | 0.62341 |    -    |     -     |    -    |
+| Kappa | 0.53272 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 16:49:45, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:49:45, INFO:Deeplabv2:iter = 16850, loss_seg = 0.260, lr = 0.000
+2022-08-22 16:50:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:50:22, INFO:Deeplabv2:iter = 16900, loss_seg = 0.295, lr = 0.000
+2022-08-22 16:51:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:51:03, INFO:Deeplabv2:iter = 16950, loss_seg = 0.359, lr = 0.000
+2022-08-22 16:51:44, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:51:45, INFO:Deeplabv2:iter = 17000, loss_seg = 0.251, lr = 0.000
+2022-08-22 16:52:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:52:22, INFO:Deeplabv2:iter = 17050, loss_seg = 0.286, lr = 0.000
+2022-08-22 16:53:03, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:53:03, INFO:Deeplabv2:iter = 17100, loss_seg = 0.259, lr = 0.000
+2022-08-22 16:53:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:53:40, INFO:Deeplabv2:iter = 17150, loss_seg = 0.228, lr = 0.000
+2022-08-22 16:54:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:54:21, INFO:Deeplabv2:iter = 17200, loss_seg = 0.265, lr = 0.000
+2022-08-22 16:54:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:54:58, INFO:Deeplabv2:iter = 17250, loss_seg = 0.315, lr = 0.000
+2022-08-22 16:55:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:55:40, INFO:Deeplabv2:iter = 17300, loss_seg = 0.301, lr = 0.000
+2022-08-22 16:56:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:56:21, INFO:Deeplabv2:iter = 17350, loss_seg = 0.196, lr = 0.000
+2022-08-22 16:56:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:56:58, INFO:Deeplabv2:iter = 17400, loss_seg = 0.263, lr = 0.000
+2022-08-22 16:57:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:57:39, INFO:Deeplabv2:iter = 17450, loss_seg = 0.177, lr = 0.000
+2022-08-22 16:58:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 16:58:16, INFO:Deeplabv2:iter = 17500, loss_seg = 0.290, lr = 0.000
+2022-08-22 16:59:48, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.39154 | 0.56274 |  0.45566  | 0.73561 |
+|   1   | 0.52942 | 0.69232 |  0.72678  | 0.66098 |
+|   2   | 0.46668 | 0.63637 |  0.78178  | 0.53657 |
+|   3   |  0.6129 | 0.75999 |  0.84126  | 0.69305 |
+|   4   | 0.37187 | 0.54214 |  0.68901  | 0.44688 |
+|   5   | 0.47293 | 0.64216 |  0.69196  | 0.59904 |
+|   6   |  0.4874 | 0.65537 |  0.77655  | 0.56691 |
+|  mean | 0.47611 | 0.64158 |   0.709   | 0.60558 |
+|   OA  | 0.63194 |    -    |     -     |    -    |
+| Kappa |  0.5406 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 17:00:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:00:30, INFO:Deeplabv2:iter = 17550, loss_seg = 0.233, lr = 0.000
+2022-08-22 17:01:10, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:01:11, INFO:Deeplabv2:iter = 17600, loss_seg = 0.274, lr = 0.000
+2022-08-22 17:01:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:01:48, INFO:Deeplabv2:iter = 17650, loss_seg = 0.279, lr = 0.000
+2022-08-22 17:02:29, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:02:29, INFO:Deeplabv2:iter = 17700, loss_seg = 0.206, lr = 0.000
+2022-08-22 17:03:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:03:06, INFO:Deeplabv2:iter = 17750, loss_seg = 0.273, lr = 0.000
+2022-08-22 17:03:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:03:47, INFO:Deeplabv2:iter = 17800, loss_seg = 0.321, lr = 0.000
+2022-08-22 17:04:28, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:04:29, INFO:Deeplabv2:iter = 17850, loss_seg = 0.268, lr = 0.000
+2022-08-22 17:05:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:05:06, INFO:Deeplabv2:iter = 17900, loss_seg = 0.234, lr = 0.000
+2022-08-22 17:05:47, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:05:47, INFO:Deeplabv2:iter = 17950, loss_seg = 0.214, lr = 0.000
+2022-08-22 17:06:23, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:06:24, INFO:Deeplabv2:iter = 18000, loss_seg = 0.269, lr = 0.000
+2022-08-22 17:07:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:07:05, INFO:Deeplabv2:iter = 18050, loss_seg = 0.342, lr = 0.000
+2022-08-22 17:07:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:07:42, INFO:Deeplabv2:iter = 18100, loss_seg = 0.235, lr = 0.000
+2022-08-22 17:08:23, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:08:24, INFO:Deeplabv2:iter = 18150, loss_seg = 0.263, lr = 0.000
+2022-08-22 17:09:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:09:05, INFO:Deeplabv2:iter = 18200, loss_seg = 0.246, lr = 0.000
+2022-08-22 17:10:37, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37935 | 0.55004 |  0.47173  | 0.65953 |
+|   1   | 0.54277 | 0.70363 |  0.68198  |  0.7267 |
+|   2   | 0.49155 | 0.65912 |  0.74278  | 0.59239 |
+|   3   | 0.60396 | 0.75309 |  0.83826  | 0.68363 |
+|   4   | 0.33506 | 0.50194 |  0.71975  | 0.38533 |
+|   5   | 0.48813 | 0.65603 |  0.67945  | 0.63418 |
+|   6   |  0.5055 | 0.67154 |  0.73624  | 0.61729 |
+|  mean | 0.47805 |  0.6422 |  0.69574  | 0.61415 |
+|   OA  | 0.63701 |    -    |     -     |    -    |
+| Kappa | 0.54917 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 17:11:14, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:11:14, INFO:Deeplabv2:iter = 18250, loss_seg = 0.233, lr = 0.000
+2022-08-22 17:11:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:11:56, INFO:Deeplabv2:iter = 18300, loss_seg = 0.215, lr = 0.000
+2022-08-22 17:12:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:12:32, INFO:Deeplabv2:iter = 18350, loss_seg = 0.314, lr = 0.000
+2022-08-22 17:13:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:13:14, INFO:Deeplabv2:iter = 18400, loss_seg = 0.294, lr = 0.000
+2022-08-22 17:13:55, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:13:55, INFO:Deeplabv2:iter = 18450, loss_seg = 0.283, lr = 0.000
+2022-08-22 17:14:32, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:14:32, INFO:Deeplabv2:iter = 18500, loss_seg = 0.275, lr = 0.000
+2022-08-22 17:15:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:15:13, INFO:Deeplabv2:iter = 18550, loss_seg = 0.206, lr = 0.000
+2022-08-22 17:15:50, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:15:50, INFO:Deeplabv2:iter = 18600, loss_seg = 0.234, lr = 0.000
+2022-08-22 17:16:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:16:32, INFO:Deeplabv2:iter = 18650, loss_seg = 0.306, lr = 0.000
+2022-08-22 17:17:13, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:17:13, INFO:Deeplabv2:iter = 18700, loss_seg = 0.239, lr = 0.000
+2022-08-22 17:17:49, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:17:50, INFO:Deeplabv2:iter = 18750, loss_seg = 0.278, lr = 0.000
+2022-08-22 17:18:31, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:18:31, INFO:Deeplabv2:iter = 18800, loss_seg = 0.261, lr = 0.000
+2022-08-22 17:19:08, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:19:08, INFO:Deeplabv2:iter = 18850, loss_seg = 0.347, lr = 0.000
+2022-08-22 17:19:49, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:19:50, INFO:Deeplabv2:iter = 18900, loss_seg = 0.233, lr = 0.000
+2022-08-22 17:21:22, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38523 | 0.55619 |   0.4608  |  0.7014 |
+|   1   |  0.5422 | 0.70315 |  0.69525  | 0.71124 |
+|   2   | 0.47631 | 0.64527 |  0.77482  | 0.55284 |
+|   3   | 0.59783 |  0.7483 |  0.84236  | 0.67314 |
+|   4   | 0.38516 | 0.55613 |  0.68936  | 0.46605 |
+|   5   | 0.48433 | 0.65259 |   0.6762  | 0.63057 |
+|   6   |  0.4838 | 0.65211 |  0.76837  |  0.5664 |
+|  mean | 0.47927 | 0.64482 |  0.70102  | 0.61452 |
+|   OA  | 0.63259 |    -    |     -     |    -    |
+| Kappa | 0.54328 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 17:21:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:21:59, INFO:Deeplabv2:iter = 18950, loss_seg = 0.217, lr = 0.000
+2022-08-22 17:22:40, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:22:40, INFO:Deeplabv2:iter = 19000, loss_seg = 0.257, lr = 0.000
+2022-08-22 17:23:21, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:23:22, INFO:Deeplabv2:iter = 19050, loss_seg = 0.242, lr = 0.000
+2022-08-22 17:23:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:23:58, INFO:Deeplabv2:iter = 19100, loss_seg = 0.302, lr = 0.000
+2022-08-22 17:24:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:24:40, INFO:Deeplabv2:iter = 19150, loss_seg = 0.292, lr = 0.000
+2022-08-22 17:25:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:25:17, INFO:Deeplabv2:iter = 19200, loss_seg = 0.229, lr = 0.000
+2022-08-22 17:25:58, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:25:58, INFO:Deeplabv2:iter = 19250, loss_seg = 0.230, lr = 0.000
+2022-08-22 17:26:39, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:26:40, INFO:Deeplabv2:iter = 19300, loss_seg = 0.249, lr = 0.000
+2022-08-22 17:27:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:27:16, INFO:Deeplabv2:iter = 19350, loss_seg = 0.307, lr = 0.000
+2022-08-22 17:27:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:27:58, INFO:Deeplabv2:iter = 19400, loss_seg = 0.174, lr = 0.000
+2022-08-22 17:28:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:28:35, INFO:Deeplabv2:iter = 19450, loss_seg = 0.283, lr = 0.000
+2022-08-22 17:29:16, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:29:16, INFO:Deeplabv2:iter = 19500, loss_seg = 0.253, lr = 0.000
+2022-08-22 17:29:57, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:29:58, INFO:Deeplabv2:iter = 19550, loss_seg = 0.266, lr = 0.000
+2022-08-22 17:30:34, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:30:34, INFO:Deeplabv2:iter = 19600, loss_seg = 0.211, lr = 0.000
+2022-08-22 17:32:07, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.38646 | 0.55748 |  0.45959  | 0.70834 |
+|   1   | 0.53787 |  0.6995 |  0.71092  | 0.68845 |
+|   2   | 0.47781 | 0.64665 |   0.7608  | 0.56228 |
+|   3   |  0.6119 | 0.75923 |  0.84313  | 0.69051 |
+|   4   | 0.37848 | 0.54913 |  0.69979  | 0.45185 |
+|   5   | 0.48197 | 0.65045 |  0.68779  | 0.61695 |
+|   6   | 0.49244 | 0.65991 |  0.77049  |  0.5771 |
+|  mean | 0.48099 | 0.64605 |  0.70464  | 0.61364 |
+|   OA  | 0.63482 |    -    |     -     |    -    |
+| Kappa | 0.54541 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-08-22 17:32:48, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:32:48, INFO:Deeplabv2:iter = 19650, loss_seg = 0.267, lr = 0.000
+2022-08-22 17:33:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:33:25, INFO:Deeplabv2:iter = 19700, loss_seg = 0.181, lr = 0.000
+2022-08-22 17:34:06, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:34:06, INFO:Deeplabv2:iter = 19750, loss_seg = 0.270, lr = 0.000
+2022-08-22 17:34:43, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:34:43, INFO:Deeplabv2:iter = 19800, loss_seg = 0.254, lr = 0.000
+2022-08-22 17:35:24, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:35:24, INFO:Deeplabv2:iter = 19850, loss_seg = 0.249, lr = 0.000
+2022-08-22 17:36:05, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:36:06, INFO:Deeplabv2:iter = 19900, loss_seg = 0.211, lr = 0.000
+2022-08-22 17:36:42, INFO:Deeplabv2:exp = ./log/baseline/2urban
+2022-08-22 17:36:43, INFO:Deeplabv2:iter = 19950, loss_seg = 0.242, lr = 0.000
+2022-08-22 17:38:56, INFO:Deeplabv2:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37662 | 0.54717 |  0.45692  | 0.68183 |
+|   1   | 0.54472 | 0.70527 |  0.68702  |  0.7245 |
+|   2   | 0.48595 | 0.65406 |  0.75445  | 0.57725 |
+|   3   | 0.59486 | 0.74597 |   0.8122  | 0.68972 |
+|   4   | 0.36288 | 0.53252 |   0.6873  | 0.43464 |
+|   5   | 0.48457 | 0.65281 |  0.67528  | 0.63179 |
+|   6   | 0.47825 | 0.64705 |  0.77201  |  0.5569 |
+|  mean | 0.47541 | 0.64069 |  0.69217  |  0.6138 |
+|   OA  |  0.629  |    -    |     -     |    -    |
+| Kappa | 0.53976 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
