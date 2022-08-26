@@ -7,4 +7,5 @@ LoveDA
 /.vscode/
 pseudo_label
 *.pth
-*.pyc
+__pycache__
+pseudoTempFile

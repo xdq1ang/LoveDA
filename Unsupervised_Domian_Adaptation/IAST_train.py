@@ -3,6 +3,7 @@ import os.path as osp
 import torch.optim as optim
 from eval import evaluate
 from utils.tools import *
+from generate_pseudoV2 import generate_pseudoV2
 from module.Encoder import Deeplabv2
 from module.DensePPMUNet import DensePPMUNet
 from module.Discriminator import FCDiscriminator
@@ -47,41 +48,41 @@ def main():
         )
     )).cuda()'''
     # 构建模型DeepLabv2语义分割模型, 输出维度为7
-    model = Deeplabv2(dict(
-        backbone=dict(
-                resnet_type='resnet50',
-                output_stride=16,
-                pretrained=True,
-            ),
-        multi_layer=False,
-        cascade=False,
-        use_ppm='ppm',
-        ppm=dict(
-            num_classes=7,
-            use_aux=False,
-        ),
-        inchannels=2048,
-        num_classes=7
-    )).cuda()
-
     # model = Deeplabv2(dict(
     #     backbone=dict(
-    #         resnet_type='resnet50',
-    #         output_stride=16,
-    #         pretrained=True,
-    #     ),
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
     #     multi_layer=False,
     #     cascade=False,
-    #     use_ppm='denseppm',
+    #     use_ppm='ppm',
     #     ppm=dict(
-    #         in_channels=2048,
     #         num_classes=7,
-    #         reduction_dim=64,
-    #         pool_sizes=[2, 3, 4, 5]
+    #         use_aux=False,
     #     ),
     #     inchannels=2048,
     #     num_classes=7
     # )).cuda()
+
+    model = Deeplabv2(dict(
+        backbone=dict(
+            resnet_type='resnet50',
+            output_stride=16,
+            pretrained=True,
+        ),
+        multi_layer=False,
+        cascade=False,
+        use_ppm='denseppm',
+        ppm=dict(
+            in_channels=2048,
+            num_classes=7,
+            reduction_dim=64,
+            pool_sizes=[2, 3, 4, 5]
+        ),
+        inchannels=2048,
+        num_classes=7
+    )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
     model_D = FCDiscriminator(7).cuda()
@@ -154,7 +155,7 @@ def main():
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudo(model, evalloader, pseudo_dir, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, evalloader, pseudo_dir, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
