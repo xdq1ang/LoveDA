@@ -6,14 +6,13 @@ import torch
 
 
 class VisSeg(object):
-    def __init__(self, palette, savePath):
+    def __init__(self, palette, savepath):
         self.palette = palette
-        self.savePath = savePath
-        if not os.path.exists(savePath):
-            os.makedirs(savePath)
+        self.savePath = savepath
+        if not os.path.exists(savepath):
+            os.makedirs(savepath)
 
-    def Vis(self, mask, fileName):
-        mask = colorful(mask,self.palette)
-        mask.save(os.path.join(self.savePath,fileName))
-
-    
+    def saveVis(self, mask, filename):
+        mask = colorful(mask, self.palette)
+        mask.save(os.path.join(self.savePath, filename))
+        return mask

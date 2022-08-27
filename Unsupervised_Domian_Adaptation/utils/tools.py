@@ -13,10 +13,13 @@ from collections import OrderedDict
 def import_config(config_name, prefix='configs'):
     cfg_path = '{}.{}'.format(prefix, config_name)
     m = importlib.import_module(name=cfg_path)
-    os.makedirs(m.SNAPSHOT_DIR, exist_ok=True)
-    shutil.copy(cfg_path.replace('.', '/')+'.py', os.path.join(m.SNAPSHOT_DIR, 'config.py'))
+    # os.makedirs(m.SNAPSHOT_DIR, exist_ok=True)
+    # shutil.copy(cfg_path.replace('.', '/')+'.py', os.path.join(m.SNAPSHOT_DIR, 'config.py'))
     return m
-
+def backup_config(config_name, prefix='configs'):
+    cfg_path = '{}.{}'.format(prefix, config_name)
+    m = importlib.import_module(name=cfg_path)
+    shutil.copy(cfg_path.replace('.', '/')+'.py', os.path.join(m.SNAPSHOT_DIR, 'config.py'))
 def lr_poly(base_lr, iter, max_iter, power):
     return base_lr * ((1 - float(iter) / max_iter) ** (power))
 

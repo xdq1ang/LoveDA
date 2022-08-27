@@ -21,3 +21,4 @@ class VisualizeSegmm(object):
         color_y = Image.fromarray(y_pred)
         color_y.putpalette(self.palette)
         color_y.save(os.path.join(self.out_dir, filename))
+        return color_y

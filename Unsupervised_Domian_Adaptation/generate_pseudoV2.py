@@ -9,6 +9,7 @@ from collections import OrderedDict
 from module.Encoder import Deeplabv2
 from data.loveda import LoveDALoader
 from configs.ToURBAN import EVAL_DATA_CONFIG
+import wandb
 
 COLOR_MAP = OrderedDict(
     Background=(255, 255, 255),
@@ -28,7 +29,8 @@ PSEIDO_DICT = dict(
 )
 
 
-def generate_pseudoV2(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(), logger=None):
+def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_dict=dict(), logger=None):
+    frames = []
     if logger != None:
         logger.info('Start generate pseudo labels: %s' % save_dir)
     # viz_op = er.viz.VisualizeSegmm(os.path.join(save_dir, 'vis'), palette)
@@ -80,22 +82,27 @@ def generate_pseudoV2(model, target_loader, save_dir, n_class=7, pseudo_dict=dic
             ignore_index = logit_amax < label_cls_thresh
 
             # 求第2大概率
-            logit_2max = np.sort(logit, axis=2)[:,:,-2]
+            logit_2max = np.sort(logit, axis=2)[:, :, -2]
             # 第1大概率 - 第2大概率
             logit12_sub = logit_amax - logit_2max
             # 第2大索引
             # logit_2max_index2 = np.argsort(logit, axis=2)[:,:,-2]
 
             # 概率差<0.2则忽略该像素
-            ignore_index2 = logit12_sub < 0.2
+            ignore_index2 = logit12_sub < 0.4
 
-            # 保存ignore低于阈值的像素点前的图片 
-            viz_op.Vis(label, fname)
             label += 1
             label[ignore_index] = 0
             label[ignore_index2] = 0
-            # 保存ignore低于阈值的像素点后的图片 
+            # 标签保存(0---7)
             imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
+            # 可视化标签保存(0---6)
+            vis_mask = label.copy()
+            vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景
+            vis_mask -= 1
+            vis_mask = viz_op.saveVis(vis_mask, fname)
+            frames.append(wandb.Image(vis_mask, caption=fname))
+    wandb.log({"pseudo_label": frames}, step=step)
     return os.path.join(save_dir, 'pred')
 
 
@@ -177,6 +184,6 @@ if __name__ == '__main__':
     model.load_state_dict(model_state_dict, strict=True)
 
     pseudo_pred_dir = generate_pseudoV2(model,
-                                      evalloader,
-                                      pseudo_dir,
-                                      pseudo_dict=PSEIDO_DICT)
+                                        evalloader,
+                                        pseudo_dir,
+                                        pseudo_dict=PSEIDO_DICT)

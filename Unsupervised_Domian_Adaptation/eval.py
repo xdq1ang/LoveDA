@@ -4,13 +4,15 @@ logger = logging.getLogger(__name__)
 from utils.tools import *
 from ever.util.param_util import count_model_parameters
 from module.viz import VisualizeSegmm
+import wandb
 
 
 
-def evaluate(model, cfg, is_training=False, ckpt_path=None, logger=None):
+def evaluate(model, cfg, step, is_training=False, ckpt_path=None, logger=None):
     #torch.backends.cudnn.deterministic = True
     #torch.backends.cudnn.benchmark = False
     #torch.backends.cudnn.enabled = False
+    frames = []
     if cfg.SNAPSHOT_DIR is not None:
         vis_dir = os.path.join(cfg.SNAPSHOT_DIR, 'vis-{}'.format(os.path.basename(ckpt_path)))
         palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
@@ -45,7 +47,10 @@ def evaluate(model, cfg, is_training=False, ckpt_path=None, logger=None):
             
             if cfg.SNAPSHOT_DIR is not None:
                 for fname, pred in zip(ret_gt['fname'], cls):
-                    viz_op(pred, fname.replace('tif', 'png'))
+                    viz_img = viz_op(pred, fname.replace('tif', 'png'))
+                    frames.append(wandb.Image(viz_img, caption=fname))
+        if is_training:
+            wandb.log({"prediction": frames}, step=step)
 
     metric_op.summary_all()
     torch.cuda.empty_cache()
