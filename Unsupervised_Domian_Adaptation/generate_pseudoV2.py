@@ -96,6 +96,7 @@ def generate_pseudoV2(model, target_loader, save_dir, n_class=7, pseudo_dict=dic
             label[ignore_index2] = 0
             # 保存ignore低于阈值的像素点后的图片 
             imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
+    return os.path.join(save_dir, 'pred')
 
 
 def ias_thresh(conf_dict, n_class, alpha, w=None, gamma=1.0):
