@@ -50,41 +50,41 @@ def main():
         )
     )).cuda()'''
     # 构建模型DeepLabv2语义分割模型, 输出维度为7
-    # model = Deeplabv2(dict(
-    #     backbone=dict(
-    #             resnet_type='resnet50',
-    #             output_stride=16,
-    #             pretrained=True,
-    #         ),
-    #     multi_layer=False,
-    #     cascade=False,
-    #     use_ppm='ppm',
-    #     ppm=dict(
-    #         num_classes=7,
-    #         use_aux=False,
-    #     ),
-    #     inchannels=2048,
-    #     num_classes=7
-    # )).cuda()
-
     model = Deeplabv2(dict(
         backbone=dict(
-            resnet_type='resnet50',
-            output_stride=16,
-            pretrained=True,
-        ),
+                resnet_type='resnet50',
+                output_stride=16,
+                pretrained=True,
+            ),
         multi_layer=False,
         cascade=False,
-        use_ppm='denseppm',
+        use_ppm='ppm',
         ppm=dict(
-            in_channels=2048,
             num_classes=7,
-            reduction_dim=64,
-            pool_sizes=[2, 3, 4, 5]
+            use_aux=False,
         ),
         inchannels=2048,
         num_classes=7
     )).cuda()
+
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #         resnet_type='resnet50',
+    #         output_stride=16,
+    #         pretrained=True,
+    #     ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm='denseppm',
+    #     ppm=dict(
+    #         in_channels=2048,
+    #         num_classes=7,
+    #         reduction_dim=64,
+    #         pool_sizes=[2, 3, 4, 5]
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=7
+    # )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
     model_D = FCDiscriminator(7).cuda()
