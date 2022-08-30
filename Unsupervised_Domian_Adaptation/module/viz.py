@@ -9,7 +9,7 @@ class VisualizeSegmm(object):
         self.palette = palette
         os.makedirs(self.out_dir, exist_ok=True)
 
-    def __call__(self, y_pred, filename):
+    def __call__(self, y_pred, filename, save=True):
         """
         Args:
             y_pred: 2-D or 3-D array of shape [1 (optional), H, W]
@@ -20,5 +20,6 @@ class VisualizeSegmm(object):
         y_pred = y_pred.squeeze()
         color_y = Image.fromarray(y_pred)
         color_y.putpalette(self.palette)
-        color_y.save(os.path.join(self.out_dir, filename))
+        if (save):
+            color_y.save(os.path.join(self.out_dir, filename))
         return color_y

@@ -1,4 +1,4 @@
-from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize, RandomCrop, RandomScale
+from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize, RandomCrop, RandomScale, Resize
 from albumentations import OneOf, Compose
 import ever as er
 
@@ -29,6 +29,7 @@ SOURCE_DATA_CONFIG = dict(
     mask_dir=source_dir['mask_dir'],
     transforms=Compose([
         RandomCrop(512, 512),
+        Resize(512,512),
         OneOf([
             HorizontalFlip(True),
             VerticalFlip(True),
@@ -42,7 +43,7 @@ SOURCE_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=4,
+    batch_size=2,
     num_workers=2,
     drop_last=True
 )
@@ -53,6 +54,7 @@ TARGET_DATA_CONFIG = dict(
     mask_dir=target_dir['mask_dir'],
     transforms=Compose([
         RandomCrop(512, 512),
+        Resize(512,512),
         OneOf([
             HorizontalFlip(True),
             VerticalFlip(True),
@@ -66,7 +68,7 @@ TARGET_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=4,
+    batch_size=2,
     num_workers=2,
     drop_last=True
 )
@@ -75,6 +77,7 @@ EVAL_DATA_CONFIG = dict(
     image_dir=target_dir['image_dir'],
     mask_dir=target_dir['mask_dir'],
     transforms=Compose([
+        Resize(512, 512),
         Normalize(mean=(123.675, 116.28, 103.53),
                   std=(58.395, 57.12, 57.375),
                   max_pixel_value=1, always_apply=True),

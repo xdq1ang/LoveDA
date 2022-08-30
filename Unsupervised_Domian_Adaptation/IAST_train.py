@@ -7,6 +7,7 @@ from generate_pseudoV2 import generate_pseudoV2
 from module.Encoder import Deeplabv2
 from module.DensePPMUNet import DensePPMUNet
 from module.Discriminator import FCDiscriminator
+from module.Discriminator import PixelDiscriminator
 from data.loveda import LoveDALoader
 from utils.tools import COLOR_MAP
 from ever.core.iterator import Iterator
@@ -25,6 +26,8 @@ args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 def main():
+    os.environ["WANDB_API_KEY"] = '511a7f0a8e64a73f5d8db321226ff417a64e4aa6'
+    os.environ["WANDB_MODE"] = "offline"
     # 初始化wandb
     wandb.init(
         project="UDA",
@@ -87,7 +90,8 @@ def main():
     # )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    model_D = FCDiscriminator(7).cuda()
+    # model_D = FCDiscriminator(7).cuda()
+    model_D = PixelDiscriminator(input_nc=7).cuda()
 
     wandb.watch(model)
     wandb.watch(model_D)
@@ -144,14 +148,14 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 model.train()
         else:
@@ -273,13 +277,13 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
 
