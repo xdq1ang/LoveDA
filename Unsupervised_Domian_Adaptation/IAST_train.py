@@ -53,45 +53,45 @@ def main():
         )
     )).cuda()'''
     # 构建模型DeepLabv2语义分割模型, 输出维度为7
-    model = Deeplabv2(dict(
-        backbone=dict(
-                resnet_type='resnet50',
-                output_stride=16,
-                pretrained=True,
-            ),
-        multi_layer=False,
-        cascade=False,
-        use_ppm='ppm',
-        ppm=dict(
-            num_classes=7,
-            use_aux=False,
-        ),
-        inchannels=2048,
-        num_classes=7
-    )).cuda()
-
     # model = Deeplabv2(dict(
     #     backbone=dict(
-    #         resnet_type='resnet50',
-    #         output_stride=16,
-    #         pretrained=True,
-    #     ),
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
     #     multi_layer=False,
     #     cascade=False,
-    #     use_ppm='denseppm',
+    #     use_ppm='ppm',
     #     ppm=dict(
-    #         in_channels=2048,
     #         num_classes=7,
-    #         reduction_dim=64,
-    #         pool_sizes=[2, 3, 4, 5]
+    #         use_aux=False,
     #     ),
     #     inchannels=2048,
     #     num_classes=7
     # )).cuda()
+
+    model = Deeplabv2(dict(
+        backbone=dict(
+            resnet_type='resnet50',
+            output_stride=16,
+            pretrained=True,
+        ),
+        multi_layer=False,
+        cascade=False,
+        use_ppm='denseppm',
+        ppm=dict(
+            in_channels=2048,
+            num_classes=7,
+            reduction_dim=64,
+            pool_sizes=[2, 3, 4, 5]
+        ),
+        inchannels=2048,
+        num_classes=7
+    )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    # model_D = FCDiscriminator(7).cuda()
-    model_D = PixelDiscriminator(input_nc=7).cuda()
+    model_D = FCDiscriminator(7).cuda()
+    #model_D = PixelDiscriminator(input_nc=7).cuda()
 
     wandb.watch(model)
     wandb.watch(model_D)
@@ -116,6 +116,8 @@ def main():
 
 
     for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
+        model.train()
+        model_D.train()
         if i_iter < cfg.WARMUP_STEP:
             # Train with Source
             optimizer.zero_grad()
@@ -158,6 +160,7 @@ def main():
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 model.train()
+                model_D.train()
         else:
             # PSEUDO learning
             # i_iter >= cfg.WARMUP_STEP时: i_iter等于GENERATE_PSEDO_EVERY的倍数时/等于WARMUP_STEP。进行伪标签学习
@@ -286,6 +289,7 @@ def main():
                 miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
+                model_D.train()
 
 if __name__ == '__main__':
     seed_torch(2333)
