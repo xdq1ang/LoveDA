@@ -58,7 +58,7 @@ class FCDiscriminator_Local(nn.Module):
 
 
 class PixelDiscriminator(nn.Module):
-    def __init__(self, input_nc, ndf=512, num_classes=1):
+    def __init__(self, input_nc, ndf=64, num_classes=1):
         super(PixelDiscriminator, self).__init__()
 
         self.D = nn.Sequential(

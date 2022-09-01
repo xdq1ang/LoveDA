@@ -90,8 +90,8 @@ def main():
     )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    model_D = FCDiscriminator(7).cuda()
-    #model_D = PixelDiscriminator(input_nc=7).cuda()
+    # model_D = FCDiscriminator(7).cuda()
+    model_D = PixelDiscriminator(input_nc=7).cuda()
 
     wandb.watch(model)
     wandb.watch(model_D)
@@ -116,6 +116,7 @@ def main():
 
 
     for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
+        torch.cuda.empty_cache()
         model.train()
         model_D.train()
         if i_iter < cfg.WARMUP_STEP:
