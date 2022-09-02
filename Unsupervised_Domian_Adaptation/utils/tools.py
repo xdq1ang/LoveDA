@@ -175,7 +175,14 @@ COLOR_MAP = OrderedDict(
     Forest=(0, 255, 0),
     Agricultural=(255, 195, 128),
 )
-
+DOMAIN_CLS_COLOR_MAP = OrderedDict(
+    Domain_1=(255, 255, 255),
+    Domain_2=(255, 195, 128),
+)
+DOMAIN_DIS_COLOR_MAP = OrderedDict(
+    Background=(255, 255, 255),
+    Agricultural=(255, 195, 128),
+)
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 def generate_pseudo(model, target_loader, save_dir, n_class=7, pseudo_dict=dict(), logger=None):
