@@ -26,8 +26,6 @@ args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 def main():
-    os.environ["WANDB_API_KEY"] = '511a7f0a8e64a73f5d8db321226ff417a64e4aa6'
-    os.environ["WANDB_MODE"] = "offline"
     # 初始化wandb
     wandb.init(
         project="UDA",
@@ -168,7 +166,7 @@ def main():
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudoV2(model, evalloader, pseudo_dir, i_iter, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, model_D, evalloader, pseudo_dir, i_iter, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
