@@ -9,6 +9,7 @@ from collections import OrderedDict
 from module.Encoder import Deeplabv2
 from data.loveda import LoveDALoader
 from configs.ToURBAN import EVAL_DATA_CONFIG
+from torch import nn
 import wandb
 
 COLOR_MAP = OrderedDict(
@@ -29,7 +30,8 @@ PSEIDO_DICT = dict(
 )
 
 
-def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_dict=dict(), logger=None):
+def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, step, n_class=7, pseudo_dict=dict(), logger=None):
+    model_D.eval()
     with torch.no_grad():
         frames = []
         if logger != None:
@@ -44,6 +46,10 @@ def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_di
         cls_thresh = np.ones(n_class) * 0.9
         for image, labels in tqdm(target_loader):
             out = model(image.cuda())
+            # 鉴别器
+            if model_D_trained:
+                D_logits = model_D(out.softmax(dim=1).detach())
+                D_logits = nn.Sigmoid()(D_logits)
             # 如果out是tuple则取第0个元素，不是则直接取out
             logits = out[0] if isinstance(out, tuple) else out
             max_items = logits.max(dim=1)
@@ -71,9 +77,13 @@ def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_di
             cls_thresh[cls_thresh >= 1] = 0.999
 
             np_logits = logits.data.cpu().numpy()
+            if model_D_trained:
+                np_D_logits = D_logits.cpu().numpy()
             for _i, fname in enumerate(labels['fname']):
                 # save pseudo label
                 logit = np_logits[_i].transpose(1, 2, 0)
+                if model_D_trained:
+                    D_logit = np_D_logits[_i].squeeze()
                 # 像素值最大的通道
                 label = np.argmax(logit, axis=2)
                 # 每个像素点通道维度上的最大值
@@ -91,10 +101,13 @@ def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_di
 
                 # 概率差<0.2则忽略该像素
                 ignore_index2 = logit12_sub < 0.1
-
+                if model_D_trained:
+                    ignore_index3 = D_logit > 0.3
                 label += 1
                 label[ignore_index] = 0
                 label[ignore_index2] = 0
+                if model_D_trained:
+                    label[ignore_index3] = 0
                 # 标签保存(0---7)
                 imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
                 # 可视化标签保存(0---6)
@@ -104,6 +117,7 @@ def generate_pseudoV2(model, target_loader, save_dir, step, n_class=7, pseudo_di
                 vis_mask = viz_op.saveVis(vis_mask, fname)
                 frames.append(wandb.Image(vis_mask, caption=fname))
         wandb.log({"pseudo_label": frames}, step=step)
+        model_D.train()
         return os.path.join(save_dir, 'pred')
 
 

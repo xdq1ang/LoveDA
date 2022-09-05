@@ -26,8 +26,6 @@ args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 def main():
-    os.environ["WANDB_API_KEY"] = '511a7f0a8e64a73f5d8db321226ff417a64e4aa6'
-    os.environ["WANDB_MODE"] = "offline"
     # 初始化wandb
     wandb.init(
         project="UDA",
@@ -92,6 +90,7 @@ def main():
     # 构建辨别器。输入维度为7,输出维度为1
     # model_D = FCDiscriminator(7).cuda()
     model_D = PixelDiscriminator(input_nc=7).cuda()
+    model_D_trained = False
 
     wandb.watch(model)
     wandb.watch(model_D)
@@ -168,7 +167,7 @@ def main():
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudoV2(model, evalloader, pseudo_dir, i_iter, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, model_D, model_D_trained, evalloader, pseudo_dir, i_iter, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
@@ -180,6 +179,7 @@ def main():
             # 模型在源域，和含有伪标签的目标域上对抗训练。
             model.train()
             model_D.train()
+            model_D_trained = True
             # 调整学习率
             lr = adjust_learning_rate(optimizer, i_iter, cfg)
             lr_D = adjust_learning_rate_D(optimizer_D, i_iter, cfg)

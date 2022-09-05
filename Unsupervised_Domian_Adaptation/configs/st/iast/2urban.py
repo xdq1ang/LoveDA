@@ -6,7 +6,7 @@ IGNORE_LABEL = -1
 MOMENTUM = 0.9
 NUM_CLASSES = 7
 
-SAVE_PRED_EVERY = 2000
+SAVE_PRED_EVERY = 1000
 SNAPSHOT_DIR = './log/iast/2urban'
 
 #Hyper Paramters
@@ -17,7 +17,7 @@ NUM_STEPS = 25000
 NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
 PREHEAT_STEPS = int(NUM_STEPS / 20)
 POWER = 0.9
-EVAL_EVERY=700
+EVAL_EVERY=1000
 
 DISCRIMINATOR = dict(
     lambda_kldreg_weight= 0.1,
