@@ -92,8 +92,8 @@ def main():
     model_D = PixelDiscriminator(input_nc=7).cuda()
     model_D_trained = False
 
-    wandb.watch(model)
-    wandb.watch(model_D)
+    # wandb.watch(model)
+    # wandb.watch(model_D)
 
     # 构建训练集dataloader
     trainloader = LoveDALoader(cfg.SOURCE_DATA_CONFIG)

@@ -106,8 +106,8 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 label += 1
                 label[ignore_index] = 0
                 label[ignore_index2] = 0
-                if model_D_trained:
-                    label[ignore_index3] = 0
+                # if model_D_trained:
+                #     label[ignore_index3] = 0
                 # 标签保存(0---7)
                 imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
                 # 可视化标签保存(0---6)

@@ -63,8 +63,9 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                 iou_per_class = metric_op.compute_iou_per_class(confusion_matrix)
                 miou = iou_per_class.mean()
                 mIoU.append(miou)
-                save_domain_dis = True
-                save_domain_cls = True
+                save_domain_dis = False
+                save_domain_cls = False
+                save_prediction = False
                 if cfg.SNAPSHOT_DIR is not None:
                     if (model_D != None):
                         for fname, pred, d_dis, d_cls in zip(ret_gt['fname'], cls, domain_dis, domain_cls):
@@ -73,11 +74,13 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                                 viz_domian_dis_img = viz_domain_dis.saveheatmap(d_dis[0], fname.replace('tif', 'png'))
                             if save_domain_cls:
                                 viz_domian_cls_img = viz_domain_cls.setpalette(d_cls[0], fname.replace('tif', 'png'))
-                            frames.append(wandb.Image(viz_img, caption=fname))
+                            if save_prediction:
+                                frames.append(wandb.Image(viz_img, caption=fname))
                     else:
                         for fname, pred in zip(ret_gt['fname'], cls):
                             viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'))
-                            frames.append(wandb.Image(viz_img, caption=fname))
+                            if save_prediction:
+                                frames.append(wandb.Image(viz_img, caption=fname))
             if is_training:
                 wandb.log({"prediction": frames}, step=step)
 
