@@ -81,8 +81,8 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                             viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'))
                             if save_prediction:
                                 frames.append(wandb.Image(viz_img, caption=fname))
-            if is_training:
-                wandb.log({"prediction": frames}, step=step)
+            # if is_training:
+                # wandb.log({"prediction": frames}, step=step)
 
         metric_op.summary_all()
         torch.cuda.empty_cache()

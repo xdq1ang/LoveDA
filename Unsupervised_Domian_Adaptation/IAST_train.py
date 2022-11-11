@@ -27,13 +27,13 @@ cfg = import_config(args.config_path)
 
 def main():
     # 初始化wandb
-    wandb.init(
-        project="UDA",
-        notes="IAST + DensePPM",
-        tags=["领域自适应", "语义分割"]
-    )
-    cfg.SNAPSHOT_DIR = wandb.run.dir
-    wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR
+    # wandb.init(
+    #     project="UDA",
+    #     notes="IAST + DensePPM",
+    #     tags=["领域自适应", "语义分割"]
+    # )
+    # cfg.SNAPSHOT_DIR = wandb.run.dir
+    # wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR
     backup_config(args.config_path)
     # 创建快照文件夹
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
@@ -144,21 +144,21 @@ def main():
                 text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f'% (
                     i_iter, loss, lr)
                 logger.info(text)
-                wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
+                # wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
             # 训练步数大于NUM_STEPS_STOP时，保存模型，验证模型，退出训练。
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
+                # wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
+                # wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()
         else:
@@ -271,24 +271,24 @@ def main():
                 text += 'lr = %.3f ' % lr
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
-                wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
-                                 'target_seg_loss':loss_dict['target_seg_loss'].item(),
-                                 'adv_loss':loss_dict['adv_loss'].item(),
-                                 'dis_loss': discriminator_loss.item(),
-                                'seg_model_lr':lr,
-                                 'dis_model_lr': lr_D}, step=i_iter)
+                # wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
+                #                  'target_seg_loss':loss_dict['target_seg_loss'].item(),
+                #                  'adv_loss':loss_dict['adv_loss'].item(),
+                #                  'dis_loss': discriminator_loss.item(),
+                #                 'seg_model_lr':lr,
+                #                  'dis_model_lr': lr_D}, step=i_iter)
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'tar_mIoU': miou}, step=i_iter)
+                # wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'tar_mIoU': miou}, step=i_iter)
+                # wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()
 

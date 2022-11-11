@@ -116,7 +116,7 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 vis_mask -= 1
                 vis_mask = viz_op.saveVis(vis_mask, fname)
                 frames.append(wandb.Image(vis_mask, caption=fname))
-        wandb.log({"pseudo_label": frames}, step=step)
+        # wandb.log({"pseudo_label": frames}, step=step)
         model_D.train()
         return os.path.join(save_dir, 'pred')
 
