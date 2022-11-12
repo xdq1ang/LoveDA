@@ -7,7 +7,7 @@ MOMENTUM = 0.9
 NUM_CLASSES = 7
 
 SAVE_PRED_EVERY = 1000
-SNAPSHOT_DIR = './log/iast/2urban/ppm'
+SNAPSHOT_DIR = './log/iast/2urban'
 
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005
