@@ -20,7 +20,7 @@ palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 parser = argparse.ArgumentParser(description='Run ISAT methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
