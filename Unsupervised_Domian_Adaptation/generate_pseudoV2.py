@@ -105,7 +105,7 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                     ignore_index3 = D_logit > 0.3
                 label += 1
                 label[ignore_index] = 0
-                # label[ignore_index2] = 0
+                label[ignore_index2] = 0
                 # if model_D_trained:
                 #     label[ignore_index3] = 0
                 # 标签保存(0---7)

@@ -14,16 +14,16 @@ from ever.core.iterator import Iterator
 from tqdm import tqdm
 from torch.nn.utils import clip_grad
 import wandb
+import warnings
+warnings.filterwarnings("ignore")
+
+
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
-
-
-
 parser = argparse.ArgumentParser(description='Run ISAT methods.')
-
-parser.add_argument('config_path',  type=str,
-                    help='config path')
+parser.add_argument('config_path', type=str, help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
+
 
 def main():
     # 初始化wandb
@@ -51,45 +51,45 @@ def main():
         )
     )).cuda()'''
     # 构建模型DeepLabv2语义分割模型, 输出维度为7
-    model = Deeplabv2(dict(
-        backbone=dict(
-                resnet_type='resnet50',
-                output_stride=16,
-                pretrained=True,
-            ),
-        multi_layer=False,
-        cascade=False,
-        use_ppm='ppm',
-        ppm=dict(
-            num_classes=7,
-            use_aux=False,
-        ),
-        inchannels=2048,
-        num_classes=7
-    )).cuda()
-
     # model = Deeplabv2(dict(
     #     backbone=dict(
-    #         resnet_type='resnet50',
-    #         output_stride=16,
-    #         pretrained=True,
-    #     ),
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
     #     multi_layer=False,
     #     cascade=False,
-    #     use_ppm='denseppm',
+    #     use_ppm='ppm',
     #     ppm=dict(
-    #         in_channels=2048,
     #         num_classes=7,
-    #         reduction_dim=64,
-    #         pool_sizes=[2, 3, 4, 5]
+    #         use_aux=False,
     #     ),
     #     inchannels=2048,
     #     num_classes=7
     # )).cuda()
+
+    model = Deeplabv2(dict(
+        backbone=dict(
+            resnet_type='resnet50',
+            output_stride=16,
+            pretrained=True,
+        ),
+        multi_layer=False,
+        cascade=False,
+        use_ppm='denseppm',
+        ppm=dict(
+            in_channels=2048,
+            num_classes=7,
+            reduction_dim=64,
+            pool_sizes=[2, 3, 4, 5]
+        ),
+        inchannels=2048,
+        num_classes=7
+    )).cuda()
     # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    # model_D = FCDiscriminator(7).cuda()
-    model_D = PixelDiscriminator(input_nc=7).cuda()
+    model_D = FCDiscriminator(7).cuda()
+    # model_D = PixelDiscriminator(input_nc=7).cuda()
     model_D_trained = False
 
     # wandb.watch(model)
@@ -112,7 +112,6 @@ def main():
     # 辨别器的优化器
     optimizer_D = optim.Adam(model_D.parameters(), lr=cfg.LEARNING_RATE_D, betas=(0.9, 0.99))
     optimizer_D.zero_grad()
-
 
     for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
         torch.cuda.empty_cache()
@@ -141,8 +140,7 @@ def main():
             # 每50步输出一次分割损失和学习率。
             if i_iter % 50 == 0:
                 logger.info('exp = {}'.format(cfg.SNAPSHOT_DIR))
-                text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f'% (
-                    i_iter, loss, lr)
+                text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f' % (i_iter, loss, lr)
                 logger.info(text)
                 # wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
             # 训练步数大于NUM_STEPS_STOP时，保存模型，验证模型，退出训练。
@@ -167,7 +165,8 @@ def main():
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudoV2(model, model_D, model_D_trained, evalloader, pseudo_dir, i_iter, pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, model_D, model_D_trained, evalloader, pseudo_dir, i_iter,
+                                                    pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
@@ -198,11 +197,10 @@ def main():
             pred_target = model(images_t.cuda())
             pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
 
-
             # defaut reg_weight
             if cfg.DISCRIMINATOR['lambda_entropy_weight'] or cfg.DISCRIMINATOR['lambda_kldreg_weight']:
                 reg_val_matrix = torch.ones_like(labels_t['cls']).type_as(pred_target)
-                reg_val_matrix[labels_t['cls']==-1]=0
+                reg_val_matrix[labels_t['cls'] == -1] = 0
                 reg_val_matrix = reg_val_matrix.unsqueeze(dim=1)
                 reg_ignore_matrix = 1 - reg_val_matrix
                 reg_weight = torch.ones_like(pred_target)
@@ -216,12 +214,11 @@ def main():
             s_D_logits = model_D(pred_source.softmax(dim=1).detach())
             t_D_logits = model_D(pred_target.softmax(dim=1).detach())
 
-
             # 域鉴别训练
             is_source = torch.zeros_like(s_D_logits).cuda()
             is_target = torch.ones_like(t_D_logits).cuda()
             discriminator_loss = (bce_loss(s_D_logits, is_source) +
-                                  bce_loss(t_D_logits, is_target))/2
+                                  bce_loss(t_D_logits, is_target)) / 2
 
             # adv_losses
             # 目标域对齐到源域训练
@@ -241,12 +238,12 @@ def main():
             # entropy reg
             if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
                 entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
-                entropy_reg_loss =  entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
+                entropy_reg_loss = entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
                 loss_dict['entropy_reg_loss'] = entropy_reg_loss
             # kld reg
             if cfg.DISCRIMINATOR['lambda_kldreg_weight'] > 0:
                 kld_reg_loss = kldloss(pred_target, reg_weight_val)
-                kld_reg_loss =  kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
+                kld_reg_loss = kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
                 loss_dict['kld_reg_loss'] = kld_reg_loss
 
             # backward model
@@ -291,6 +288,7 @@ def main():
                 # wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()
+
 
 if __name__ == '__main__':
     seed_torch(2333)

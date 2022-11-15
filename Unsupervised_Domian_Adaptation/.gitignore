@@ -11,3 +11,4 @@ pseudo_label
 /__pycache__/
 pseudoTempFile
 /wandb/
+/submit_test/
