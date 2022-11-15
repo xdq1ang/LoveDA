@@ -25,7 +25,7 @@ DISCRIMINATOR = dict(
     weight=0.05
 )
 GENERATE_PSEDO_EVERY = 1000
-WARMUP_STEP = 4000
+WARMUP_STEP = 1000
 PSEIDO_DICT = dict(
     pl_alpha=0.2,
     pl_gamma=8.0,

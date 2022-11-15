@@ -111,11 +111,11 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 # 标签保存(0---7)
                 imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
                 # 可视化标签保存(0---6)
-                vis_mask = label.copy()
-                vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景
-                vis_mask -= 1
-                vis_mask = viz_op.saveVis(vis_mask, fname)
-                frames.append(wandb.Image(vis_mask, caption=fname))
+                # vis_mask = label.copy()
+                # vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景
+                # vis_mask -= 1
+                # vis_mask = viz_op.saveVis(vis_mask, fname)
+                # frames.append(wandb.Image(vis_mask, caption=fname))
         # wandb.log({"pseudo_label": frames}, step=step)
         model_D.train()
         return os.path.join(save_dir, 'pred')
