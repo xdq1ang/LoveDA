@@ -44,7 +44,7 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
 
 
 if __name__ == '__main__':
-    ckpt_path = './log/iast/2urban/pixelD_denseppm_index_1_2/URBAN20000.pth'
+    ckpt_path = './log/iast/2urban/fcD_denseppm_index_1_2/URBAN9500.pth'
     from module.Encoder import Deeplabv2
     cfg = import_config('st.iast.2urban')
     # model = Deeplabv2(dict(

@@ -142,8 +142,6 @@ def ias_thresh(conf_dict, n_class, alpha, w=None, gamma=1.0):
     for idx_cls in np.arange(0, n_class):
         if conf_dict[idx_cls] != None:
             arr = np.array(conf_dict[idx_cls])
-            # 计算分位数
-            tmp = 100 * (1 - alpha * w[idx_cls] ** gamma)
             # 含义为计算数组中 tmp%的数的值
             cls_thresh[idx_cls] = np.percentile(arr, 100 * (1 - alpha * w[idx_cls] ** gamma))
     return cls_thresh

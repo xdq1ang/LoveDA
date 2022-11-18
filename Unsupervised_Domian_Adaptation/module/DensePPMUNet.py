@@ -68,7 +68,8 @@ class DensePPMUNet(nn.Module):
         super(DensePPMUNet, self).__init__()
         #out_channels=[2**(i+6) for i in range(5)] #[64, 128, 256, 512, 1024]
         self.n_classes=n_classes
-        out_channels=[64, 128, 256, 512, 1024]
+        # out_channels=[64, 128, 256, 512, 1024]
+        out_channels=[32, 64, 128, 256, 512]
         #下采样
         self.d1=DownsampleLayer(in_channel,out_channels[0])#3-64
         self.d2=DownsampleLayer(out_channels[0],out_channels[1])#64-128
@@ -81,25 +82,10 @@ class DensePPMUNet(nn.Module):
         self.u4=UpSampleLayer(out_channels[2],out_channels[0])#256-128-64
         #金字塔池化
         if ppm == "DensePPM":
-            self.PPMLayer = DensePPM(in_channels=out_channels[1],reduction_dim= 64 ,pool_sizes=pool_size)
-            PPM_out_channel = out_channels[1]+64*((len(pool_size)*len(pool_size)+len(pool_size))//2)
+            self.PPMLayer = DensePPM(in_channels=out_channels[1], num_classes=n_classes, reduction_dim=32, pool_sizes=pool_size)
         elif ppm == "PPM":
-            self.PPMLayer = PPM(in_dim = out_channels[1], reduction_dim= 64 , bins=pool_size) 
-            PPM_out_channel = out_channels[1]+64*(len(pool_size))
+            self.PPMLayer = PPM(in_dim=out_channels[1], reduction_dim=32, bins=pool_size)
 
-        
-    
-        #输出
-        self.o=nn.Sequential(
-            nn.Conv2d(PPM_out_channel,out_channels[2],kernel_size=3,stride=1,padding=1),
-            nn.BatchNorm2d(out_channels[2]),
-            nn.ReLU(),
-            nn.Conv2d(out_channels[2], out_channels[1], kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(out_channels[1]),
-            nn.ReLU(),
-            nn.Conv2d(out_channels[1],self.n_classes,3,1,1)
-        )
-        
         
     def forward(self,x):
         out_1,out1=self.d1(x)
@@ -110,10 +96,11 @@ class DensePPMUNet(nn.Module):
         out6=self.u2(out5,out_3)
         out7=self.u3(out6,out_2)
         out8=self.u4(out7,out_1)
-        PPM_out=self.PPMLayer(out8)
-        out=self.o(PPM_out)
-            
-        return (out).softmax(dim = 1)
+        out=self.PPMLayer(out8)
+        if self.training:
+            return out
+        else:
+            return out.softmax(dim=1)
     #权值初始化
     # def initialize_weights(self, *models):
     #     for model in models:

@@ -86,7 +86,7 @@ def main():
         inchannels=2048,
         num_classes=7
     )).cuda()
-    # model = DensePPMUNet(in_channel = 3, n_classes=7, ppm = "DensePPM", pool_size = [2,3,4,5]).cuda()
+    # model = DensePPMUNet(in_channel=3, n_classes=7, ppm="DensePPM", pool_size=[2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
     model_D = FCDiscriminator(7).cuda()
     # model_D = PixelDiscriminator(input_nc=7).cuda()

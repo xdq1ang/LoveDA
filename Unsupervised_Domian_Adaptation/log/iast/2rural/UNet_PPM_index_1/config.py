@@ -11,8 +11,8 @@ SNAPSHOT_DIR = './log/iast/2rural/dev'
 
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005
-LEARNING_RATE = 5e-3
-LEARNING_RATE_D = 5e-4
+LEARNING_RATE = 1e-2
+LEARNING_RATE_D = 1e-4
 NUM_STEPS = 20000
 NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
 PREHEAT_STEPS = int(NUM_STEPS / 20)
@@ -25,7 +25,7 @@ DISCRIMINATOR = dict(
     weight=0.05
 )
 GENERATE_PSEDO_EVERY = 500
-WARMUP_STEP = 200
+WARMUP_STEP = 5000
 PSEIDO_DICT = dict(
     pl_alpha=0.2,
     pl_gamma=8.0,

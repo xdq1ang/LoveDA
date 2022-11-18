@@ -1,0 +1,899 @@
+2022-11-15 21:51:39, INFO:ISAT:epochs ~= 66.079
+2022-11-15 21:51:45, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:51:45, INFO:ISAT:Warm-up iter = 0, loss_seg = 2.006, lr = 0.000
+2022-11-15 21:52:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:52:00, INFO:ISAT:Warm-up iter = 50, loss_seg = 0.921, lr = 0.001
+2022-11-15 21:52:15, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:52:15, INFO:ISAT:Warm-up iter = 100, loss_seg = 0.841, lr = 0.001
+2022-11-15 21:52:31, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:52:31, INFO:ISAT:Warm-up iter = 150, loss_seg = 0.918, lr = 0.002
+2022-11-15 21:52:46, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:52:46, INFO:ISAT:Warm-up iter = 200, loss_seg = 0.644, lr = 0.003
+2022-11-15 21:53:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:53:06, INFO:ISAT:Warm-up iter = 250, loss_seg = 0.594, lr = 0.003
+2022-11-15 21:53:21, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:53:21, INFO:ISAT:Warm-up iter = 300, loss_seg = 0.695, lr = 0.004
+2022-11-15 21:53:36, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:53:36, INFO:ISAT:Warm-up iter = 350, loss_seg = 0.791, lr = 0.005
+2022-11-15 21:53:51, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:53:51, INFO:ISAT:Warm-up iter = 400, loss_seg = 0.913, lr = 0.005
+2022-11-15 21:54:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:54:06, INFO:ISAT:Warm-up iter = 450, loss_seg = 0.587, lr = 0.006
+2022-11-15 21:54:27, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:54:27, INFO:ISAT:Warm-up iter = 500, loss_seg = 1.092, lr = 0.007
+2022-11-15 21:55:52, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.35414 | 0.52305 |  0.47676  | 0.57931 |
+|   1   | 0.35471 | 0.52367 |  0.74713  | 0.40311 |
+|   2   | 0.31979 | 0.48461 |  0.79921  | 0.34773 |
+|   3   | 0.63018 | 0.77314 |  0.74883  | 0.79908 |
+|   4   | 0.04591 | 0.08779 |  0.93934  | 0.04605 |
+|   5   | 0.05002 | 0.09528 |  0.55135  | 0.05214 |
+|   6   | 0.44209 | 0.61312 |  0.48359  | 0.83744 |
+|  mean | 0.31383 | 0.44295 |  0.67803  | 0.43784 |
+|   OA  | 0.54518 |    -    |     -     |    -    |
+| Kappa | 0.41455 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 21:56:07, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:56:07, INFO:ISAT:Warm-up iter = 550, loss_seg = 0.740, lr = 0.007
+2022-11-15 21:56:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:56:22, INFO:ISAT:Warm-up iter = 600, loss_seg = 0.981, lr = 0.008
+2022-11-15 21:56:37, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:56:37, INFO:ISAT:Warm-up iter = 650, loss_seg = 0.899, lr = 0.009
+2022-11-15 21:56:58, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:56:58, INFO:ISAT:Warm-up iter = 700, loss_seg = 0.816, lr = 0.009
+2022-11-15 21:57:13, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:57:13, INFO:ISAT:Warm-up iter = 750, loss_seg = 0.751, lr = 0.010
+2022-11-15 21:57:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:57:28, INFO:ISAT:Warm-up iter = 800, loss_seg = 0.713, lr = 0.010
+2022-11-15 21:57:43, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:57:43, INFO:ISAT:Warm-up iter = 850, loss_seg = 0.552, lr = 0.009
+2022-11-15 21:57:58, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:57:58, INFO:ISAT:Warm-up iter = 900, loss_seg = 0.940, lr = 0.009
+2022-11-15 21:58:19, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 21:58:19, INFO:ISAT:Warm-up iter = 950, loss_seg = 0.686, lr = 0.009
+2022-11-15 21:58:34, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\1000
+2022-11-15 22:05:09, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\1000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 22:05:15, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:05:15, INFO:ISAT:UDA iter = 1000 adv_loss = 0.034 seg_loss = 0.977 target_seg_loss = 0.085 entropy_reg_loss = 0.443 kld_reg_loss = 0.081 d_loss = 0.693 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:06:43, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.37658 | 0.54713 |  0.45397  |  0.6884 |
+|   1   | 0.39286 |  0.5641 |   0.6946  | 0.47488 |
+|   2   | 0.37592 | 0.54643 |  0.83602  | 0.40585 |
+|   3   | 0.60336 | 0.75262 |  0.75048  | 0.75477 |
+|   4   |  0.1235 | 0.21984 |  0.72289  | 0.12963 |
+|   5   |  0.3156 | 0.47978 |  0.83317  | 0.33688 |
+|   6   |  0.4717 | 0.64102 |  0.58517  | 0.70866 |
+|  mean | 0.37993 | 0.53585 |  0.69661  | 0.49987 |
+|   OA  |  0.5842 |    -    |     -     |    -    |
+| Kappa |  0.4704 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 22:07:21, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:07:21, INFO:ISAT:UDA iter = 1050 adv_loss = 0.102 seg_loss = 1.157 target_seg_loss = 0.111 entropy_reg_loss = 0.265 kld_reg_loss = 0.089 d_loss = 32.508 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:07:59, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:07:59, INFO:ISAT:UDA iter = 1100 adv_loss = 0.084 seg_loss = 0.517 target_seg_loss = 0.420 entropy_reg_loss = 0.229 kld_reg_loss = 0.070 d_loss = 1.097 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:08:48, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:08:48, INFO:ISAT:UDA iter = 1150 adv_loss = 0.039 seg_loss = 0.912 target_seg_loss = 0.052 entropy_reg_loss = 0.102 kld_reg_loss = 0.093 d_loss = 0.694 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:09:27, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:09:27, INFO:ISAT:UDA iter = 1200 adv_loss = 0.064 seg_loss = 0.507 target_seg_loss = 0.356 entropy_reg_loss = 0.229 kld_reg_loss = 0.077 d_loss = 0.676 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:10:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:10:11, INFO:ISAT:UDA iter = 1250 adv_loss = 0.032 seg_loss = 0.681 target_seg_loss = 0.012 entropy_reg_loss = 0.187 kld_reg_loss = 0.106 d_loss = 0.713 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:10:49, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:10:49, INFO:ISAT:UDA iter = 1300 adv_loss = 0.098 seg_loss = 0.461 target_seg_loss = 0.163 entropy_reg_loss = 0.151 kld_reg_loss = 0.098 d_loss = 0.501 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:11:33, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:11:33, INFO:ISAT:UDA iter = 1350 adv_loss = 0.000 seg_loss = 0.980 target_seg_loss = 0.197 entropy_reg_loss = 0.165 kld_reg_loss = 0.080 d_loss = 14.863 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:12:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:12:17, INFO:ISAT:UDA iter = 1400 adv_loss = 4.431 seg_loss = 0.759 target_seg_loss = 0.073 entropy_reg_loss = 0.211 kld_reg_loss = 0.084 d_loss = 47.915 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:13:01, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:13:01, INFO:ISAT:UDA iter = 1450 adv_loss = 2.637 seg_loss = 0.518 target_seg_loss = 0.148 entropy_reg_loss = 0.141 kld_reg_loss = 0.082 d_loss = 291.598 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:13:38, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\1500
+2022-11-15 22:20:31, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\1500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 22:20:37, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:20:37, INFO:ISAT:UDA iter = 1500 adv_loss = 33.017 seg_loss = 0.851 target_seg_loss = 0.031 entropy_reg_loss = 0.287 kld_reg_loss = 0.088 d_loss = 311.314 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:22:05, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   |  0.3679 | 0.53791 |  0.52325  | 0.55341 |
+|   1   | 0.46262 | 0.63259 |  0.67331  | 0.59652 |
+|   2   | 0.47317 | 0.64239 |   0.7106  | 0.58612 |
+|   3   |  0.6145 | 0.76122 |  0.73593  | 0.78832 |
+|   4   | 0.26473 | 0.41864 |  0.72879  | 0.29366 |
+|   5   | 0.41701 | 0.58858 |  0.62386  | 0.55708 |
+|   6   | 0.49773 | 0.66465 |  0.61172  | 0.72761 |
+|  mean | 0.44252 | 0.60657 |  0.65821  |  0.5861 |
+|   OA  | 0.62003 |    -    |     -     |    -    |
+| Kappa | 0.52794 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 22:22:43, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:22:43, INFO:ISAT:UDA iter = 1550 adv_loss = 0.207 seg_loss = 0.984 target_seg_loss = 0.590 entropy_reg_loss = 0.134 kld_reg_loss = 0.099 d_loss = 42.574 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:23:26, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:23:27, INFO:ISAT:UDA iter = 1600 adv_loss = 0.167 seg_loss = 0.848 target_seg_loss = 0.034 entropy_reg_loss = 0.145 kld_reg_loss = 0.098 d_loss = 3.381 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:24:10, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:24:10, INFO:ISAT:UDA iter = 1650 adv_loss = 0.405 seg_loss = 0.759 target_seg_loss = 0.039 entropy_reg_loss = 0.178 kld_reg_loss = 0.097 d_loss = 1.846 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:24:49, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:24:49, INFO:ISAT:UDA iter = 1700 adv_loss = 0.322 seg_loss = 0.679 target_seg_loss = 0.032 entropy_reg_loss = 0.088 kld_reg_loss = 0.121 d_loss = 0.480 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:25:32, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:25:32, INFO:ISAT:UDA iter = 1750 adv_loss = 0.237 seg_loss = 0.783 target_seg_loss = 0.075 entropy_reg_loss = 0.238 kld_reg_loss = 0.073 d_loss = 3.011 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:26:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:26:11, INFO:ISAT:UDA iter = 1800 adv_loss = 0.374 seg_loss = 0.831 target_seg_loss = 0.046 entropy_reg_loss = 0.111 kld_reg_loss = 0.094 d_loss = 0.950 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:27:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:27:00, INFO:ISAT:UDA iter = 1850 adv_loss = 0.080 seg_loss = 0.768 target_seg_loss = 0.186 entropy_reg_loss = 0.101 kld_reg_loss = 0.099 d_loss = 0.817 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:27:38, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:27:38, INFO:ISAT:UDA iter = 1900 adv_loss = 0.211 seg_loss = 0.657 target_seg_loss = 0.119 entropy_reg_loss = 0.094 kld_reg_loss = 0.107 d_loss = 1.051 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:28:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:28:22, INFO:ISAT:UDA iter = 1950 adv_loss = 16.585 seg_loss = 0.603 target_seg_loss = 0.019 entropy_reg_loss = 0.086 kld_reg_loss = 0.105 d_loss = 138.287 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:29:00, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\2000
+2022-11-15 22:35:55, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\2000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 22:36:01, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:36:01, INFO:ISAT:UDA iter = 2000 adv_loss = 22.969 seg_loss = 0.640 target_seg_loss = 0.081 entropy_reg_loss = 0.070 kld_reg_loss = 0.120 d_loss = 45.538 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:37:29, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.39614 | 0.56747 |  0.54138  | 0.59621 |
+|   1   | 0.50816 | 0.67388 |  0.73469  | 0.62237 |
+|   2   | 0.49384 | 0.66117 |  0.83479  | 0.54734 |
+|   3   | 0.68309 | 0.81171 |  0.86673  | 0.76326 |
+|   4   | 0.38159 | 0.55239 |  0.63586  | 0.48829 |
+|   5   | 0.43432 | 0.60561 |   0.5817  | 0.63156 |
+|   6   | 0.51645 | 0.68113 |  0.63828  | 0.73014 |
+|  mean | 0.48766 | 0.65048 |  0.69049  |  0.6256 |
+|   OA  | 0.64775 |    -    |     -     |    -    |
+| Kappa | 0.56291 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 22:38:12, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:38:12, INFO:ISAT:UDA iter = 2050 adv_loss = 4.993 seg_loss = 1.110 target_seg_loss = 0.058 entropy_reg_loss = 0.106 kld_reg_loss = 0.105 d_loss = 61.856 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:38:51, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:38:51, INFO:ISAT:UDA iter = 2100 adv_loss = 4.751 seg_loss = 0.572 target_seg_loss = 0.044 entropy_reg_loss = 0.063 kld_reg_loss = 0.129 d_loss = 3.276 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:39:34, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:39:34, INFO:ISAT:UDA iter = 2150 adv_loss = 0.765 seg_loss = 0.469 target_seg_loss = 0.263 entropy_reg_loss = 0.137 kld_reg_loss = 0.094 d_loss = 2.422 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:40:13, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:40:13, INFO:ISAT:UDA iter = 2200 adv_loss = 0.640 seg_loss = 0.633 target_seg_loss = 0.043 entropy_reg_loss = 0.064 kld_reg_loss = 0.116 d_loss = 0.322 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:40:56, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:40:56, INFO:ISAT:UDA iter = 2250 adv_loss = 0.262 seg_loss = 0.628 target_seg_loss = 0.076 entropy_reg_loss = 0.090 kld_reg_loss = 0.093 d_loss = 1.413 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:41:40, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:41:40, INFO:ISAT:UDA iter = 2300 adv_loss = 0.000 seg_loss = 0.580 target_seg_loss = 0.069 entropy_reg_loss = 0.082 kld_reg_loss = 0.108 d_loss = 27.194 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:42:24, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:42:24, INFO:ISAT:UDA iter = 2350 adv_loss = 3.630 seg_loss = 0.519 target_seg_loss = 0.030 entropy_reg_loss = 0.042 kld_reg_loss = 0.116 d_loss = 13.658 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:43:02, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:43:02, INFO:ISAT:UDA iter = 2400 adv_loss = 1.450 seg_loss = 0.770 target_seg_loss = 0.081 entropy_reg_loss = 0.231 kld_reg_loss = 0.085 d_loss = 45.145 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:43:46, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:43:46, INFO:ISAT:UDA iter = 2450 adv_loss = 18.137 seg_loss = 0.509 target_seg_loss = 0.039 entropy_reg_loss = 0.078 kld_reg_loss = 0.109 d_loss = 121.801 lr = 0.009 d_lr = 0.009 
+2022-11-15 22:44:29, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\2500
+2022-11-15 22:51:24, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\2500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 22:51:30, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:51:30, INFO:ISAT:UDA iter = 2500 adv_loss = 71.415 seg_loss = 1.106 target_seg_loss = 0.023 entropy_reg_loss = 0.082 kld_reg_loss = 0.099 d_loss = 295.289 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:52:57, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.41323 |  0.5848 |  0.51157  |  0.6825 |
+|   1   | 0.48581 | 0.65393 |  0.78395  |  0.5609 |
+|   2   | 0.47097 | 0.64036 |  0.88058  | 0.50311 |
+|   3   | 0.69596 | 0.82073 |  0.84698  | 0.79605 |
+|   4   | 0.41346 | 0.58504 |  0.76358  | 0.47417 |
+|   5   | 0.44993 | 0.62063 |  0.62052  | 0.62073 |
+|   6   | 0.53741 | 0.69911 |   0.6863  | 0.71241 |
+|  mean | 0.49525 |  0.6578 |  0.72764  | 0.62141 |
+|   OA  | 0.65642 |    -    |     -     |    -    |
+| Kappa | 0.57071 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 22:53:35, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:53:35, INFO:ISAT:UDA iter = 2550 adv_loss = 93.154 seg_loss = 0.735 target_seg_loss = 0.009 entropy_reg_loss = 0.061 kld_reg_loss = 0.112 d_loss = 156.357 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:54:14, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:54:14, INFO:ISAT:UDA iter = 2600 adv_loss = 10.871 seg_loss = 0.520 target_seg_loss = 0.022 entropy_reg_loss = 0.062 kld_reg_loss = 0.110 d_loss = 9.010 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:54:57, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:54:57, INFO:ISAT:UDA iter = 2650 adv_loss = 4.597 seg_loss = 0.807 target_seg_loss = 0.037 entropy_reg_loss = 0.071 kld_reg_loss = 0.110 d_loss = 2.088 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:55:36, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:55:36, INFO:ISAT:UDA iter = 2700 adv_loss = 3.172 seg_loss = 0.520 target_seg_loss = 0.010 entropy_reg_loss = 0.050 kld_reg_loss = 0.107 d_loss = 3.443 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:56:25, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:56:25, INFO:ISAT:UDA iter = 2750 adv_loss = 0.889 seg_loss = 0.440 target_seg_loss = 0.012 entropy_reg_loss = 0.069 kld_reg_loss = 0.108 d_loss = 0.444 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:57:03, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:57:03, INFO:ISAT:UDA iter = 2800 adv_loss = 1.716 seg_loss = 0.524 target_seg_loss = 0.021 entropy_reg_loss = 0.078 kld_reg_loss = 0.099 d_loss = 0.591 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:57:47, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:57:47, INFO:ISAT:UDA iter = 2850 adv_loss = 0.544 seg_loss = 0.912 target_seg_loss = 0.065 entropy_reg_loss = 0.321 kld_reg_loss = 0.077 d_loss = 4.677 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:58:25, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:58:25, INFO:ISAT:UDA iter = 2900 adv_loss = 0.119 seg_loss = 0.600 target_seg_loss = 0.027 entropy_reg_loss = 0.128 kld_reg_loss = 0.098 d_loss = 6.859 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:59:09, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 22:59:09, INFO:ISAT:UDA iter = 2950 adv_loss = 0.426 seg_loss = 0.504 target_seg_loss = 0.013 entropy_reg_loss = 0.123 kld_reg_loss = 0.094 d_loss = 38.886 lr = 0.008 d_lr = 0.008 
+2022-11-15 22:59:52, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\3000
+2022-11-15 23:06:52, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\3000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 23:06:58, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:06:58, INFO:ISAT:UDA iter = 3000 adv_loss = 20.355 seg_loss = 0.543 target_seg_loss = 0.123 entropy_reg_loss = 0.082 kld_reg_loss = 0.107 d_loss = 76.360 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:08:25, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.40493 | 0.57644 |  0.50319  | 0.67465 |
+|   1   | 0.52511 | 0.68862 |  0.73843  | 0.64511 |
+|   2   | 0.49281 | 0.66024 |  0.80998  | 0.55723 |
+|   3   | 0.69646 | 0.82107 |  0.83601  | 0.80666 |
+|   4   | 0.40964 |  0.5812 |  0.82446  | 0.44878 |
+|   5   | 0.41498 | 0.58656 |  0.76496  | 0.47563 |
+|   6   | 0.56514 | 0.72216 |  0.69408  | 0.75259 |
+|  mean |  0.5013 | 0.66233 |  0.73873  | 0.62295 |
+|   OA  |  0.6635 |    -    |     -     |    -    |
+| Kappa | 0.57835 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 23:09:04, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:09:04, INFO:ISAT:UDA iter = 3050 adv_loss = 0.134 seg_loss = 0.554 target_seg_loss = 0.026 entropy_reg_loss = 0.075 kld_reg_loss = 0.113 d_loss = 36.873 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:09:42, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:09:42, INFO:ISAT:UDA iter = 3100 adv_loss = 2.301 seg_loss = 0.762 target_seg_loss = 0.022 entropy_reg_loss = 0.063 kld_reg_loss = 0.114 d_loss = 1.596 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:10:26, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:10:26, INFO:ISAT:UDA iter = 3150 adv_loss = 4.065 seg_loss = 0.644 target_seg_loss = 0.025 entropy_reg_loss = 0.061 kld_reg_loss = 0.110 d_loss = 4.567 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:11:09, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:11:09, INFO:ISAT:UDA iter = 3200 adv_loss = 0.356 seg_loss = 0.764 target_seg_loss = 0.099 entropy_reg_loss = 0.065 kld_reg_loss = 0.110 d_loss = 0.539 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:11:53, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:11:53, INFO:ISAT:UDA iter = 3250 adv_loss = 0.774 seg_loss = 0.552 target_seg_loss = 0.092 entropy_reg_loss = 0.078 kld_reg_loss = 0.098 d_loss = 0.697 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:12:31, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:12:31, INFO:ISAT:UDA iter = 3300 adv_loss = 0.376 seg_loss = 0.486 target_seg_loss = 0.028 entropy_reg_loss = 0.061 kld_reg_loss = 0.108 d_loss = 0.356 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:13:15, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:13:15, INFO:ISAT:UDA iter = 3350 adv_loss = 0.382 seg_loss = 0.371 target_seg_loss = 0.152 entropy_reg_loss = 0.066 kld_reg_loss = 0.112 d_loss = 1.164 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:13:53, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:13:53, INFO:ISAT:UDA iter = 3400 adv_loss = 8.752 seg_loss = 0.425 target_seg_loss = 0.012 entropy_reg_loss = 0.052 kld_reg_loss = 0.108 d_loss = 27.830 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:14:42, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:14:42, INFO:ISAT:UDA iter = 3450 adv_loss = 89.963 seg_loss = 0.428 target_seg_loss = 0.028 entropy_reg_loss = 0.100 kld_reg_loss = 0.090 d_loss = 552.542 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:15:22, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\3500
+2022-11-15 23:22:16, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\3500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 23:22:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:22:22, INFO:ISAT:UDA iter = 3500 adv_loss = 12.823 seg_loss = 0.431 target_seg_loss = 0.017 entropy_reg_loss = 0.144 kld_reg_loss = 0.095 d_loss = 56.268 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:23:49, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42054 | 0.59208 |  0.48812  | 0.75232 |
+|   1   | 0.51163 | 0.67692 |  0.77265  |  0.6023 |
+|   2   | 0.44439 | 0.61533 |  0.88751  | 0.47092 |
+|   3   | 0.70586 | 0.82757 |  0.84635  | 0.80961 |
+|   4   | 0.47287 | 0.64211 |  0.72592  | 0.57564 |
+|   5   | 0.42692 | 0.59838 |  0.69239  | 0.52685 |
+|   6   | 0.57947 | 0.73376 |  0.79008  | 0.68493 |
+|  mean | 0.50881 | 0.66945 |  0.74329  |  0.6318 |
+|   OA  | 0.66708 |    -    |     -     |    -    |
+| Kappa | 0.58333 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 23:24:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:24:28, INFO:ISAT:UDA iter = 3550 adv_loss = 41.406 seg_loss = 0.745 target_seg_loss = 0.081 entropy_reg_loss = 0.084 kld_reg_loss = 0.098 d_loss = 18.798 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:25:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:25:06, INFO:ISAT:UDA iter = 3600 adv_loss = 2.692 seg_loss = 0.504 target_seg_loss = 0.083 entropy_reg_loss = 0.225 kld_reg_loss = 0.081 d_loss = 6.269 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:25:55, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:25:55, INFO:ISAT:UDA iter = 3650 adv_loss = 3.822 seg_loss = 1.047 target_seg_loss = 0.008 entropy_reg_loss = 0.064 kld_reg_loss = 0.093 d_loss = 3.104 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:26:33, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:26:33, INFO:ISAT:UDA iter = 3700 adv_loss = 0.770 seg_loss = 0.499 target_seg_loss = 0.405 entropy_reg_loss = 0.070 kld_reg_loss = 0.091 d_loss = 3.402 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:27:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:27:17, INFO:ISAT:UDA iter = 3750 adv_loss = 0.757 seg_loss = 0.755 target_seg_loss = 0.023 entropy_reg_loss = 0.065 kld_reg_loss = 0.100 d_loss = 5.336 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:27:55, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:27:55, INFO:ISAT:UDA iter = 3800 adv_loss = 1.229 seg_loss = 0.512 target_seg_loss = 0.021 entropy_reg_loss = 0.066 kld_reg_loss = 0.102 d_loss = 1.711 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:28:39, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:28:39, INFO:ISAT:UDA iter = 3850 adv_loss = 6.871 seg_loss = 0.422 target_seg_loss = 0.013 entropy_reg_loss = 0.066 kld_reg_loss = 0.099 d_loss = 2.372 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:29:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:29:22, INFO:ISAT:UDA iter = 3900 adv_loss = 87.613 seg_loss = 0.420 target_seg_loss = 0.006 entropy_reg_loss = 0.051 kld_reg_loss = 0.102 d_loss = 96.295 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:30:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:30:06, INFO:ISAT:UDA iter = 3950 adv_loss = 0.000 seg_loss = 0.492 target_seg_loss = 0.024 entropy_reg_loss = 0.060 kld_reg_loss = 0.104 d_loss = 171.893 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:30:44, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\4000
+2022-11-15 23:37:41, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\4000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 23:37:47, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:37:47, INFO:ISAT:UDA iter = 4000 adv_loss = 4.199 seg_loss = 0.370 target_seg_loss = 0.062 entropy_reg_loss = 0.047 kld_reg_loss = 0.122 d_loss = 27.536 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:39:14, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.41855 | 0.59011 |  0.51704  | 0.68723 |
+|   1   | 0.55049 | 0.71008 |  0.73994  | 0.68254 |
+|   2   | 0.50134 | 0.66786 |  0.85005  | 0.54998 |
+|   3   |  0.7171 | 0.83524 |  0.88134  | 0.79373 |
+|   4   | 0.49795 | 0.66484 |   0.6925  | 0.63931 |
+|   5   | 0.44869 | 0.61944 |  0.68388  |  0.5661 |
+|   6   | 0.59203 | 0.74375 |  0.76474  | 0.72387 |
+|  mean | 0.53231 | 0.69019 |  0.73278  | 0.66325 |
+|   OA  |  0.6822 |    -    |     -     |    -    |
+| Kappa | 0.60507 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 23:39:52, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:39:52, INFO:ISAT:UDA iter = 4050 adv_loss = 5.704 seg_loss = 0.563 target_seg_loss = 0.047 entropy_reg_loss = 0.071 kld_reg_loss = 0.105 d_loss = 8.425 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:40:36, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:40:36, INFO:ISAT:UDA iter = 4100 adv_loss = 2.417 seg_loss = 0.350 target_seg_loss = 0.136 entropy_reg_loss = 0.050 kld_reg_loss = 0.110 d_loss = 1.495 lr = 0.008 d_lr = 0.008 
+2022-11-15 23:41:19, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:41:19, INFO:ISAT:UDA iter = 4150 adv_loss = 0.155 seg_loss = 0.421 target_seg_loss = 0.049 entropy_reg_loss = 0.144 kld_reg_loss = 0.093 d_loss = 1.830 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:41:58, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:41:58, INFO:ISAT:UDA iter = 4200 adv_loss = 1.860 seg_loss = 0.424 target_seg_loss = 0.053 entropy_reg_loss = 0.050 kld_reg_loss = 0.107 d_loss = 3.925 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:42:41, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:42:41, INFO:ISAT:UDA iter = 4250 adv_loss = 0.639 seg_loss = 0.346 target_seg_loss = 0.010 entropy_reg_loss = 0.069 kld_reg_loss = 0.103 d_loss = 0.851 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:43:20, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:43:20, INFO:ISAT:UDA iter = 4300 adv_loss = 2.834 seg_loss = 0.482 target_seg_loss = 0.041 entropy_reg_loss = 0.056 kld_reg_loss = 0.102 d_loss = 2.327 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:44:09, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:44:09, INFO:ISAT:UDA iter = 4350 adv_loss = 14.987 seg_loss = 0.604 target_seg_loss = 0.107 entropy_reg_loss = 0.054 kld_reg_loss = 0.111 d_loss = 51.853 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:44:47, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:44:47, INFO:ISAT:UDA iter = 4400 adv_loss = 16.030 seg_loss = 0.536 target_seg_loss = 0.109 entropy_reg_loss = 0.055 kld_reg_loss = 0.114 d_loss = 210.657 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:45:30, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:45:31, INFO:ISAT:UDA iter = 4450 adv_loss = 4.776 seg_loss = 0.609 target_seg_loss = 0.049 entropy_reg_loss = 0.052 kld_reg_loss = 0.109 d_loss = 12.699 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:46:08, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\4500
+2022-11-15 23:53:01, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\4500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-15 23:53:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:53:06, INFO:ISAT:UDA iter = 4500 adv_loss = 9.540 seg_loss = 0.579 target_seg_loss = 0.006 entropy_reg_loss = 0.058 kld_reg_loss = 0.103 d_loss = 47.259 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:54:34, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.40893 | 0.58048 |  0.47643  | 0.74268 |
+|   1   |  0.5351 | 0.69716 |  0.75586  | 0.64691 |
+|   2   | 0.49745 |  0.6644 |  0.84879  | 0.54582 |
+|   3   | 0.71195 | 0.83174 |  0.91098  | 0.76519 |
+|   4   | 0.36381 | 0.53352 |   0.8665  | 0.38541 |
+|   5   | 0.41372 | 0.58529 |  0.76183  | 0.47518 |
+|   6   |  0.5877 | 0.74032 |  0.75425  | 0.72688 |
+|  mean | 0.50267 | 0.66184 |  0.76781  | 0.61258 |
+|   OA  |  0.6655 |    -    |     -     |    -    |
+| Kappa | 0.57864 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-15 23:55:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:55:17, INFO:ISAT:UDA iter = 4550 adv_loss = 3.747 seg_loss = 0.601 target_seg_loss = 0.021 entropy_reg_loss = 0.055 kld_reg_loss = 0.102 d_loss = 3.838 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:55:55, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:55:55, INFO:ISAT:UDA iter = 4600 adv_loss = 1.697 seg_loss = 0.466 target_seg_loss = 0.054 entropy_reg_loss = 0.075 kld_reg_loss = 0.094 d_loss = 0.557 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:56:39, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:56:39, INFO:ISAT:UDA iter = 4650 adv_loss = 3.480 seg_loss = 0.501 target_seg_loss = 0.013 entropy_reg_loss = 0.055 kld_reg_loss = 0.095 d_loss = 0.740 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:57:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:57:17, INFO:ISAT:UDA iter = 4700 adv_loss = 1.537 seg_loss = 0.605 target_seg_loss = 0.009 entropy_reg_loss = 0.039 kld_reg_loss = 0.092 d_loss = 1.268 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:58:01, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:58:01, INFO:ISAT:UDA iter = 4750 adv_loss = 2.828 seg_loss = 0.562 target_seg_loss = 0.013 entropy_reg_loss = 0.040 kld_reg_loss = 0.101 d_loss = 2.651 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:58:45, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:58:45, INFO:ISAT:UDA iter = 4800 adv_loss = 40.904 seg_loss = 0.495 target_seg_loss = 0.070 entropy_reg_loss = 0.048 kld_reg_loss = 0.098 d_loss = 89.466 lr = 0.007 d_lr = 0.007 
+2022-11-15 23:59:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-15 23:59:28, INFO:ISAT:UDA iter = 4850 adv_loss = 7.210 seg_loss = 0.567 target_seg_loss = 0.004 entropy_reg_loss = 0.059 kld_reg_loss = 0.094 d_loss = 95.212 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:00:07, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:00:07, INFO:ISAT:UDA iter = 4900 adv_loss = 93.258 seg_loss = 0.602 target_seg_loss = 0.006 entropy_reg_loss = 0.042 kld_reg_loss = 0.087 d_loss = 182.163 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:00:50, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:00:50, INFO:ISAT:UDA iter = 4950 adv_loss = 1.434 seg_loss = 0.515 target_seg_loss = 0.036 entropy_reg_loss = 0.057 kld_reg_loss = 0.093 d_loss = 13.090 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:01:33, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\5000
+2022-11-16 00:08:27, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\5000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 00:08:33, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:08:33, INFO:ISAT:UDA iter = 5000 adv_loss = 3.150 seg_loss = 0.357 target_seg_loss = 0.045 entropy_reg_loss = 0.074 kld_reg_loss = 0.106 d_loss = 1.159 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:10:00, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.41268 | 0.58425 |  0.48465  | 0.73539 |
+|   1   | 0.53178 | 0.69433 |  0.77003  | 0.63218 |
+|   2   | 0.51106 | 0.67643 |  0.84062  | 0.56589 |
+|   3   | 0.71904 | 0.83656 |  0.87863  | 0.79833 |
+|   4   |  0.1898 | 0.31905 |  0.82908  | 0.19753 |
+|   5   | 0.48497 | 0.65317 |  0.69687  | 0.61462 |
+|   6   |  0.5893 | 0.74158 |  0.77543  | 0.71057 |
+|  mean | 0.49123 | 0.64362 |  0.75362  | 0.60779 |
+|   OA  | 0.66798 |    -    |     -     |    -    |
+| Kappa | 0.58328 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 00:10:38, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:10:39, INFO:ISAT:UDA iter = 5050 adv_loss = 0.158 seg_loss = 0.615 target_seg_loss = 0.046 entropy_reg_loss = 0.061 kld_reg_loss = 0.102 d_loss = 4.536 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:11:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:11:17, INFO:ISAT:UDA iter = 5100 adv_loss = 1.509 seg_loss = 0.673 target_seg_loss = 0.013 entropy_reg_loss = 0.048 kld_reg_loss = 0.098 d_loss = 0.864 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:12:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:12:00, INFO:ISAT:UDA iter = 5150 adv_loss = 2.197 seg_loss = 0.452 target_seg_loss = 0.047 entropy_reg_loss = 0.076 kld_reg_loss = 0.088 d_loss = 2.020 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:12:39, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:12:39, INFO:ISAT:UDA iter = 5200 adv_loss = 0.510 seg_loss = 0.481 target_seg_loss = 0.038 entropy_reg_loss = 0.060 kld_reg_loss = 0.091 d_loss = 0.555 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:13:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:13:28, INFO:ISAT:UDA iter = 5250 adv_loss = 10.605 seg_loss = 0.958 target_seg_loss = 0.014 entropy_reg_loss = 0.051 kld_reg_loss = 0.099 d_loss = 22.804 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:14:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:14:06, INFO:ISAT:UDA iter = 5300 adv_loss = 19.596 seg_loss = 0.458 target_seg_loss = 0.069 entropy_reg_loss = 0.040 kld_reg_loss = 0.097 d_loss = 24.265 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:14:50, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:14:50, INFO:ISAT:UDA iter = 5350 adv_loss = 34.081 seg_loss = 0.573 target_seg_loss = 0.011 entropy_reg_loss = 0.045 kld_reg_loss = 0.100 d_loss = 53.287 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:15:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:15:28, INFO:ISAT:UDA iter = 5400 adv_loss = 35.873 seg_loss = 0.678 target_seg_loss = 0.008 entropy_reg_loss = 0.048 kld_reg_loss = 0.091 d_loss = 2.905 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:16:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:16:17, INFO:ISAT:UDA iter = 5450 adv_loss = 8.855 seg_loss = 0.512 target_seg_loss = 0.047 entropy_reg_loss = 0.037 kld_reg_loss = 0.108 d_loss = 2.136 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:16:55, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\5500
+2022-11-16 00:23:50, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\5500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 00:23:56, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:23:56, INFO:ISAT:UDA iter = 5500 adv_loss = 4.382 seg_loss = 0.490 target_seg_loss = 0.130 entropy_reg_loss = 0.055 kld_reg_loss = 0.113 d_loss = 2.425 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:25:23, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.41627 | 0.58784 |  0.49956  | 0.71403 |
+|   1   | 0.56694 | 0.72362 |  0.72595  | 0.72131 |
+|   2   | 0.49196 | 0.65948 |  0.86955  | 0.53116 |
+|   3   | 0.72261 | 0.83897 |  0.86926  | 0.81072 |
+|   4   | 0.39249 | 0.56372 |   0.6874  | 0.47777 |
+|   5   | 0.49273 | 0.66017 |  0.64902  | 0.67171 |
+|   6   | 0.56998 |  0.7261 |  0.83609  | 0.64168 |
+|  mean | 0.52185 | 0.67999 |  0.73383  | 0.65263 |
+|   OA  | 0.67612 |    -    |     -     |    -    |
+| Kappa |  0.5985 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 00:26:01, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:26:01, INFO:ISAT:UDA iter = 5550 adv_loss = 4.855 seg_loss = 0.514 target_seg_loss = 0.098 entropy_reg_loss = 0.086 kld_reg_loss = 0.088 d_loss = 1.200 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:26:39, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:26:39, INFO:ISAT:UDA iter = 5600 adv_loss = 2.841 seg_loss = 0.575 target_seg_loss = 0.011 entropy_reg_loss = 0.060 kld_reg_loss = 0.094 d_loss = 5.014 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:27:23, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:27:23, INFO:ISAT:UDA iter = 5650 adv_loss = 5.802 seg_loss = 0.603 target_seg_loss = 0.019 entropy_reg_loss = 0.064 kld_reg_loss = 0.109 d_loss = 1.540 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:28:07, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:28:07, INFO:ISAT:UDA iter = 5700 adv_loss = 0.172 seg_loss = 0.464 target_seg_loss = 0.027 entropy_reg_loss = 0.054 kld_reg_loss = 0.099 d_loss = 71.137 lr = 0.007 d_lr = 0.007 
+2022-11-16 00:28:50, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:28:50, INFO:ISAT:UDA iter = 5750 adv_loss = 57.728 seg_loss = 0.298 target_seg_loss = 0.078 entropy_reg_loss = 0.081 kld_reg_loss = 0.095 d_loss = 28.828 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:29:29, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:29:29, INFO:ISAT:UDA iter = 5800 adv_loss = 8.994 seg_loss = 0.528 target_seg_loss = 0.058 entropy_reg_loss = 0.052 kld_reg_loss = 0.093 d_loss = 5.485 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:30:12, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:30:12, INFO:ISAT:UDA iter = 5850 adv_loss = 3.939 seg_loss = 0.447 target_seg_loss = 0.111 entropy_reg_loss = 0.042 kld_reg_loss = 0.104 d_loss = 1.915 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:30:51, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:30:51, INFO:ISAT:UDA iter = 5900 adv_loss = 1.778 seg_loss = 0.699 target_seg_loss = 0.049 entropy_reg_loss = 0.068 kld_reg_loss = 0.090 d_loss = 0.527 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:31:40, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:31:40, INFO:ISAT:UDA iter = 5950 adv_loss = 2.153 seg_loss = 0.370 target_seg_loss = 0.138 entropy_reg_loss = 0.045 kld_reg_loss = 0.095 d_loss = 2.071 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:32:17, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\6000
+2022-11-16 00:39:14, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\6000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 00:39:20, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:39:20, INFO:ISAT:UDA iter = 6000 adv_loss = 3.453 seg_loss = 0.507 target_seg_loss = 0.052 entropy_reg_loss = 0.088 kld_reg_loss = 0.099 d_loss = 0.440 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:40:48, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42803 | 0.59947 |  0.51414  | 0.71876 |
+|   1   | 0.56365 | 0.72094 |  0.74415  | 0.69914 |
+|   2   | 0.45646 |  0.6268 |  0.89396  | 0.48259 |
+|   3   | 0.71578 | 0.83435 |   0.8476  |  0.8215 |
+|   4   | 0.45632 | 0.62667 |  0.76592  | 0.53027 |
+|   5   | 0.50181 | 0.66827 |  0.66354  | 0.67307 |
+|   6   | 0.59967 | 0.74974 |  0.82145  | 0.68955 |
+|  mean | 0.53167 | 0.68946 |  0.75011  | 0.65927 |
+|   OA  | 0.68738 |    -    |     -     |    -    |
+| Kappa | 0.61167 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 00:41:26, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:41:26, INFO:ISAT:UDA iter = 6050 adv_loss = 3.213 seg_loss = 0.993 target_seg_loss = 0.048 entropy_reg_loss = 0.084 kld_reg_loss = 0.099 d_loss = 0.659 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:42:04, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:42:04, INFO:ISAT:UDA iter = 6100 adv_loss = 14.384 seg_loss = 0.424 target_seg_loss = 0.080 entropy_reg_loss = 0.061 kld_reg_loss = 0.104 d_loss = 12.020 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:43:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:43:00, INFO:ISAT:UDA iter = 6150 adv_loss = 301.604 seg_loss = 0.424 target_seg_loss = 0.192 entropy_reg_loss = 0.056 kld_reg_loss = 0.099 d_loss = 541.462 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:43:38, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:43:38, INFO:ISAT:UDA iter = 6200 adv_loss = 60.633 seg_loss = 0.360 target_seg_loss = 0.035 entropy_reg_loss = 0.093 kld_reg_loss = 0.091 d_loss = 562.482 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:44:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:44:22, INFO:ISAT:UDA iter = 6250 adv_loss = 29.142 seg_loss = 0.294 target_seg_loss = 0.032 entropy_reg_loss = 0.048 kld_reg_loss = 0.101 d_loss = 26.819 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:45:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:45:00, INFO:ISAT:UDA iter = 6300 adv_loss = 11.856 seg_loss = 0.411 target_seg_loss = 0.014 entropy_reg_loss = 0.053 kld_reg_loss = 0.087 d_loss = 4.402 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:45:44, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:45:44, INFO:ISAT:UDA iter = 6350 adv_loss = 5.834 seg_loss = 0.707 target_seg_loss = 0.052 entropy_reg_loss = 0.057 kld_reg_loss = 0.097 d_loss = 3.671 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:46:27, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:46:27, INFO:ISAT:UDA iter = 6400 adv_loss = 4.906 seg_loss = 0.375 target_seg_loss = 0.021 entropy_reg_loss = 0.051 kld_reg_loss = 0.103 d_loss = 7.626 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:47:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:47:11, INFO:ISAT:UDA iter = 6450 adv_loss = 8.143 seg_loss = 0.505 target_seg_loss = 0.011 entropy_reg_loss = 0.052 kld_reg_loss = 0.098 d_loss = 6.023 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:47:49, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\6500
+2022-11-16 00:54:46, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\6500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 00:54:52, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:54:52, INFO:ISAT:UDA iter = 6500 adv_loss = 2.326 seg_loss = 0.587 target_seg_loss = 0.041 entropy_reg_loss = 0.058 kld_reg_loss = 0.103 d_loss = 0.618 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:56:20, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.43355 | 0.60486 |  0.53229  | 0.70035 |
+|   1   | 0.56452 | 0.72165 |  0.75256  | 0.69317 |
+|   2   | 0.48239 | 0.65083 |  0.85161  | 0.52666 |
+|   3   | 0.72166 | 0.83833 |  0.85581  | 0.82155 |
+|   4   | 0.51587 | 0.68062 |  0.68333  | 0.67793 |
+|   5   | 0.47905 | 0.64778 |  0.68854  | 0.61157 |
+|   6   | 0.61175 | 0.75911 |  0.80041  | 0.72186 |
+|  mean | 0.54411 | 0.70045 |  0.73779  | 0.67901 |
+|   OA  | 0.69494 |    -    |     -     |    -    |
+| Kappa | 0.62199 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 00:56:58, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:56:58, INFO:ISAT:UDA iter = 6550 adv_loss = 1.911 seg_loss = 0.469 target_seg_loss = 0.063 entropy_reg_loss = 0.087 kld_reg_loss = 0.096 d_loss = 1.944 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:57:41, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:57:42, INFO:ISAT:UDA iter = 6600 adv_loss = 0.201 seg_loss = 0.479 target_seg_loss = 0.075 entropy_reg_loss = 0.186 kld_reg_loss = 0.083 d_loss = 2.020 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:58:25, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:58:25, INFO:ISAT:UDA iter = 6650 adv_loss = 0.646 seg_loss = 0.295 target_seg_loss = 0.046 entropy_reg_loss = 0.067 kld_reg_loss = 0.100 d_loss = 1.651 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:59:03, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:59:03, INFO:ISAT:UDA iter = 6700 adv_loss = 0.739 seg_loss = 0.534 target_seg_loss = 0.256 entropy_reg_loss = 0.059 kld_reg_loss = 0.099 d_loss = 0.608 lr = 0.006 d_lr = 0.006 
+2022-11-16 00:59:47, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 00:59:47, INFO:ISAT:UDA iter = 6750 adv_loss = 0.710 seg_loss = 0.534 target_seg_loss = 0.034 entropy_reg_loss = 0.067 kld_reg_loss = 0.090 d_loss = 1.958 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:00:25, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:00:26, INFO:ISAT:UDA iter = 6800 adv_loss = 0.173 seg_loss = 0.389 target_seg_loss = 0.042 entropy_reg_loss = 0.120 kld_reg_loss = 0.091 d_loss = 53.725 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:01:15, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:01:15, INFO:ISAT:UDA iter = 6850 adv_loss = 50.155 seg_loss = 0.499 target_seg_loss = 0.006 entropy_reg_loss = 0.044 kld_reg_loss = 0.102 d_loss = 296.590 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:01:53, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:01:53, INFO:ISAT:UDA iter = 6900 adv_loss = 33.319 seg_loss = 0.379 target_seg_loss = 0.025 entropy_reg_loss = 0.053 kld_reg_loss = 0.098 d_loss = 77.333 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:02:37, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:02:37, INFO:ISAT:UDA iter = 6950 adv_loss = 11.466 seg_loss = 0.306 target_seg_loss = 0.011 entropy_reg_loss = 0.051 kld_reg_loss = 0.098 d_loss = 16.539 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:03:14, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\7000
+2022-11-16 01:10:11, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\7000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 01:10:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:10:17, INFO:ISAT:UDA iter = 7000 adv_loss = 6.654 seg_loss = 0.332 target_seg_loss = 0.043 entropy_reg_loss = 0.055 kld_reg_loss = 0.106 d_loss = 4.364 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:11:45, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42528 | 0.59677 |  0.52704  | 0.68776 |
+|   1   | 0.58099 | 0.73497 |  0.72573  | 0.74445 |
+|   2   | 0.46922 | 0.63873 |  0.87459  | 0.50306 |
+|   3   | 0.73188 | 0.84519 |  0.86454  | 0.82669 |
+|   4   |  0.5018 | 0.66827 |  0.66932  | 0.66722 |
+|   5   | 0.48737 | 0.65535 |  0.69787  | 0.61771 |
+|   6   | 0.61566 | 0.76211 |  0.81558  | 0.71523 |
+|  mean |  0.5446 |  0.7002 |  0.73924  |  0.6803 |
+|   OA  | 0.69522 |    -    |     -     |    -    |
+| Kappa | 0.62284 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 01:12:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:12:28, INFO:ISAT:UDA iter = 7050 adv_loss = 11.764 seg_loss = 0.552 target_seg_loss = 0.025 entropy_reg_loss = 0.052 kld_reg_loss = 0.107 d_loss = 1.799 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:13:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:13:06, INFO:ISAT:UDA iter = 7100 adv_loss = 6.119 seg_loss = 0.253 target_seg_loss = 0.068 entropy_reg_loss = 0.044 kld_reg_loss = 0.105 d_loss = 4.654 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:13:50, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:13:50, INFO:ISAT:UDA iter = 7150 adv_loss = 3.434 seg_loss = 0.738 target_seg_loss = 0.014 entropy_reg_loss = 0.051 kld_reg_loss = 0.097 d_loss = 0.658 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:14:28, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:14:28, INFO:ISAT:UDA iter = 7200 adv_loss = 0.988 seg_loss = 0.461 target_seg_loss = 0.049 entropy_reg_loss = 0.063 kld_reg_loss = 0.099 d_loss = 0.980 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:15:12, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:15:12, INFO:ISAT:UDA iter = 7250 adv_loss = 8.922 seg_loss = 0.514 target_seg_loss = 0.007 entropy_reg_loss = 0.060 kld_reg_loss = 0.092 d_loss = 1.666 lr = 0.006 d_lr = 0.006 
+2022-11-16 01:15:56, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:15:56, INFO:ISAT:UDA iter = 7300 adv_loss = 16.927 seg_loss = 0.346 target_seg_loss = 0.038 entropy_reg_loss = 0.043 kld_reg_loss = 0.098 d_loss = 9.338 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:16:39, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:16:39, INFO:ISAT:UDA iter = 7350 adv_loss = 4.729 seg_loss = 0.612 target_seg_loss = 0.045 entropy_reg_loss = 0.065 kld_reg_loss = 0.090 d_loss = 1.528 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:17:18, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:17:18, INFO:ISAT:UDA iter = 7400 adv_loss = 13.099 seg_loss = 0.621 target_seg_loss = 0.025 entropy_reg_loss = 0.061 kld_reg_loss = 0.096 d_loss = 6.249 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:18:01, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:18:01, INFO:ISAT:UDA iter = 7450 adv_loss = 10.679 seg_loss = 0.554 target_seg_loss = 0.028 entropy_reg_loss = 0.043 kld_reg_loss = 0.106 d_loss = 4.138 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:18:44, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\7500
+2022-11-16 01:25:41, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\7500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 01:25:47, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:25:47, INFO:ISAT:UDA iter = 7500 adv_loss = 12.853 seg_loss = 0.425 target_seg_loss = 0.019 entropy_reg_loss = 0.046 kld_reg_loss = 0.099 d_loss = 0.737 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:27:14, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42003 | 0.59158 |  0.50256  |  0.7189 |
+|   1   | 0.58575 | 0.73877 |  0.71478  | 0.76443 |
+|   2   | 0.47035 | 0.63978 |  0.89297  | 0.49845 |
+|   3   | 0.73721 | 0.84873 |  0.88746  | 0.81324 |
+|   4   |  0.4954 | 0.66256 |  0.68048  | 0.64556 |
+|   5   |  0.4686 | 0.63816 |  0.71949  | 0.57335 |
+|   6   | 0.59566 |  0.7466 |    0.84   | 0.67189 |
+|  mean |  0.539  | 0.69517 |  0.74825  |  0.6694 |
+|   OA  | 0.68673 |    -    |     -     |    -    |
+| Kappa | 0.61126 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 01:27:52, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:27:52, INFO:ISAT:UDA iter = 7550 adv_loss = 6.748 seg_loss = 0.548 target_seg_loss = 0.032 entropy_reg_loss = 0.056 kld_reg_loss = 0.104 d_loss = 5.742 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:28:31, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:28:31, INFO:ISAT:UDA iter = 7600 adv_loss = 2.778 seg_loss = 0.323 target_seg_loss = 0.066 entropy_reg_loss = 0.064 kld_reg_loss = 0.107 d_loss = 1.522 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:29:14, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:29:14, INFO:ISAT:UDA iter = 7650 adv_loss = 3.336 seg_loss = 0.814 target_seg_loss = 0.010 entropy_reg_loss = 0.055 kld_reg_loss = 0.098 d_loss = 0.602 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:29:53, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:29:53, INFO:ISAT:UDA iter = 7700 adv_loss = 1.582 seg_loss = 0.414 target_seg_loss = 0.033 entropy_reg_loss = 0.058 kld_reg_loss = 0.095 d_loss = 0.243 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:30:42, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:30:42, INFO:ISAT:UDA iter = 7750 adv_loss = 2.330 seg_loss = 0.464 target_seg_loss = 0.069 entropy_reg_loss = 0.068 kld_reg_loss = 0.095 d_loss = 0.464 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:31:20, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:31:20, INFO:ISAT:UDA iter = 7800 adv_loss = 2.513 seg_loss = 0.576 target_seg_loss = 0.076 entropy_reg_loss = 0.057 kld_reg_loss = 0.100 d_loss = 0.342 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:32:04, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:32:04, INFO:ISAT:UDA iter = 7850 adv_loss = 0.711 seg_loss = 0.621 target_seg_loss = 0.055 entropy_reg_loss = 0.061 kld_reg_loss = 0.094 d_loss = 0.109 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:32:42, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:32:42, INFO:ISAT:UDA iter = 7900 adv_loss = 4.307 seg_loss = 0.398 target_seg_loss = 0.028 entropy_reg_loss = 0.060 kld_reg_loss = 0.096 d_loss = 0.632 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:33:31, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:33:31, INFO:ISAT:UDA iter = 7950 adv_loss = 23.782 seg_loss = 0.490 target_seg_loss = 0.035 entropy_reg_loss = 0.042 kld_reg_loss = 0.100 d_loss = 36.903 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:34:09, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\8000
+2022-11-16 01:41:05, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\8000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 01:41:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:41:11, INFO:ISAT:UDA iter = 8000 adv_loss = 28.013 seg_loss = 0.418 target_seg_loss = 0.007 entropy_reg_loss = 0.068 kld_reg_loss = 0.096 d_loss = 28.706 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:42:38, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42717 | 0.59863 |  0.54059  | 0.67063 |
+|   1   | 0.57915 |  0.7335 |  0.74068  | 0.72645 |
+|   2   | 0.50998 | 0.67548 |   0.8539  | 0.55873 |
+|   3   | 0.73427 | 0.84678 |  0.89612  | 0.80258 |
+|   4   | 0.51295 | 0.67808 |   0.6543  | 0.70366 |
+|   5   | 0.48258 |  0.651  |  0.66514  | 0.63744 |
+|   6   | 0.59497 | 0.74606 |  0.77839  |  0.7163 |
+|  mean | 0.54872 | 0.70422 |  0.73273  | 0.68797 |
+|   OA  | 0.69441 |    -    |     -     |    -    |
+| Kappa | 0.62252 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 01:43:16, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:43:16, INFO:ISAT:UDA iter = 8050 adv_loss = 0.830 seg_loss = 0.426 target_seg_loss = 0.031 entropy_reg_loss = 0.193 kld_reg_loss = 0.087 d_loss = 21.292 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:43:54, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:43:55, INFO:ISAT:UDA iter = 8100 adv_loss = 6.909 seg_loss = 0.403 target_seg_loss = 0.005 entropy_reg_loss = 0.037 kld_reg_loss = 0.096 d_loss = 1.268 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:44:38, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:44:38, INFO:ISAT:UDA iter = 8150 adv_loss = 1.993 seg_loss = 0.806 target_seg_loss = 0.012 entropy_reg_loss = 0.039 kld_reg_loss = 0.099 d_loss = 2.219 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:45:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:45:22, INFO:ISAT:UDA iter = 8200 adv_loss = 1.834 seg_loss = 0.548 target_seg_loss = 0.023 entropy_reg_loss = 0.048 kld_reg_loss = 0.095 d_loss = 0.716 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:46:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:46:06, INFO:ISAT:UDA iter = 8250 adv_loss = 1.496 seg_loss = 0.289 target_seg_loss = 0.010 entropy_reg_loss = 0.042 kld_reg_loss = 0.093 d_loss = 0.593 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:46:44, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:46:44, INFO:ISAT:UDA iter = 8300 adv_loss = 0.955 seg_loss = 0.258 target_seg_loss = 0.010 entropy_reg_loss = 0.034 kld_reg_loss = 0.098 d_loss = 0.804 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:47:27, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:47:28, INFO:ISAT:UDA iter = 8350 adv_loss = 1.032 seg_loss = 0.467 target_seg_loss = 0.056 entropy_reg_loss = 0.043 kld_reg_loss = 0.102 d_loss = 0.512 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:48:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:48:11, INFO:ISAT:UDA iter = 8400 adv_loss = 2.438 seg_loss = 0.580 target_seg_loss = 0.009 entropy_reg_loss = 0.050 kld_reg_loss = 0.092 d_loss = 0.686 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:48:55, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:48:55, INFO:ISAT:UDA iter = 8450 adv_loss = 1.569 seg_loss = 0.329 target_seg_loss = 0.039 entropy_reg_loss = 0.053 kld_reg_loss = 0.097 d_loss = 0.336 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:49:33, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\8500
+2022-11-16 01:56:28, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\8500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 01:56:34, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:56:34, INFO:ISAT:UDA iter = 8500 adv_loss = 2.858 seg_loss = 0.374 target_seg_loss = 0.013 entropy_reg_loss = 0.048 kld_reg_loss = 0.094 d_loss = 0.163 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:58:01, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42291 | 0.59443 |  0.50435  | 0.72368 |
+|   1   | 0.58328 |  0.7368 |   0.7345  |  0.7391 |
+|   2   | 0.51314 | 0.67824 |   0.8369  | 0.57015 |
+|   3   |  0.7386 | 0.84965 |  0.89872  | 0.80566 |
+|   4   | 0.50028 | 0.66692 |  0.71843  |  0.6223 |
+|   5   | 0.46977 | 0.63924 |  0.72808  | 0.56973 |
+|   6   | 0.60218 |  0.7517 |  0.83326  | 0.68469 |
+|  mean | 0.54717 | 0.70243 |  0.75061  | 0.67362 |
+|   OA  |  0.6911 |    -    |     -     |    -    |
+| Kappa | 0.61631 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 01:58:40, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:58:40, INFO:ISAT:UDA iter = 8550 adv_loss = 22.292 seg_loss = 0.225 target_seg_loss = 0.124 entropy_reg_loss = 0.058 kld_reg_loss = 0.092 d_loss = 14.379 lr = 0.005 d_lr = 0.005 
+2022-11-16 01:59:18, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 01:59:18, INFO:ISAT:UDA iter = 8600 adv_loss = 61.337 seg_loss = 0.465 target_seg_loss = 0.020 entropy_reg_loss = 0.044 kld_reg_loss = 0.098 d_loss = 6.212 lr = 0.005 d_lr = 0.005 
+2022-11-16 02:00:07, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:00:07, INFO:ISAT:UDA iter = 8650 adv_loss = 4.846 seg_loss = 0.315 target_seg_loss = 0.011 entropy_reg_loss = 0.067 kld_reg_loss = 0.094 d_loss = 2.042 lr = 0.005 d_lr = 0.005 
+2022-11-16 02:00:45, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:00:45, INFO:ISAT:UDA iter = 8700 adv_loss = 2.971 seg_loss = 0.298 target_seg_loss = 0.042 entropy_reg_loss = 0.054 kld_reg_loss = 0.102 d_loss = 1.139 lr = 0.005 d_lr = 0.005 
+2022-11-16 02:01:29, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:01:29, INFO:ISAT:UDA iter = 8750 adv_loss = 2.648 seg_loss = 0.462 target_seg_loss = 0.061 entropy_reg_loss = 0.063 kld_reg_loss = 0.095 d_loss = 0.593 lr = 0.005 d_lr = 0.005 
+2022-11-16 02:02:07, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:02:07, INFO:ISAT:UDA iter = 8800 adv_loss = 1.152 seg_loss = 0.523 target_seg_loss = 0.008 entropy_reg_loss = 0.037 kld_reg_loss = 0.098 d_loss = 0.299 lr = 0.005 d_lr = 0.005 
+2022-11-16 02:02:51, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:02:51, INFO:ISAT:UDA iter = 8850 adv_loss = 2.125 seg_loss = 0.506 target_seg_loss = 0.011 entropy_reg_loss = 0.043 kld_reg_loss = 0.095 d_loss = 1.227 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:03:35, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:03:35, INFO:ISAT:UDA iter = 8900 adv_loss = 3.785 seg_loss = 0.321 target_seg_loss = 0.006 entropy_reg_loss = 0.053 kld_reg_loss = 0.094 d_loss = 2.930 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:04:18, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:04:18, INFO:ISAT:UDA iter = 8950 adv_loss = 0.918 seg_loss = 0.535 target_seg_loss = 0.013 entropy_reg_loss = 0.039 kld_reg_loss = 0.104 d_loss = 19.870 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:04:56, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\9000
+2022-11-16 02:11:51, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\9000\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 02:11:57, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:11:57, INFO:ISAT:UDA iter = 9000 adv_loss = 9.548 seg_loss = 0.434 target_seg_loss = 0.053 entropy_reg_loss = 0.046 kld_reg_loss = 0.096 d_loss = 4.165 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:13:24, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42026 | 0.59181 |  0.50666  | 0.71136 |
+|   1   | 0.59068 | 0.74267 |   0.7111  | 0.77718 |
+|   2   | 0.48312 | 0.65149 |  0.88523  | 0.51541 |
+|   3   | 0.73556 | 0.84764 |   0.8881  |  0.8107 |
+|   4   | 0.51276 | 0.67791 |  0.71097  | 0.64779 |
+|   5   | 0.47278 | 0.64203 |  0.72131  | 0.57845 |
+|   6   | 0.60619 | 0.75482 |  0.84027  | 0.68514 |
+|  mean | 0.54591 |  0.7012 |  0.75195  | 0.67515 |
+|   OA  | 0.69146 |    -    |     -     |    -    |
+| Kappa |  0.6173 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 02:14:03, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:14:03, INFO:ISAT:UDA iter = 9050 adv_loss = 0.747 seg_loss = 0.524 target_seg_loss = 0.057 entropy_reg_loss = 0.116 kld_reg_loss = 0.084 d_loss = 78.870 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:14:46, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:14:46, INFO:ISAT:UDA iter = 9100 adv_loss = 6.312 seg_loss = 0.691 target_seg_loss = 0.009 entropy_reg_loss = 0.030 kld_reg_loss = 0.104 d_loss = 4.851 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:15:30, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:15:30, INFO:ISAT:UDA iter = 9150 adv_loss = 3.667 seg_loss = 0.316 target_seg_loss = 0.026 entropy_reg_loss = 0.049 kld_reg_loss = 0.104 d_loss = 0.743 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:16:08, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:16:08, INFO:ISAT:UDA iter = 9200 adv_loss = 2.047 seg_loss = 0.354 target_seg_loss = 0.039 entropy_reg_loss = 0.064 kld_reg_loss = 0.088 d_loss = 2.715 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:16:52, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:16:52, INFO:ISAT:UDA iter = 9250 adv_loss = 1.071 seg_loss = 0.679 target_seg_loss = 0.014 entropy_reg_loss = 0.043 kld_reg_loss = 0.095 d_loss = 0.791 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:17:30, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:17:30, INFO:ISAT:UDA iter = 9300 adv_loss = 1.130 seg_loss = 0.489 target_seg_loss = 0.034 entropy_reg_loss = 0.047 kld_reg_loss = 0.099 d_loss = 0.150 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:18:19, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:18:19, INFO:ISAT:UDA iter = 9350 adv_loss = 0.322 seg_loss = 0.405 target_seg_loss = 0.026 entropy_reg_loss = 0.097 kld_reg_loss = 0.098 d_loss = 4.652 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:18:57, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:18:57, INFO:ISAT:UDA iter = 9400 adv_loss = 2.734 seg_loss = 0.381 target_seg_loss = 0.024 entropy_reg_loss = 0.033 kld_reg_loss = 0.103 d_loss = 0.087 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:19:41, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:19:41, INFO:ISAT:UDA iter = 9450 adv_loss = 1.796 seg_loss = 0.402 target_seg_loss = 0.004 entropy_reg_loss = 0.041 kld_reg_loss = 0.101 d_loss = 0.332 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:20:19, INFO:ISAT:Start generate pseudo labels: ./log/iast/2urban/dev\pseudo_label\9500
+2022-11-16 02:27:16, INFO:ISAT:{'image_dir': ['./LoveDA/Val/Urban/images_png/'], 'mask_dir': ['./log/iast/2urban/dev\\pseudo_label\\9500\\pred'], 'transforms': Compose([
+  RandomCrop(always_apply=False, p=1.0, height=512, width=512),
+  OneOf([
+    HorizontalFlip(always_apply=True, p=0.5),
+    VerticalFlip(always_apply=True, p=0.5),
+    RandomRotate90(always_apply=True, p=0.5),
+  ], p=0.75),
+  Normalize(always_apply=True, p=1.0, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375), max_pixel_value=1),
+  ToTensor(always_apply=True, p=1.0, transpose_mask=False),
+], p=1.0, bbox_params=None, keypoint_params=None, additional_targets={}), 'CV': {'k': 10, 'i': -1}, 'training': True, 'batch_size': 6, 'num_workers': 2, 'drop_last': True}
+2022-11-16 02:27:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:27:22, INFO:ISAT:UDA iter = 9500 adv_loss = 0.879 seg_loss = 0.576 target_seg_loss = 0.067 entropy_reg_loss = 0.068 kld_reg_loss = 0.096 d_loss = 0.323 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:28:49, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42793 | 0.59937 |  0.52223  | 0.70326 |
+|   1   | 0.59098 | 0.74291 |  0.72855  | 0.75785 |
+|   2   | 0.49805 | 0.66493 |  0.86743  | 0.53909 |
+|   3   | 0.73535 |  0.8475 |  0.89009  | 0.80879 |
+|   4   | 0.50831 | 0.67401 |  0.67418  | 0.67384 |
+|   5   | 0.48437 | 0.65263 |  0.73086  | 0.58953 |
+|   6   | 0.61376 | 0.76066 |  0.81832  | 0.71059 |
+|  mean | 0.55125 |  0.706  |  0.74738  | 0.68328 |
+|   OA  | 0.69771 |    -    |     -     |    -    |
+| Kappa | 0.62538 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+
+2022-11-16 02:29:33, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:29:33, INFO:ISAT:UDA iter = 9550 adv_loss = 7.981 seg_loss = 0.305 target_seg_loss = 0.061 entropy_reg_loss = 0.067 kld_reg_loss = 0.093 d_loss = 10.552 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:30:11, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:30:11, INFO:ISAT:UDA iter = 9600 adv_loss = 15.678 seg_loss = 0.389 target_seg_loss = 0.049 entropy_reg_loss = 0.049 kld_reg_loss = 0.096 d_loss = 6.082 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:30:55, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:30:55, INFO:ISAT:UDA iter = 9650 adv_loss = 5.659 seg_loss = 0.951 target_seg_loss = 0.053 entropy_reg_loss = 0.047 kld_reg_loss = 0.094 d_loss = 2.711 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:31:33, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:31:33, INFO:ISAT:UDA iter = 9700 adv_loss = 2.260 seg_loss = 0.407 target_seg_loss = 0.006 entropy_reg_loss = 0.034 kld_reg_loss = 0.098 d_loss = 0.935 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:32:17, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:32:17, INFO:ISAT:UDA iter = 9750 adv_loss = 2.614 seg_loss = 0.457 target_seg_loss = 0.023 entropy_reg_loss = 0.041 kld_reg_loss = 0.095 d_loss = 0.918 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:33:00, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:33:00, INFO:ISAT:UDA iter = 9800 adv_loss = 0.877 seg_loss = 0.871 target_seg_loss = 0.033 entropy_reg_loss = 0.059 kld_reg_loss = 0.098 d_loss = 0.547 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:33:44, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:33:44, INFO:ISAT:UDA iter = 9850 adv_loss = 0.673 seg_loss = 0.470 target_seg_loss = 0.089 entropy_reg_loss = 0.034 kld_reg_loss = 0.103 d_loss = 0.243 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:34:22, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:34:22, INFO:ISAT:UDA iter = 9900 adv_loss = 0.557 seg_loss = 0.413 target_seg_loss = 0.005 entropy_reg_loss = 0.046 kld_reg_loss = 0.096 d_loss = 0.184 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:35:06, INFO:ISAT:exp = ./log/iast/2urban/dev
+2022-11-16 02:35:06, INFO:ISAT:UDA iter = 9950 adv_loss = 0.773 seg_loss = 0.407 target_seg_loss = 0.009 entropy_reg_loss = 0.047 kld_reg_loss = 0.096 d_loss = 0.372 lr = 0.004 d_lr = 0.004 
+2022-11-16 02:37:17, INFO:ISAT:
++-------+---------+---------+-----------+---------+
+| class |   iou   |    f1   | precision |  recall |
++-------+---------+---------+-----------+---------+
+|   0   | 0.42227 |  0.5938 |  0.51927  | 0.69331 |
+|   1   | 0.58611 | 0.73905 |   0.7288  | 0.74961 |
+|   2   | 0.50282 | 0.66917 |  0.83751  | 0.55717 |
+|   3   | 0.73776 | 0.84909 |  0.88467  | 0.81626 |
+|   4   | 0.50319 | 0.66949 |  0.63056  | 0.71354 |
+|   5   | 0.49448 | 0.66175 |  0.75254  |  0.5905 |
+|   6   | 0.60277 | 0.75216 |  0.81998  |  0.6947 |
+|  mean | 0.54991 | 0.70493 |  0.73905  | 0.68787 |
+|   OA  | 0.69457 |    -    |     -     |    -    |
+| Kappa | 0.62231 |    -    |     -     |    -    |
++-------+---------+---------+-----------+---------+

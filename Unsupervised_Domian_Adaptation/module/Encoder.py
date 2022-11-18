@@ -7,8 +7,7 @@ from module.DensePPM import DensePPM
 class PPMBilinear(nn.Module):
     def __init__(self, num_classes=7, fc_dim=2048,
                  use_aux=False, pool_scales=(1, 2, 3, 6),
-                 norm_layer = nn.BatchNorm2d
-                 ):
+                 norm_layer = nn.BatchNorm2d):
         super(PPMBilinear, self).__init__()
         self.use_aux = use_aux
         self.ppm = []

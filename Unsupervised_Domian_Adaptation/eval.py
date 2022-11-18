@@ -69,18 +69,16 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                 if cfg.SNAPSHOT_DIR is not None:
                     if (model_D != None):
                         for fname, pred, d_dis, d_cls in zip(ret_gt['fname'], cls, domain_dis, domain_cls):
-                            viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'), False)
                             if save_domain_dis:
                                 viz_domian_dis_img = viz_domain_dis.saveheatmap(d_dis[0], fname.replace('tif', 'png'))
                             if save_domain_cls:
                                 viz_domian_cls_img = viz_domain_cls.setpalette(d_cls[0], fname.replace('tif', 'png'))
                             if save_prediction:
-                                frames.append(wandb.Image(viz_img, caption=fname))
+                                viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'), True)
                     else:
                         for fname, pred in zip(ret_gt['fname'], cls):
-                            viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'), False)
                             if save_prediction:
-                                frames.append(wandb.Image(viz_img, caption=fname))
+                                viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'), True)
             # if is_training:
                 # wandb.log({"prediction": frames}, step=step)
 

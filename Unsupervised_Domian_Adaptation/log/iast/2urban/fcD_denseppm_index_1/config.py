@@ -17,7 +17,7 @@ NUM_STEPS = 15000
 NUM_STEPS_STOP = 10000  # Use damping instead of early stopping
 PREHEAT_STEPS = int(NUM_STEPS / 20)
 POWER = 0.9
-EVAL_EVERY=500
+EVAL_EVERY = 500
 
 DISCRIMINATOR = dict(
     lambda_kldreg_weight=0.1,
@@ -25,7 +25,7 @@ DISCRIMINATOR = dict(
     weight=0.05
 )
 GENERATE_PSEDO_EVERY = 500
-WARMUP_STEP = 2000
+WARMUP_STEP = 1000
 PSEIDO_DICT = dict(
     pl_alpha=0.2,
     pl_gamma=8.0,
