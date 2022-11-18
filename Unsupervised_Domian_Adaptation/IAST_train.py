@@ -19,21 +19,28 @@ warnings.filterwarnings("ignore")
 
 
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
-parser = argparse.ArgumentParser(description='Run ISAT methods.')
+parser = argparse.ArgumentParser(description='Run IAST methods.')
 parser.add_argument('config_path', type=str, help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 
+def soft_label_cross_entropy(pred, soft_label, pixel_weights=None):
+    loss = -soft_label.float()*F.log_softmax(pred, dim=1)
+    if pixel_weights is None:
+        return torch.mean(torch.sum(loss, dim=1))
+    return torch.mean(pixel_weights*torch.sum(loss, dim=1))
+
+
 def main():
     # 初始化wandb
-    # wandb.init(
-    #     project="UDA",
-    #     notes="IAST + DensePPM",
-    #     tags=["领域自适应", "语义分割"]
-    # )
-    # cfg.SNAPSHOT_DIR = wandb.run.dir
-    # wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR
+    wandb.init(
+        project="UDA",
+        notes="IAST + DensePPM + dev_class_dis",
+        tags=["dev_class_dis"]
+    )
+    cfg.SNAPSHOT_DIR = wandb.run.dir
+    wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR
     backup_config(args.config_path)
     # 创建快照文件夹
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
@@ -88,8 +95,8 @@ def main():
     )).cuda()
     # model = DensePPMUNet(in_channel=3, n_classes=7, ppm="DensePPM", pool_size=[2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    model_D = FCDiscriminator(7).cuda()
-    # model_D = PixelDiscriminator(input_nc=7).cuda()
+    # model_D = FCDiscriminator(7).cuda()
+    model_D = PixelDiscriminator(input_nc=1024, num_classes=7).cuda()
     model_D_trained = False
 
     # wandb.watch(model)
@@ -124,8 +131,8 @@ def main():
             # 从训练集迭代器中取出一个batch训练数据
             batch = trainloader_iter.next()
             images_s, labels_s = batch[0]
-            pred_source = model(images_s.cuda())
-            pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            pred_source, src_feat = model(images_s.cuda())
+            # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
             # Segmentation Loss
             loss = loss_calc(pred_source, labels_s['cls'].cuda())
             loss.backward()
@@ -142,21 +149,21 @@ def main():
                 logger.info('exp = {}'.format(cfg.SNAPSHOT_DIR))
                 text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f' % (i_iter, loss, lr)
                 logger.info(text)
-                # wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
+                wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
             # 训练步数大于NUM_STEPS_STOP时，保存模型，验证模型，退出训练。
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                # wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
+                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                # wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
+                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()
         else:
@@ -188,75 +195,96 @@ def main():
 
             # 源域前向过程
             images_s, labels_s = batch[0]
-            pred_source = model(images_s.cuda())
-            pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            b, c, h, w = images_s.shape
+
+            pred_source, src_feat = model(images_s.cuda())
+            # generate soft labels
+            src_soft_label = F.softmax(pred_source, dim=1).detach()
+            src_soft_label[src_soft_label > 0.9] = 0.9
+            # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
 
             # 获取目标域一个batch数据，并前向传播。
             batch = targetloader_iter.next()
             images_t, labels_t = batch[0]
-            pred_target = model(images_t.cuda())
-            pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
+            pred_target, tar_feat = model(images_t.cuda())
+            # generate soft labels
+            tar_soft_label = F.softmax(pred_target, dim=1).detach()
+            tar_soft_label[tar_soft_label > 0.9] = 0.9
+            # pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
 
-            # defaut reg_weight
-            if cfg.DISCRIMINATOR['lambda_entropy_weight'] or cfg.DISCRIMINATOR['lambda_kldreg_weight']:
-                reg_val_matrix = torch.ones_like(labels_t['cls']).type_as(pred_target)
-                reg_val_matrix[labels_t['cls'] == -1] = 0
-                reg_val_matrix = reg_val_matrix.unsqueeze(dim=1)
-                reg_ignore_matrix = 1 - reg_val_matrix
-                reg_weight = torch.ones_like(pred_target)
-                reg_weight_val = reg_weight * reg_val_matrix
-                reg_weight_ignore = reg_weight * reg_ignore_matrix
-                del reg_ignore_matrix, reg_weight, reg_val_matrix
 
             loss_dict = dict()
+            optimizer.zero_grad()
+            optimizer_D.zero_grad()
 
-            # forward discriminators
-            s_D_logits = model_D(pred_source.softmax(dim=1).detach())
-            t_D_logits = model_D(pred_target.softmax(dim=1).detach())
+            # defaut reg_weight
+            # if cfg.DISCRIMINATOR['lambda_entropy_weight'] or cfg.DISCRIMINATOR['lambda_kldreg_weight']:
+            #     reg_val_matrix = torch.ones_like(labels_t['cls']).type_as(pred_target)
+            #     reg_val_matrix[labels_t['cls'] == -1] = 0
+            #     reg_val_matrix = reg_val_matrix.unsqueeze(dim=1)
+            #     reg_ignore_matrix = 1 - reg_val_matrix
+            #     reg_weight = torch.ones_like(pred_target)
+            #     reg_weight_val = reg_weight * reg_val_matrix
+            #     reg_weight_ignore = reg_weight * reg_ignore_matrix
+            #     del reg_ignore_matrix, reg_weight, reg_val_matrix
 
-            # 域鉴别训练
-            is_source = torch.zeros_like(s_D_logits).cuda()
-            is_target = torch.ones_like(t_D_logits).cuda()
-            discriminator_loss = (bce_loss(s_D_logits, is_source) +
-                                  bce_loss(t_D_logits, is_target)) / 2
+            
+            # # entropy reg
+            # if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
+            #     entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
+            #     entropy_reg_loss = entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
+            #     entropy_reg_loss.backward(retain_graph=True)
+            #     loss_dict['entropy_reg_loss'] = entropy_reg_loss
+            # # kld reg
+            # if cfg.DISCRIMINATOR['lambda_kldreg_weight'] > 0:
+            #     kld_reg_loss = kldloss(pred_target, reg_weight_val)
+            #     kld_reg_loss = kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
+            #     kld_reg_loss.backward(retain_graph=True)
+            #     loss_dict['kld_reg_loss'] = kld_reg_loss
 
-            # adv_losses
-            # 目标域对齐到源域训练
-            t_D_logits = model_D(pred_target.softmax(dim=1).detach())
-            is_source = torch.zeros_like(t_D_logits).cuda()
-            adv_loss = cfg.DISCRIMINATOR['weight'] * bce_loss(t_D_logits, is_source)
-            loss_dict['adv_loss'] = adv_loss
+
 
             # update seg loss
             seg_loss = cfg.SOURCE_LOSS_WEIGHT * loss_calc(pred_source, labels_s['cls'].cuda())
+            seg_loss.backward(retain_graph=True)
             loss_dict['seg_loss'] = seg_loss
 
             # pseudo label target seg loss
             target_seg_loss = cfg.PSEUDO_LOSS_WEIGHT * loss_calc(pred_target, labels_t['cls'].cuda())
+            target_seg_loss.backward(retain_graph=True)
             loss_dict['target_seg_loss'] = target_seg_loss
 
-            # entropy reg
-            if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
-                entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
-                entropy_reg_loss = entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
-                loss_dict['entropy_reg_loss'] = entropy_reg_loss
-            # kld reg
-            if cfg.DISCRIMINATOR['lambda_kldreg_weight'] > 0:
-                kld_reg_loss = kldloss(pred_target, reg_weight_val)
-                kld_reg_loss = kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
-                loss_dict['kld_reg_loss'] = kld_reg_loss
+
+            # forward discriminators
+            # s_D_logits = model_D(src_feat)
+            t_D_logits = model_D(tar_feat)
+
+            # s_D_logits = F.interpolate(s_D_logits, size=(h, w), mode='bilinear', align_corners=True)
+            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
+
+            # adv_loss
+            # 目标域对齐到源域训练
+            adv_loss = cfg.LAMBDA_ADV * soft_label_cross_entropy(t_D_logits, torch.cat((tar_soft_label, torch.zeros_like(tar_soft_label)), dim=1))
+            adv_loss.backward()
+            loss_dict['adv_loss'] = adv_loss
+
+            # 域鉴别训练
+            s_D_logits = model_D(src_feat.detach())
+            t_D_logits = model_D(tar_feat.detach())
+            s_D_logits = F.interpolate(s_D_logits, size=(h, w), mode='bilinear', align_corners=True)
+            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
+            loss_D_src = 0.5 * soft_label_cross_entropy(s_D_logits, torch.cat((src_soft_label, torch.zeros_like(src_soft_label)),dim=1))
+            loss_D_tar = 0.5 * soft_label_cross_entropy(t_D_logits, torch.cat((torch.zeros_like(tar_soft_label), tar_soft_label), dim=1))
+            loss_D_src.backward()
+            loss_D_tar.backward()
+            loss_dict['dis_loss'] = loss_D_src + loss_D_tar
+
 
             # backward model
-            optimizer.zero_grad()
-            total_loss = sum(loss_dict.values())
-            total_loss.backward()
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), max_norm=35, norm_type=2)
             optimizer.step()
 
-            # backward model_D
-            optimizer_D.zero_grad()
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model_D.parameters()), max_norm=35, norm_type=2)
-            discriminator_loss.backward()
             optimizer_D.step()
 
             if i_iter % 50 == 0:
@@ -264,28 +292,28 @@ def main():
                 text = 'UDA iter = %d ' % i_iter
                 for k, v in loss_dict.items():
                     text += '%s = %.3f ' % (k, v)
-                text += 'd_loss = %.3f ' % discriminator_loss
+                #text += 'd_loss = %.3f ' % loss_D_src.item() + loss_D_tar.item()
                 text += 'lr = %.3f ' % lr
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
-                # wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
-                #                  'target_seg_loss':loss_dict['target_seg_loss'].item(),
-                #                  'adv_loss':loss_dict['adv_loss'].item(),
-                #                  'dis_loss': discriminator_loss.item(),
-                #                 'seg_model_lr':lr,
-                #                  'dis_model_lr': lr_D}, step=i_iter)
+                wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
+                                 'target_seg_loss':loss_dict['target_seg_loss'].item(),
+                                 'adv_loss':loss_dict['adv_loss'].item(),
+                                 'dis_loss': loss_dict['dis_loss'].item(),
+                                'seg_model_lr':lr,
+                                 'dis_model_lr': lr_D}, step=i_iter)
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
-                # wandb.log({'tar_mIoU': miou}, step=i_iter)
+                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
-                # wandb.log({'tar_mIoU': miou}, step=i_iter)
+                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()
 

@@ -46,7 +46,7 @@ SOURCE_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=6,
+    batch_size=4,
     num_workers=2,
     drop_last=True
 )
@@ -71,7 +71,7 @@ TARGET_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=6,
+    batch_size=4,
     num_workers=2,
     drop_last=True
 )
@@ -89,7 +89,7 @@ EVAL_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=False,
-    batch_size=6,
+    batch_size=4,
     num_workers=0,
     drop_last=False
 )
