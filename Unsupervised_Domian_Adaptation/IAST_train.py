@@ -1,6 +1,8 @@
 import argparse
 import os.path as osp
 import torch.optim as optim
+
+from FADA_train import soft_label_cross_entropy
 from eval import evaluate
 from utils.tools import *
 from generate_pseudoV2 import generate_pseudoV2
@@ -131,8 +133,8 @@ def main():
             # 从训练集迭代器中取出一个batch训练数据
             batch = trainloader_iter.next()
             images_s, labels_s = batch[0]
-            pred_source, src_feat = model(images_s.cuda())
-            # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            pred_source, src_feat, src_feat = model(images_s.cuda())
+            # # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
             # Segmentation Loss
             loss = loss_calc(pred_source, labels_s['cls'].cuda())
             loss.backward()
@@ -197,8 +199,13 @@ def main():
             images_s, labels_s = batch[0]
             b, c, h, w = images_s.shape
 
-            pred_source, src_feat = model(images_s.cuda())
+            b, c, h, w = images_s.shape
+
+            pred_source, src_feat, src_feat = model(images_s.cuda())
             # generate soft labels
+            src_soft_label = F.softmax(pred_source, dim=1).detach()
+            src_soft_label[src_soft_label > 0.9] = 0.9
+            # # generate soft labels
             src_soft_label = F.softmax(pred_source, dim=1).detach()
             src_soft_label[src_soft_label > 0.9] = 0.9
             # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
@@ -206,8 +213,11 @@ def main():
             # 获取目标域一个batch数据，并前向传播。
             batch = targetloader_iter.next()
             images_t, labels_t = batch[0]
-            pred_target, tar_feat = model(images_t.cuda())
+            pred_target, tar_feat, tar_feat = model(images_t.cuda())
             # generate soft labels
+            tar_soft_label = F.softmax(pred_target, dim=1).detach()
+            tar_soft_label[tar_soft_label > 0.9] = 0.9
+            # # generate soft labels
             tar_soft_label = F.softmax(pred_target, dim=1).detach()
             tar_soft_label[tar_soft_label > 0.9] = 0.9
             # pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
