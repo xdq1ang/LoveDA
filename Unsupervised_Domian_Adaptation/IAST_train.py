@@ -115,8 +115,6 @@ def main():
 
     for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
         torch.cuda.empty_cache()
-        model.train()
-        model_D.train()
         if i_iter < cfg.WARMUP_STEP:
             # Train with Source
             optimizer.zero_grad()
@@ -158,15 +156,20 @@ def main():
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
                 model.train()
-                model_D.train()
         else:
             # PSEUDO learning
             # i_iter >= cfg.WARMUP_STEP时: i_iter等于GENERATE_PSEDO_EVERY的倍数时/等于WARMUP_STEP。进行伪标签学习
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudoV2(model, model_D, model_D_trained, evalloader, pseudo_dir, i_iter,
-                                                    pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, 
+                                                    model_D, 
+                                                    model_D_trained, 
+                                                    evalloader, 
+                                                    pseudo_dir, 
+                                                    i_iter,
+                                                    pseudo_dict=cfg.PSEIDO_DICT, 
+                                                    logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
@@ -269,11 +272,11 @@ def main():
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
                 wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
-                                 'target_seg_loss':loss_dict['target_seg_loss'].item(),
-                                 'adv_loss':loss_dict['adv_loss'].item(),
-                                 'dis_loss': discriminator_loss.item(),
-                                'seg_model_lr':lr,
-                                 'dis_model_lr': lr_D}, step=i_iter)
+                            'target_seg_loss':loss_dict['target_seg_loss'].item(),
+                            'adv_loss':loss_dict['adv_loss'].item(),
+                            'dis_loss': discriminator_loss.item(),
+                            'seg_model_lr':lr,
+                            'dis_model_lr': lr_D}, step=i_iter)
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
@@ -286,8 +289,8 @@ def main():
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, model_D, cfg, i_iter, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
-                model.train()
-                model_D.train()
+                # model.train()
+                # model_D.train()
 
 
 if __name__ == '__main__':

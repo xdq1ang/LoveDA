@@ -32,6 +32,7 @@ PSEIDO_DICT = dict(
 
 def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, step, n_class=7, pseudo_dict=dict(), logger=None):
     model_D.eval()
+    model.eval()
     with torch.no_grad():
         frames = []
         if logger != None:
@@ -41,7 +42,6 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
         viz_op = VisSeg(palette, os.path.join(save_dir, 'vis'))
         os.makedirs(os.path.join(save_dir, 'pred'), exist_ok=True)
         # 模型验证模式，不会更新参数
-        model.eval()
         # 概率阈值为0.9
         cls_thresh = np.ones(n_class) * 0.9
         for image, labels in tqdm(target_loader):
@@ -117,6 +117,8 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 # vis_mask = viz_op.saveVis(vis_mask, fname)
                 # frames.append(wandb.Image(vis_mask, caption=fname))
         # wandb.log({"pseudo_label": frames}, step=step)
+        
+        model.train()
         model_D.train()
         return os.path.join(save_dir, 'pred')
 

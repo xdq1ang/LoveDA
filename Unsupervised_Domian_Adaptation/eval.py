@@ -81,7 +81,9 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                                 viz_img = viz_predict.setpalette(pred, fname.replace('tif', 'png'), True)
             # if is_training:
                 # wandb.log({"prediction": frames}, step=step)
-
+        model.train()
+        if (model_D != None):
+            model_D.train()
         metric_op.summary_all()
         torch.cuda.empty_cache()
         return np.nanmean(np.array(mIoU))
