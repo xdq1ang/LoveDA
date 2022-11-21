@@ -12,20 +12,20 @@ SNAPSHOT_DIR = './log/iast/2urban/dev'
 # Hyper Parameters
 WEIGHT_DECAY = 0.0005
 LEARNING_RATE = 1e-2
-LEARNING_RATE_D = 1e-2
+LEARNING_RATE_D = 1e-4
 NUM_STEPS = 25000
 NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
 PREHEAT_STEPS = int(NUM_STEPS / 20)
 POWER = 0.9
-EVAL_EVERY=500
+EVAL_EVERY=1000
 
 DISCRIMINATOR = dict(
     lambda_kldreg_weight=0.1,
     lambda_entropy_weight=3.0,
     weight=0.05
 )
-GENERATE_PSEDO_EVERY = 500
-WARMUP_STEP = 500
+GENERATE_PSEDO_EVERY = 1000
+WARMUP_STEP = 4000
 PSEIDO_DICT = dict(
     pl_alpha=0.2,
     pl_gamma=8.0,
@@ -33,7 +33,7 @@ PSEIDO_DICT = dict(
 )
 PSEUDO_LOSS_WEIGHT = 0.5
 SOURCE_LOSS_WEIGHT = 1.0
-LAMBDA_ADV = 0.1
+LAMBDA_ADV = 0.5
 
 TARGET_SET = TARGET_SET
 SOURCE_DATA_CONFIG = SOURCE_DATA_CONFIG

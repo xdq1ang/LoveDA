@@ -1,8 +1,6 @@
 import argparse
 import os.path as osp
 import torch.optim as optim
-
-from FADA_train import soft_label_cross_entropy
 from eval import evaluate
 from utils.tools import *
 from generate_pseudoV2 import generate_pseudoV2
@@ -99,6 +97,7 @@ def main():
     # 构建辨别器。输入维度为7,输出维度为1
     # model_D = FCDiscriminator(7).cuda()
     model_D = PixelDiscriminator(input_nc=1024, num_classes=7).cuda()
+    # 判别器还未被训练
     model_D_trained = False
 
     # wandb.watch(model)
@@ -116,66 +115,84 @@ def main():
     logger.info('epochs ~= %.3f' % epochs)
     # 分割模型的优化器
     optimizer = optim.SGD(model.parameters(),
-                          lr=cfg.LEARNING_RATE, momentum=cfg.MOMENTUM, weight_decay=cfg.WEIGHT_DECAY)
-    optimizer.zero_grad()
+                          lr=cfg.LEARNING_RATE, 
+                          momentum=cfg.MOMENTUM, 
+                          weight_decay=cfg.WEIGHT_DECAY)
     # 辨别器的优化器
-    optimizer_D = optim.Adam(model_D.parameters(), lr=cfg.LEARNING_RATE_D, betas=(0.9, 0.99))
-    optimizer_D.zero_grad()
+    optimizer_D = optim.Adam(model_D.parameters(), 
+                            lr=cfg.LEARNING_RATE_D, 
+                            betas=(0.9, 0.99))
 
     for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
         torch.cuda.empty_cache()
         model.train()
         model_D.train()
+        optimizer.zero_grad()
+        optimizer_D.zero_grad()
+        temperature = 1.8
+        # 调整optimizer学习率
+        lr = adjust_learning_rate(optimizer, i_iter, cfg)
+
         if i_iter < cfg.WARMUP_STEP:
             # Train with Source
-            optimizer.zero_grad()
-            lr = adjust_learning_rate(optimizer, i_iter, cfg)
             # 从训练集迭代器中取出一个batch训练数据
             batch = trainloader_iter.next()
             images_s, labels_s = batch[0]
-            pred_source, src_feat, src_feat = model(images_s.cuda())
-            # # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            pred_source = model(images_s.cuda())
+            pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            pred_source = pred_source.div(temperature)
             # Segmentation Loss
-            loss = loss_calc(pred_source, labels_s['cls'].cuda())
-            loss.backward()
-            # clip_grad.clip_grad_norm_(模型参数，最大梯度范数，范数类型)
-            # 在训练模型的过程中，我们有可能发生梯度爆炸的情况，这样会导致我们模型训练的失败。
-            # 我们可以采取一个简单的策略来避免梯度的爆炸，那就是梯度截断Clip, 将梯度约束在某一个区间之内，
-            # 在训练的过程中，在优化器更新之前进行梯度截断操作
-            # 让每一次训练的结果都不过分的依赖某一部分神经元，在训练的时候随机忽略一些神经元和神经的链接，
-            # 使得神经网络变得不完整， 是解决过拟合的一种方法
+            src_seg_loss = loss_calc(pred_source, labels_s['cls'].cuda())
+            src_seg_loss.backward()
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), max_norm=35, norm_type=2)
             optimizer.step()
+            '''
+            clip_grad.clip_grad_norm_(模型参数，最大梯度范数，范数类型)
+            在训练模型的过程中，我们有可能发生梯度爆炸的情况，这样会导致我们模型训练的失败。
+            我们可以采取一个简单的策略来避免梯度的爆炸,那就是梯度截断Clip, 将梯度约束在某一个区间之内，
+            在训练的过程中，在优化器更新之前进行梯度截断操作
+            让每一次训练的结果都不过分的依赖某一部分神经元，在训练的时候随机忽略一些神经元和神经的链接，
+            使得神经网络变得不完整， 是解决过拟合的一种方法
+            '''
+
+
             # 每50步输出一次分割损失和学习率。
             if i_iter % 50 == 0:
                 logger.info('exp = {}'.format(cfg.SNAPSHOT_DIR))
-                text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f' % (i_iter, loss, lr)
+                text = 'Warm-up iter = %d, loss_seg = %.3f, lr = %.3f' % (i_iter, src_seg_loss, lr)
                 logger.info(text)
-                wandb.log({'src_seg_loss': loss, "seg_model_lr": lr}, step=i_iter)
+                wandb.log({'src_seg_loss': src_seg_loss, "seg_model_lr": lr}, step=i_iter)
             # 训练步数大于NUM_STEPS_STOP时，保存模型，验证模型，退出训练。
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
+                wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
                 miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
-                wandb.log({'src_seg_loss': loss, 'tar_mIoU': miou}, step=i_iter)
-                model.train()
-                model_D.train()
+                wandb.log({'tar_mIoU': miou}, step=i_iter)
         else:
+            model_D_trained = True
+            # 调整optimizer_D学习率
+            lr_D = adjust_learning_rate_D(optimizer_D, i_iter-cfg.WARMUP_STEP, cfg)
             # PSEUDO learning
             # i_iter >= cfg.WARMUP_STEP时: i_iter等于GENERATE_PSEDO_EVERY的倍数时/等于WARMUP_STEP。进行伪标签学习
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or i_iter == cfg.WARMUP_STEP:
                 pseudo_dir = os.path.join(save_pseudo_label_dir, str(i_iter))
                 # 基于目标域生成伪标签，返回伪标签路径
-                pseudo_pred_dir = generate_pseudoV2(model, model_D, model_D_trained, evalloader, pseudo_dir, i_iter,
-                                                    pseudo_dict=cfg.PSEIDO_DICT, logger=logger)
+                pseudo_pred_dir = generate_pseudoV2(model, 
+                                                    model_D, 
+                                                    model_D_trained, 
+                                                    evalloader, 
+                                                    pseudo_dir, 
+                                                    i_iter,
+                                                    pseudo_dict=cfg.PSEIDO_DICT, 
+                                                    logger=logger)
                 # 构建目标域数据集
                 target_config = cfg.TARGET_DATA_CONFIG
                 # 将目标域数据集的mask_dir设置为伪标签
@@ -184,101 +201,86 @@ def main():
                 targetloader = LoveDALoader(target_config)
                 # 获取目标域数据集的迭代器
                 targetloader_iter = Iterator(targetloader)
+           
             # 模型在源域，和含有伪标签的目标域上对抗训练。
-            model.train()
-            model_D.train()
-            model_D_trained = True
-            # 调整学习率
-            lr = adjust_learning_rate(optimizer, i_iter, cfg)
-            lr_D = adjust_learning_rate_D(optimizer_D, i_iter, cfg)
-
-            # 获取源域训练集一个batch数据
+            # 获取一个batch数据
             batch = trainloader_iter.next()
-
-            # 源域前向过程
             images_s, labels_s = batch[0]
+            batch = targetloader_iter.next()
+            images_t, labels_t = batch[0]
             b, c, h, w = images_s.shape
-
-            b, c, h, w = images_s.shape
-
-            pred_source, src_feat, src_feat = model(images_s.cuda())
+            # 源域前向过程
+            pred_source, src_feat = model(images_s.cuda())
+            pred_source = pred_source.div(temperature)
             # generate soft labels
-            src_soft_label = F.softmax(pred_source, dim=1).detach()
-            src_soft_label[src_soft_label > 0.9] = 0.9
-            # # generate soft labels
             src_soft_label = F.softmax(pred_source, dim=1).detach()
             src_soft_label[src_soft_label > 0.9] = 0.9
             # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
 
-            # 获取目标域一个batch数据，并前向传播。
-            batch = targetloader_iter.next()
-            images_t, labels_t = batch[0]
-            pred_target, tar_feat, tar_feat = model(images_t.cuda())
+            # 目标域前向过程
+            pred_target, tar_feat = model(images_t.cuda())
+            pred_target = pred_target.div(temperature)
             # generate soft labels
-            tar_soft_label = F.softmax(pred_target, dim=1).detach()
-            tar_soft_label[tar_soft_label > 0.9] = 0.9
-            # # generate soft labels
             tar_soft_label = F.softmax(pred_target, dim=1).detach()
             tar_soft_label[tar_soft_label > 0.9] = 0.9
             # pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
 
 
             loss_dict = dict()
-            optimizer.zero_grad()
-            optimizer_D.zero_grad()
-
             # defaut reg_weight
-            # if cfg.DISCRIMINATOR['lambda_entropy_weight'] or cfg.DISCRIMINATOR['lambda_kldreg_weight']:
-            #     reg_val_matrix = torch.ones_like(labels_t['cls']).type_as(pred_target)
-            #     reg_val_matrix[labels_t['cls'] == -1] = 0
-            #     reg_val_matrix = reg_val_matrix.unsqueeze(dim=1)
-            #     reg_ignore_matrix = 1 - reg_val_matrix
-            #     reg_weight = torch.ones_like(pred_target)
-            #     reg_weight_val = reg_weight * reg_val_matrix
-            #     reg_weight_ignore = reg_weight * reg_ignore_matrix
-            #     del reg_ignore_matrix, reg_weight, reg_val_matrix
+            if cfg.DISCRIMINATOR['lambda_entropy_weight'] or cfg.DISCRIMINATOR['lambda_kldreg_weight']:
+                reg_val_matrix = torch.ones_like(labels_t['cls']).type_as(pred_target)
+                reg_val_matrix[labels_t['cls'] == -1] = 0
+                reg_val_matrix = reg_val_matrix.unsqueeze(dim=1)
+                reg_ignore_matrix = 1 - reg_val_matrix
+                reg_weight = torch.ones_like(pred_target)
+                reg_weight_val = reg_weight * reg_val_matrix
+                reg_weight_ignore = reg_weight * reg_ignore_matrix
+                del reg_ignore_matrix, reg_weight, reg_val_matrix
 
             
-            # # entropy reg
-            # if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
-            #     entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
-            #     entropy_reg_loss = entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
-            #     entropy_reg_loss.backward(retain_graph=True)
-            #     loss_dict['entropy_reg_loss'] = entropy_reg_loss
-            # # kld reg
-            # if cfg.DISCRIMINATOR['lambda_kldreg_weight'] > 0:
-            #     kld_reg_loss = kldloss(pred_target, reg_weight_val)
-            #     kld_reg_loss = kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
-            #     kld_reg_loss.backward(retain_graph=True)
-            #     loss_dict['kld_reg_loss'] = kld_reg_loss
-
-
+            # entropy reg
+            if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
+                entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
+                entropy_reg_loss = entropy_reg_loss * cfg.DISCRIMINATOR['lambda_entropy_weight']
+                entropy_reg_loss.backward(retain_graph=True)
+                loss_dict['entropy_reg_loss'] = entropy_reg_loss
+            # kld reg
+            if cfg.DISCRIMINATOR['lambda_kldreg_weight'] > 0:
+                kld_reg_loss = kldloss(pred_target, reg_weight_val)
+                kld_reg_loss = kld_reg_loss * cfg.DISCRIMINATOR['lambda_kldreg_weight']
+                kld_reg_loss.backward(retain_graph=True)
+                loss_dict['kld_reg_loss'] = kld_reg_loss
 
             # update seg loss
-            seg_loss = cfg.SOURCE_LOSS_WEIGHT * loss_calc(pred_source, labels_s['cls'].cuda())
-            seg_loss.backward(retain_graph=True)
-            loss_dict['seg_loss'] = seg_loss
+            src_seg_loss = cfg.SOURCE_LOSS_WEIGHT * loss_calc(pred_source, labels_s['cls'].cuda())
+            src_seg_loss.backward(retain_graph=True)
+            loss_dict['src_seg_loss'] = src_seg_loss
 
             # pseudo label target seg loss
-            target_seg_loss = cfg.PSEUDO_LOSS_WEIGHT * loss_calc(pred_target, labels_t['cls'].cuda())
-            target_seg_loss.backward(retain_graph=True)
-            loss_dict['target_seg_loss'] = target_seg_loss
+            tar_seg_loss = cfg.PSEUDO_LOSS_WEIGHT * loss_calc(pred_target, labels_t['cls'].cuda())
+            tar_seg_loss.backward(retain_graph=True)
+            loss_dict['tar_seg_loss'] = tar_seg_loss
 
 
             # forward discriminators
-            # s_D_logits = model_D(src_feat)
-            t_D_logits = model_D(tar_feat)
-
-            # s_D_logits = F.interpolate(s_D_logits, size=(h, w), mode='bilinear', align_corners=True)
-            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
-
             # adv_loss
-            # 目标域对齐到源域训练
+            # 目标域对齐到源域训练(本质是 seg model 训练)
+            for param in model_D.parameters():
+                param.requires_grad = False
+            t_D_logits = model_D(tar_feat)
+            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
             adv_loss = cfg.LAMBDA_ADV * soft_label_cross_entropy(t_D_logits, torch.cat((tar_soft_label, torch.zeros_like(tar_soft_label)), dim=1))
             adv_loss.backward()
             loss_dict['adv_loss'] = adv_loss
+            # backward model
+            clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), max_norm=35, norm_type=2)
+            optimizer.step()
 
             # 域鉴别训练
+            for param in model_D.parameters():
+                param.requires_grad = True
+            optimizer_D.zero_grad()
             s_D_logits = model_D(src_feat.detach())
             t_D_logits = model_D(tar_feat.detach())
             s_D_logits = F.interpolate(s_D_logits, size=(h, w), mode='bilinear', align_corners=True)
@@ -288,12 +290,7 @@ def main():
             loss_D_src.backward()
             loss_D_tar.backward()
             loss_dict['dis_loss'] = loss_D_src + loss_D_tar
-
-
             # backward model
-            clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), max_norm=35, norm_type=2)
-            optimizer.step()
-
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model_D.parameters()), max_norm=35, norm_type=2)
             optimizer_D.step()
 
@@ -302,16 +299,15 @@ def main():
                 text = 'UDA iter = %d ' % i_iter
                 for k, v in loss_dict.items():
                     text += '%s = %.3f ' % (k, v)
-                #text += 'd_loss = %.3f ' % loss_D_src.item() + loss_D_tar.item()
                 text += 'lr = %.3f ' % lr
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
-                wandb.log({'src_seg_loss': loss_dict['seg_loss'].item(),
-                                 'target_seg_loss':loss_dict['target_seg_loss'].item(),
-                                 'adv_loss':loss_dict['adv_loss'].item(),
-                                 'dis_loss': loss_dict['dis_loss'].item(),
-                                'seg_model_lr':lr,
-                                 'dis_model_lr': lr_D}, step=i_iter)
+                wandb.log({ 'src_seg_loss': loss_dict['src_seg_loss'].item(),
+                            'target_seg_loss': loss_dict['tar_seg_loss'].item(),
+                            'adv_loss': loss_dict['adv_loss'].item(),
+                            'dis_loss': loss_dict['dis_loss'].item(),
+                            'seg_model_lr': lr,
+                            'dis_model_lr': lr_D}, step=i_iter)
             if i_iter >= cfg.NUM_STEPS_STOP - 1:
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')

@@ -11,13 +11,14 @@ from tqdm import tqdm
 from torch.nn.utils import clip_grad
 import torch.nn.functional as F
 from eval import evaluate
+import wandb
 
 
 
 
 parser = argparse.ArgumentParser(description='Run CLAN methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
@@ -42,6 +43,16 @@ def soft_label_cross_entropy(pred, soft_label, pixel_weights=None):
 
 
 def main():
+    # 初始化wandb
+    wandb.init(
+        project="UDA",
+        notes="IAST + DensePPM + dev_class_dis",
+        tags=["dev_class_dis"]
+    )
+    cfg.SNAPSHOT_DIR = wandb.run.dir
+    wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR
+    backup_config(args.config_path)
+
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
     logger = get_console_file_logger(name='FADA', logdir=cfg.SNAPSHOT_DIR)
 
@@ -164,13 +175,21 @@ def main():
             text = 'i_iter = %d, loss_seg = %.4f loss_adv = %.4f, loss_D_s = %.4f loss_D_t = %.4f G_lr = %.5f D_lr = %.5f' % (
                 i_iter, loss_seg, loss_adv_tgt, loss_D_src, loss_D_tgt, lr, lr_D)
             logger.info(text)
+            wandb.log({'src_seg_loss': loss_seg, 
+                       "loss_adv": loss_adv_tgt, 
+                       "loss_D_s":loss_D_src, 
+                       "loss_D_t":loss_D_tgt,
+                       "G_lr":lr,
+                       "D_lr":lr_D}, step=i_iter)
 
         if i_iter >= cfg.NUM_STEPS_STOP - 1:
             print('save model ...')
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
             torch.save(model.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth'))
             torch.save(model_D.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '_D.pth'))
-            evaluate(model, cfg, True, ckpt_path, logger)
+            # evaluate(model, cfg, True, ckpt_path, logger)
+            miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+            wandb.log({'tar_mIoU': miou}, step=i_iter)
             break
 
         if i_iter % cfg.SAVE_PRED_EVERY == 0 and i_iter != 0:
@@ -178,7 +197,9 @@ def main():
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
             torch.save(model.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth'))
             torch.save(model_D.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '_D.pth'))
-            evaluate(model, cfg, True, ckpt_path, logger)
+            # evaluate(model, cfg, True, ckpt_path, logger)
+            miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+            wandb.log({'tar_mIoU': miou}, step=i_iter)
             model.train()
 
 
