@@ -82,7 +82,25 @@ class Classifier_Module(nn.Module):
             out += self.conv2d_list[i + 1](x)
         return out
 
+class DownsampleLayer(nn.Module):
+    def __init__(self,in_ch,out_ch):
+        super(DownsampleLayer, self).__init__()
+        self.Conv_BN_ReLU_2=nn.Sequential(
+            nn.Conv2d(in_channels=in_ch, out_channels=out_ch, kernel_size=3, stride=1,padding=1),
+            nn.BatchNorm2d(out_ch),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=out_ch, out_channels=out_ch, kernel_size=3, stride=1,padding=1),
+            nn.BatchNorm2d(out_ch),
+            nn.ReLU()
+        )
 
+    def forward(self,x):
+        """
+        :param x:
+        :return: out输出到深层, out_2输入到下一层.
+        """
+        x=self.Conv_BN_ReLU_2(x)
+        return x
 
 from module.resnet import ResNetEncoder
 import ever as er
@@ -90,6 +108,7 @@ class Deeplabv2(er.ERModule):
     def __init__(self, config):
         super(Deeplabv2, self).__init__(config)
         self.encoder = ResNetEncoder(self.config.backbone)
+        self.downsamplelayer = DownsampleLayer(3840, config['ppm']['in_channels'])
         if self.config.multi_layer:
             print('Use multi_layer!')
             if self.config.cascade:
@@ -143,17 +162,20 @@ class Deeplabv2(er.ERModule):
                     return (x1+x2).softmax(dim=1)
 
         else:
-            feat, x = self.encoder(x)[-2:]
-            #x = self.layer5(x)
-            
-            x = self.cls_pred(x)
-            #x = self.cls_pred(x)
-            x = F.interpolate(x, (H, W), mode='bilinear', align_corners=True)
-            #feat = F.interpolate(feat, (H, W), mode='bilinear', align_corners=True)
+            x1, x2, x3, x4 = self.encoder(x)
+            h, w = x4.shape[-2:]
+            x1 = F.interpolate(x1, (h, w), mode='bilinear', align_corners=True)
+            x2 = F.interpolate(x2, (h, w), mode='bilinear', align_corners=True)
+            x3 = F.interpolate(x3, (h, w), mode='bilinear', align_corners=True)
+            x4 = F.interpolate(x4, (h, w), mode='bilinear', align_corners=True)
+            feat = torch.cat([x1, x2, x3, x4], dim=1)
+            feat = self.downsamplelayer(feat)
+            pred = self.cls_pred(feat)
+            pred = F.interpolate(pred, (H, W), mode='bilinear', align_corners=True)
             if self.training:
-                return x, feat
+                return pred, feat
             else:
-                return x.softmax(dim=1)
+                return pred.softmax(dim=1)
 
 
     def set_default_config(self):

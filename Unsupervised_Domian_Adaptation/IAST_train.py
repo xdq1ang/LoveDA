@@ -25,12 +25,6 @@ args = parser.parse_args()
 cfg = import_config(args.config_path)
 
 
-def soft_label_cross_entropy(pred, soft_label, pixel_weights=None):
-    loss = -soft_label.float()*F.log_softmax(pred, dim=1)
-    if pixel_weights is None:
-        return torch.mean(torch.sum(loss, dim=1))
-    return torch.mean(pixel_weights*torch.sum(loss, dim=1))
-
 
 def main():
     # 初始化wandb
@@ -85,7 +79,7 @@ def main():
         cascade=False,
         use_ppm='denseppm',
         ppm=dict(
-            in_channels=2048,
+            in_channels=1024,
             num_classes=7,
             reduction_dim=64,
             pool_sizes=[2, 3, 4, 5]
@@ -95,8 +89,8 @@ def main():
     )).cuda()
     # model = DensePPMUNet(in_channel=3, n_classes=7, ppm="DensePPM", pool_size=[2,3,4,5]).cuda()
     # 构建辨别器。输入维度为7,输出维度为1
-    # model_D = FCDiscriminator(7).cuda()
-    model_D = PixelDiscriminator(input_nc=1024, num_classes=7).cuda()
+    model_D = FCDiscriminator(7).cuda()
+    # model_D = PixelDiscriminator(input_nc=1024, num_classes=7).cuda()
     # 判别器还未被训练
     model_D_trained = False
 
@@ -129,7 +123,6 @@ def main():
         model_D.train()
         optimizer.zero_grad()
         optimizer_D.zero_grad()
-        temperature = 1.8
         # 调整optimizer学习率
         lr = adjust_learning_rate(optimizer, i_iter, cfg)
 
@@ -140,7 +133,6 @@ def main():
             images_s, labels_s = batch[0]
             pred_source = model(images_s.cuda())
             pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
-            pred_source = pred_source.div(temperature)
             # Segmentation Loss
             src_seg_loss = loss_calc(pred_source, labels_s['cls'].cuda())
             src_seg_loss.backward()
@@ -210,20 +202,10 @@ def main():
             images_t, labels_t = batch[0]
             b, c, h, w = images_s.shape
             # 源域前向过程
-            pred_source, src_feat = model(images_s.cuda())
-            pred_source = pred_source.div(temperature)
-            # generate soft labels
-            src_soft_label = F.softmax(pred_source, dim=1).detach()
-            src_soft_label[src_soft_label > 0.9] = 0.9
-            # pred_source = pred_source[0] if isinstance(pred_source, tuple) else pred_source
+            pred_source, _ = model(images_s.cuda())
 
             # 目标域前向过程
-            pred_target, tar_feat = model(images_t.cuda())
-            pred_target = pred_target.div(temperature)
-            # generate soft labels
-            tar_soft_label = F.softmax(pred_target, dim=1).detach()
-            tar_soft_label[tar_soft_label > 0.9] = 0.9
-            # pred_target = pred_target[0] if isinstance(pred_target, tuple) else pred_target
+            pred_target, _ = model(images_t.cuda())
 
 
             loss_dict = dict()
@@ -238,7 +220,37 @@ def main():
                 reg_weight_ignore = reg_weight * reg_ignore_matrix
                 del reg_ignore_matrix, reg_weight, reg_val_matrix
 
-            
+            # update seg loss
+            src_seg_loss = cfg.SOURCE_LOSS_WEIGHT * loss_calc(pred_source, labels_s['cls'].cuda())
+            loss_dict['src_seg_loss'] = src_seg_loss
+
+            # pseudo label target seg loss
+            tar_seg_loss = cfg.PSEUDO_LOSS_WEIGHT * loss_calc(pred_target, labels_t['cls'].cuda())
+            loss_dict['tar_seg_loss'] = tar_seg_loss
+
+
+            # forward discriminators
+            # adv_loss
+            # 目标域对齐到源域训练(本质是 seg model 训练)
+            for param in model_D.parameters():
+                param.requires_grad = False
+            # t_D_logits = model_D(pred_target.softmax(dim=1).detach())
+            t_D_logits = model_D(pred_target.softmax(dim=1))
+            is_source = torch.zeros_like(t_D_logits).cuda()
+            adv_loss = cfg.DISCRIMINATOR['weight'] * bce_loss(t_D_logits, is_source)
+            loss_dict['adv_loss'] = adv_loss
+
+            # 域鉴别训练
+            for param in model_D.parameters():
+                param.requires_grad = True
+            optimizer_D.zero_grad()
+            s_D_logits = model_D(pred_source.softmax(dim=1).detach())
+            t_D_logits = model_D(pred_target.softmax(dim=1).detach())
+            is_source = torch.zeros_like(s_D_logits).cuda()
+            is_target = torch.ones_like(t_D_logits).cuda()
+            dis_loss = (bce_loss(s_D_logits, is_source) + bce_loss(t_D_logits, is_target))/2
+
+
             # entropy reg
             if cfg.DISCRIMINATOR['lambda_entropy_weight'] > 0:
                 entropy_reg_loss = entropyloss(pred_target, reg_weight_ignore)
@@ -252,45 +264,14 @@ def main():
                 kld_reg_loss.backward(retain_graph=True)
                 loss_dict['kld_reg_loss'] = kld_reg_loss
 
-            # update seg loss
-            src_seg_loss = cfg.SOURCE_LOSS_WEIGHT * loss_calc(pred_source, labels_s['cls'].cuda())
-            src_seg_loss.backward(retain_graph=True)
-            loss_dict['src_seg_loss'] = src_seg_loss
-
-            # pseudo label target seg loss
-            tar_seg_loss = cfg.PSEUDO_LOSS_WEIGHT * loss_calc(pred_target, labels_t['cls'].cuda())
-            tar_seg_loss.backward(retain_graph=True)
-            loss_dict['tar_seg_loss'] = tar_seg_loss
-
-
-            # forward discriminators
-            # adv_loss
-            # 目标域对齐到源域训练(本质是 seg model 训练)
-            for param in model_D.parameters():
-                param.requires_grad = False
-            t_D_logits = model_D(tar_feat)
-            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
-            adv_loss = cfg.LAMBDA_ADV * soft_label_cross_entropy(t_D_logits, torch.cat((tar_soft_label, torch.zeros_like(tar_soft_label)), dim=1))
-            adv_loss.backward()
-            loss_dict['adv_loss'] = adv_loss
             # backward model
+            total_loss = sum(loss_dict.values())
+            total_loss.backward()
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), max_norm=35, norm_type=2)
             optimizer.step()
 
-            # 域鉴别训练
-            for param in model_D.parameters():
-                param.requires_grad = True
-            optimizer_D.zero_grad()
-            s_D_logits = model_D(src_feat.detach())
-            t_D_logits = model_D(tar_feat.detach())
-            s_D_logits = F.interpolate(s_D_logits, size=(h, w), mode='bilinear', align_corners=True)
-            t_D_logits = F.interpolate(t_D_logits, size=(h, w), mode='bilinear', align_corners=True)
-            loss_D_src = 0.5 * soft_label_cross_entropy(s_D_logits, torch.cat((src_soft_label, torch.zeros_like(src_soft_label)),dim=1))
-            loss_D_tar = 0.5 * soft_label_cross_entropy(t_D_logits, torch.cat((torch.zeros_like(tar_soft_label), tar_soft_label), dim=1))
-            loss_D_src.backward()
-            loss_D_tar.backward()
-            loss_dict['dis_loss'] = loss_D_src + loss_D_tar
             # backward model
+            dis_loss.backward()
             clip_grad.clip_grad_norm_(filter(lambda p: p.requires_grad, model_D.parameters()), max_norm=35, norm_type=2)
             optimizer_D.step()
 
@@ -299,13 +280,16 @@ def main():
                 text = 'UDA iter = %d ' % i_iter
                 for k, v in loss_dict.items():
                     text += '%s = %.3f ' % (k, v)
+                text += 'dis_loss = %.3f' % dis_loss
                 text += 'lr = %.3f ' % lr
                 text += 'd_lr = %.3f ' % lr_D
                 logger.info(text)
                 wandb.log({ 'src_seg_loss': loss_dict['src_seg_loss'].item(),
-                            'target_seg_loss': loss_dict['tar_seg_loss'].item(),
+                            'tar_seg_loss': loss_dict['tar_seg_loss'].item(),
                             'adv_loss': loss_dict['adv_loss'].item(),
-                            'dis_loss': loss_dict['dis_loss'].item(),
+                            'dis_loss': dis_loss.item(),
+                            'kld_reg_loss': loss_dict['kld_reg_loss'],
+                            'entropy_reg_loss': loss_dict['entropy_reg_loss'],
                             'seg_model_lr': lr,
                             'dis_model_lr': lr_D}, step=i_iter)
             if i_iter >= cfg.NUM_STEPS_STOP - 1:

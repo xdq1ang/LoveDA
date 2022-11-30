@@ -2,6 +2,11 @@ from data.loveda import LoveDALoader
 from utils.tools import *
 from skimage.io import imsave
 import os
+import zipfile
+from module.Encoder import Deeplabv2
+import warnings
+warnings.filterwarnings("ignore")
+cfg = import_config('st.iast.2urban')
 
 
 def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
@@ -28,9 +33,11 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
 
     # count_model_parameters(model)
     model.eval()
-    print(cfg.EVAL_DATA_CONFIG)
+    print(cfg.TEST_DATA_CONFIG)
     eval_dataloader = LoveDALoader(cfg.TEST_DATA_CONFIG)
 
+    zip_name = os.path.join(save_dir, 'Urban Result.zip')
+    z = zipfile.ZipFile(zip_name,'w',zipfile.ZIP_DEFLATED)
     with torch.no_grad():
         for ret, ret_gt in tqdm(eval_dataloader):
             ret = ret.to(torch.device('cuda'))
@@ -39,14 +46,12 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
             for fname, pred in zip(ret_gt['fname'], cls):
                 imsave(os.path.join(mask_save_dir, fname), pred.astype(np.uint8))
                 vis_mask = viz_op.saveVis(pred.astype(np.uint8),  fname)
-
+                z.write(os.path.join(mask_save_dir, fname), fname)
+    z.close()
     torch.cuda.empty_cache()
 
 
 if __name__ == '__main__':
-    ckpt_path = './log/iast/2urban/fcD_denseppm_index_1_2/URBAN9500.pth'
-    from module.Encoder import Deeplabv2
-    cfg = import_config('st.iast.2urban')
     # model = Deeplabv2(dict(
     #     backbone=dict(
     #         resnet_type='resnet50',
@@ -74,7 +79,7 @@ if __name__ == '__main__':
         cascade=False,
         use_ppm='denseppm',
         ppm=dict(
-            in_channels=2048,
+            in_channels=1024,
             num_classes=7,
             reduction_dim=64,
             pool_sizes=[2, 3, 4, 5]
@@ -82,4 +87,9 @@ if __name__ == '__main__':
         inchannels=2048,
         num_classes=7
     )).cuda()
-    predict_test(model, cfg, ckpt_path)
+
+    save_dir = 'submit_test'
+    for step in range(5000, 21000, 1000):
+        ckpt_path = r'wandb\URBAN_DensePPM_index_1_2_(2)\files\URBAN'+ str(step) +'.pth'
+        save_path = os.path.join(save_dir, str(step))
+        predict_test(model, cfg, ckpt_path, save_path)

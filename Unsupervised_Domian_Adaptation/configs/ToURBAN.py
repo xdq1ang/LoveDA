@@ -19,12 +19,14 @@ target_dir = dict(
     ],
     mask_dir=[
         './LoveDA/Val/Urban/masks_png/',
-    ],
-    test_image_dir=[
-        './LoveDA/test/Urban/images_png/',
     ]
 )
 
+test_dir = dict(
+    image_dir=[
+        './LoveDA/Test/Urban/images_png/'
+    ]
+)
 
 
 SOURCE_DATA_CONFIG = dict(
@@ -46,7 +48,7 @@ SOURCE_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=4,
+    batch_size=6,
     num_workers=2,
     drop_last=True
 )
@@ -71,7 +73,7 @@ TARGET_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=4,
+    batch_size=6,
     num_workers=2,
     drop_last=True
 )
@@ -95,8 +97,8 @@ EVAL_DATA_CONFIG = dict(
 )
 
 TEST_DATA_CONFIG = dict(
-    image_dir=target_dir['test_image_dir'],
-    mask_dir=target_dir['test_image_dir'],
+    image_dir=test_dir['image_dir'],
+    mask_dir=test_dir['image_dir'],
     transforms=Compose([
         # Resize(512, 512),
         Normalize(mean=(123.675, 116.28, 103.53),

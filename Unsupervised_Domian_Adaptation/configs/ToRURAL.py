@@ -23,13 +23,18 @@ target_dir = dict(
     ],
 )
 
+test_dir = dict(
+    image_dir=[
+        './LoveDA/Test/Rural/images_png/'
+    ]
+)
 
 SOURCE_DATA_CONFIG = dict(
     image_dir=source_dir['image_dir'],
     mask_dir=source_dir['mask_dir'],
     transforms=Compose([
-        Resize(512, 512, cv2.INTER_NEAREST, True),
-        # RandomCrop(512, 512),
+        # Resize(512, 512, cv2.INTER_NEAREST, True),
+        RandomCrop(512, 512),
         OneOf([
             HorizontalFlip(True),
             VerticalFlip(True),
@@ -53,8 +58,8 @@ TARGET_DATA_CONFIG = dict(
     image_dir=target_dir['image_dir'],
     mask_dir=target_dir['mask_dir'],
     transforms=Compose([
-        Resize(512, 512, cv2.INTER_NEAREST, True),
-        # RandomCrop(512, 512),
+        # Resize(512, 512, cv2.INTER_NEAREST, True),
+        RandomCrop(512, 512),
         OneOf([
             HorizontalFlip(True),
             VerticalFlip(True),
@@ -77,7 +82,25 @@ EVAL_DATA_CONFIG = dict(
     image_dir=target_dir['image_dir'],
     mask_dir=target_dir['mask_dir'],
     transforms=Compose([
-        Resize(512, 512, cv2.INTER_NEAREST, True),
+        # Resize(512, 512, cv2.INTER_NEAREST, True),
+        Normalize(mean=(123.675, 116.28, 103.53),
+                  std=(58.395, 57.12, 57.375),
+                  max_pixel_value=1, always_apply=True),
+        er.preprocess.albu.ToTensor()
+
+    ]),
+    CV=dict(k=10, i=-1),
+    training=False,
+    batch_size=4,
+    num_workers=0,
+    drop_last=False
+)
+
+TEST_DATA_CONFIG = dict(
+    image_dir=test_dir['image_dir'],
+    mask_dir=test_dir['image_dir'],
+    transforms=Compose([
+        # Resize(512, 512),
         Normalize(mean=(123.675, 116.28, 103.53),
                   std=(58.395, 57.12, 57.375),
                   max_pixel_value=1, always_apply=True),
