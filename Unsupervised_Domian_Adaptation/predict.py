@@ -90,6 +90,6 @@ if __name__ == '__main__':
 
     save_dir = 'submit_test'
     for step in range(5000, 21000, 1000):
-        ckpt_path = r'wandb\URBAN_DensePPM_index_1_2_(2)\files\URBAN'+ str(step) +'.pth'
+        ckpt_path = r'wandb\Ablation_Study_ICS\ICS_0.4\files\URBAN'+ str(step) +'.pth'
         save_path = os.path.join(save_dir, str(step))
         predict_test(model, cfg, ckpt_path, save_path)

@@ -100,7 +100,7 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 # logit_2max_index2 = np.argsort(logit, axis=2)[:,:,-2]
 
                 # 概率差<0.2则忽略该像素
-                ignore_index2 = logit12_sub < 0.1
+                ignore_index2 = logit12_sub < 0.2
                 #if model_D_trained:
                     #ignore_index3 = D_logit > 0.3
                 label += 1

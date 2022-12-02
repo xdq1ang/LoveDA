@@ -109,7 +109,7 @@ TEST_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=False,
-    batch_size=2,
-    num_workers=0,
+    batch_size=8,
+    num_workers=6,
     drop_last=False
 )

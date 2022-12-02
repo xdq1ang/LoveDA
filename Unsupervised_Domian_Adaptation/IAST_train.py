@@ -82,7 +82,7 @@ def main():
             in_channels=2048,
             num_classes=7,
             reduction_dim=64,
-            pool_sizes=[2, 3, 4, 5]
+            pool_sizes=[2, 3, 4, 5, 6]
         ),
         inchannels=2048,
         num_classes=7
