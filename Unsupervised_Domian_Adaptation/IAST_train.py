@@ -159,14 +159,14 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             # 训练步数是EVAL_EVERY的倍数时(!=0), 保存模型，验证模型。
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
         else:
             model_D_trained = True
@@ -296,13 +296,13 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                miou = evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
+                miou = evaluate(model, None, cfg, True, ckpt_path, logger)
                 wandb.log({'tar_mIoU': miou}, step=i_iter)
                 model.train()
                 model_D.train()

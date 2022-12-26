@@ -15,7 +15,7 @@ import wandb
 import torch.backends.cudnn as cudnn
 parser = argparse.ArgumentParser(description='Run Baseline methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
@@ -26,13 +26,13 @@ def main():
     # 初始化wandb
     wandbLogger = wandb.init(
         project="UDA",
-        notes="DeepLabV2_PPM",
+        notes="DeepLabV2_DensePPM",
         tags=["领域自适应", "语义分割"],
         resume="allow",
     )
     """Create the model and start the training."""
     os.makedirs(cfg.SNAPSHOT_DIR, exist_ok=True)
-    logger = get_console_file_logger(name='Deeplabv2', logdir=cfg.SNAPSHOT_DIR)
+    logger = get_console_file_logger(name='Deeplabv2_DensePPM', logdir=cfg.SNAPSHOT_DIR)
     # Create Network
     
     # model = Deeplabv2(dict(

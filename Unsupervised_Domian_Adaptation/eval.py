@@ -10,7 +10,7 @@ from torch import nn
 
 
 
-def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logger=None):
+def evaluate(model, model_D, cfg, is_training=False, ckpt_path=None, logger=None):
     #torch.backends.cudnn.deterministic = True
     #torch.backends.cudnn.benchmark = False
     #torch.backends.cudnn.enabled = False
