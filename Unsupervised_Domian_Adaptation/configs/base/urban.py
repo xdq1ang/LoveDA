@@ -1,31 +1,31 @@
 from configs.URBAN import SOURCE_DATA_CONFIG, EVAL_DATA_CONFIG, source_dir
-from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize, RandomCrop, RandomScale
+from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize, RandomCrop, RandomScale, Resize
 from albumentations import OneOf, Compose
 import ever as er
-MODEL = 'ResNet'
-
+import cv2
 
 IGNORE_LABEL = -1
 MOMENTUM = 0.9
 NUM_CLASSES = 7
 
-SAVE_PRED_EVERY = 2000
-SNAPSHOT_DIR = './log/baseline/2urban'
+SAVE_PRED_EVERY = 1000
+SNAPSHOT_DIR = './log/baseline/urban'
 
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005
 LEARNING_RATE = 1e-3
-NUM_STEPS = 25000
-NUM_STEPS_STOP = 20000  # Use damping instead of early stopping
+NUM_STEPS = 35000
+NUM_STEPS_STOP = 30000  # Use damping instead of early stopping
 PREHEAT_STEPS = 0
 POWER = 0.9
-EVAL_EVERY=700
+EVAL_EVERY=500
 TARGET_SET='URABN'
 SOURCE_DATA_CONFIG = dict(
     image_dir=source_dir['image_dir'],
     mask_dir=source_dir['mask_dir'],
     transforms=Compose([
-        RandomCrop(512, 512),
+        # RandomCrop(512, 512),
+        Resize(512, 512, cv2.INTER_NEAREST, True),
         OneOf([
             HorizontalFlip(True),
             VerticalFlip(True),
@@ -39,7 +39,7 @@ SOURCE_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=True,
-    batch_size=12,
+    batch_size=8,
     num_workers=2,
     drop_last=True
 )

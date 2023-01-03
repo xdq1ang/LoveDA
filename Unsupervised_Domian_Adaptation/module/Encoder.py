@@ -108,7 +108,7 @@ class Deeplabv2(er.ERModule):
     def __init__(self, config):
         super(Deeplabv2, self).__init__(config)
         self.encoder = ResNetEncoder(self.config.backbone)
-        self.downsamplelayer = DownsampleLayer(3840, config['ppm']['in_channels'])
+        self.downsamplelayer = DownsampleLayer(3840, config['inchannels'])
         if self.config.multi_layer:
             print('Use multi_layer!')
             if self.config.cascade:

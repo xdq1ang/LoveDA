@@ -9,7 +9,7 @@ MOMENTUM = 0.9
 NUM_CLASSES = 7
 
 SAVE_PRED_EVERY = 2000
-SNAPSHOT_DIR = './log/baseline/2rural'
+SNAPSHOT_DIR = './log/baseline/rural'
 
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005

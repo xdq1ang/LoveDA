@@ -65,7 +65,7 @@ def evaluate(model, model_D, cfg, is_training=False, ckpt_path=None, logger=None
                 mIoU.append(miou)
                 save_domain_dis = False
                 save_domain_cls = False
-                save_prediction = False
+                save_prediction = True
                 if cfg.SNAPSHOT_DIR is not None:
                     if (model_D != None):
                         for fname, pred, d_dis, d_cls in zip(ret_gt['fname'], cls, domain_dis, domain_cls):

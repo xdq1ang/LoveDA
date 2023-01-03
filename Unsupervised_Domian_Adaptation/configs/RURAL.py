@@ -1,23 +1,22 @@
 from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize, RandomCrop, RandomScale, Resize
 from albumentations import OneOf, Compose
 import ever as er
-import cv2
 
 
 TARGET_SET = 'RURAL'
 
 source_dir = dict(
     image_dir=[
-        './LoveDA/Train/Urban/images_png/',
+        './LoveDA/Train/Rural/images_png/',
     ],
     mask_dir=[
-        './LoveDA/Train/Urban/masks_png/',
+        './LoveDA/Train/Rural/masks_png/',
     ],
     val_image_dir=[
-        './LoveDA/Val/Urban/images_png/',
+        './LoveDA/Val/Rural/images_png/',
     ],
     val_mask_dir=[
-        './LoveDA/Val/Urban/masks_png/',
+        './LoveDA/Val/Rural/masks_png/',
     ],
 )
 
@@ -46,11 +45,11 @@ SOURCE_DATA_CONFIG = dict(
 )
 
 
+
 EVAL_DATA_CONFIG = dict(
     image_dir=source_dir['val_image_dir'],
     mask_dir=source_dir['val_mask_dir'],
     transforms=Compose([
-        # Resize(512, 512, cv2.INTER_NEAREST, True),
         Normalize(mean=(123.675, 116.28, 103.53),
                   std=(58.395, 57.12, 57.375),
                   max_pixel_value=1, always_apply=True),

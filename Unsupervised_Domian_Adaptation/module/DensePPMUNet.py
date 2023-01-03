@@ -82,7 +82,7 @@ class DensePPMUNet(nn.Module):
         self.u4=UpSampleLayer(out_channels[2],out_channels[0])#256-128-64
         #金字塔池化
         if ppm == "DensePPM":
-            self.PPMLayer = DensePPM(in_channels=out_channels[1], num_classes=n_classes, reduction_dim=32, pool_sizes=pool_size)
+            self.PPMLayer = DensePPM(in_channels=out_channels[1], num_classes=n_classes, reduction_dim=64, pool_sizes=pool_size)
         elif ppm == "PPM":
             self.PPMLayer = PPM(in_dim=out_channels[1], reduction_dim=32, bins=pool_size)
 
