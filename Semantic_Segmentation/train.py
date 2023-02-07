@@ -45,6 +45,8 @@ def evaluate_cls_fn(self, test_dataloader, config=None):
             for clsmap, imname in zip(pred, gt['fname']):
                 viz_op(clsmap.cpu().numpy().astype(np.uint8), imname.replace('tif', 'png'))
     metric_op.summary_all()
+    miou = {'miou' : float(metric_op.summary_iou()._rows[7][1])}
+    self._logger.eval_summary(miou, self.checkpoint.global_step)
     torch.cuda.empty_cache()
 
 
@@ -67,6 +69,8 @@ def seed_torch(seed=2333):
 
 
 if __name__ == '__main__':
+    os.environ['MASTER_ADDR'] = 'localhost'
+    os.environ['MASTER_PORT'] = '12345'
     seed_torch(2333)
     trainer = er.trainer.get_trainer('th_amp_ddp')()
     trainer.run(after_construct_launcher_callbacks=[register_evaluate_fn])

@@ -1,22 +1,24 @@
 from albumentations import Compose, OneOf, Normalize
-from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, RandomCrop
+from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, RandomCrop, Resize
 import ever as er
+import cv2
 
 data = dict(
     train=dict(
         type='LoveDALoader',
         params=dict(
             image_dir=[
-                './LoveDA/Train/Urban/images_png/',
-                './LoveDA/Train/Rural/images_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Train/Urban/images_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Train/Rural/images_png/',
             ],
             mask_dir=[
-                './LoveDA/Train/Urban/masks_png/',
-                './LoveDA/Train/Rural/masks_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Train/Urban/masks_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Train/Rural/masks_png/',
             ],
             
             transforms=Compose([
                 RandomCrop(512, 512),
+                # Resize(256, 256, cv2.INTER_NEAREST, True),
                 OneOf([
                     HorizontalFlip(True),
                     VerticalFlip(True),
@@ -30,7 +32,7 @@ data = dict(
             ]),
             CV=dict(k=10, i=-1),
             training=True,
-            batch_size=16,
+            batch_size=12,
             num_workers=2,
         ),
     ),
@@ -38,14 +40,15 @@ data = dict(
         type='LoveDALoader',
         params=dict(
             image_dir=[
-                './LoveDA/Val/Urban/images_png/',
-                './LoveDA/Val/Rural/images_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Val/Urban/images_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Val/Rural/images_png/',
             ],
             mask_dir=[
-                './LoveDA/Val/Urban/masks_png/',
-                './LoveDA/Val/Rural/masks_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Val/Urban/masks_png/',
+                'E:/xdqiangCode/LoveDA/Unsupervised_Domian_Adaptation/LoveDA/Val/Rural/masks_png/',
             ],
             transforms=Compose([
+                # Resize(256, 256, cv2.INTER_NEAREST, True),
                 Normalize(mean=(123.675, 116.28, 103.53),
                           std=(58.395, 57.12, 57.375),
                           max_pixel_value=1, always_apply=True),
@@ -89,7 +92,7 @@ train = dict(
     eval_after_train=True,
     log_interval_step=50,
     save_ckpt_interval_epoch=1000,
-    eval_interval_epoch=20,
+    eval_interval_epoch=5,
 )
 
 test = dict(

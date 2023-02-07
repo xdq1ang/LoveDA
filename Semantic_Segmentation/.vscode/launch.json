@@ -1,0 +1,129 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train_pspnet_denseppm",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.pspnet_denseppm",
+                        "--model_dir", "./log/normal_baseline/pspnet_denseppm"]
+        },
+        {
+            "name": "train_cenet",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.cenet",
+                        "--model_dir", "./log/normal_baseline/cenet"]
+        },
+        {
+            "name": "train_mrunet",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.mrunet",
+                        "--model_dir", "./log/normal_baseline/mrunet"]
+        },
+        {
+            "name": "train_unet",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.unet",
+                        "--model_dir", "./log/normal_baseline/unet"]
+        },
+        {
+            "name": "train_manet",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.manet",
+                        "--model_dir", "./log/normal_baseline/manet"]
+        },
+        {
+            "name": "train_lanet",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.lanet",
+                        "--model_dir", "./log/normal_baseline/lanet"]
+        },
+        {
+            "name": "train_deeplabv3",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.deeplabv3",
+                        "--model_dir", "./log/normal_baseline/deeplabv3"]
+        },
+        {
+            "name": "train_factseg",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.factseg",
+                        "--model_dir", "./log/normal_baseline/factseg"]
+        },
+        {
+            "name": "train_resunet_a",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.resunet_a",
+                        "--model_dir", "./log/normal_baseline/resunet_a"]
+        },
+        {
+            "name": "train_pan",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.pan",
+                        "--model_dir", "./log/normal_baseline/pan"]
+        },
+        {
+            "name": "train_farsegv1",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.farsegv1",
+                        "--model_dir", "./log/normal_baseline/farsegv1"]
+        },
+    ]
+}

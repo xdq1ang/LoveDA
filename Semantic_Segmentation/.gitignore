@@ -1,7 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 *.iml
+*.pyc
 out
 gen
-./log/
+/log/
 ./convert.py

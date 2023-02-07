@@ -2,11 +2,11 @@ from configs.base.loveda import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
-        type='MANet',
+        type='mrUNet',
         params=dict(
-            encoder_name='resnet50',
             classes=7,
-            encoder_weights='imagenet',
+            num_channels=3,
+            filters=32,
             loss=dict(
                 ignore_index=-1,
                 ce=dict()

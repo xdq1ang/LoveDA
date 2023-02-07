@@ -2,13 +2,12 @@ from configs.base.loveda import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
-        type='MANet',
+        type='LANet',
         params=dict(
-            encoder_name='resnet50',
+            pretrained=True,
+            in_channels=3,
             classes=7,
-            encoder_weights='imagenet',
             loss=dict(
-                ignore_index=-1,
                 ce=dict()
             )
         )
