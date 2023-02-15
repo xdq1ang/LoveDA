@@ -2,7 +2,7 @@ import ever as er
 import torch
 import numpy as np
 import os
-from data.loveda import COLOR_MAP
+from data.gid import COLOR_MAP
 from tqdm import tqdm
 import random
 from module.tta import tta, Scale
@@ -45,7 +45,7 @@ def evaluate_cls_fn(self, test_dataloader, config=None):
             for clsmap, imname in zip(pred, gt['fname']):
                 viz_op(clsmap.cpu().numpy().astype(np.uint8), imname.replace('tif', 'png'))
     metric_op.summary_all()
-    miou = {'miou' : float(metric_op.summary_iou()._rows[7][1])}
+    miou = {'miou' : float(metric_op.summary_iou()._rows[metric_op.num_classes][1])}
     self._logger.eval_summary(miou, self.checkpoint.global_step)
     torch.cuda.empty_cache()
 

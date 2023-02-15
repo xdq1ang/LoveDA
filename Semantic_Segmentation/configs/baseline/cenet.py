@@ -1,10 +1,10 @@
-from configs.base.loveda import train, test, data, optimizer, learning_rate
+from configs.base.gid import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
         type='CENet',
         params=dict(
-            classes=7,
+            classes=6,
             num_channels=3,
             loss=dict(
                 ce=dict()

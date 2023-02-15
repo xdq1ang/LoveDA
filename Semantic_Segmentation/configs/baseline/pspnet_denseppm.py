@@ -1,4 +1,4 @@
-from configs.base.loveda import train, test, data, optimizer, learning_rate
+from configs.base.gid import train, test, data, optimizer, learning_rate
 import torch.nn as nn
 config = dict(
     model=dict(
@@ -15,13 +15,14 @@ config = dict(
                 with_cp=(False, False, False, False),
                 norm_layer=nn.BatchNorm2d,
             ),
-            classes=7,
+            classes=6,
+            resume_from_last=True,
             loss=dict(
                 ignore_index=-1,
                 ce=dict()
             ),
             psp=dict(
-                sizes=(2, 3, 4, 5, 6, 7),
+                sizes=(2, 3, 4, 5),
                 psp_size=1024,
                 deep_features_size=1024
             )

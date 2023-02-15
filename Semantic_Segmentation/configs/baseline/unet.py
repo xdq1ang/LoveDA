@@ -1,11 +1,11 @@
-from configs.base.loveda import train, test, data, optimizer, learning_rate
+from configs.base.gid import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
         type='AnyUNet',
         params=dict(
             encoder_name='resnet50',
-            classes=7,
+            classes=6,
             encoder_weights='imagenet',
             loss=dict(
                 ce=dict()

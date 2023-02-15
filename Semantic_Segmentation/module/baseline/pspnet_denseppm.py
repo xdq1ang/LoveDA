@@ -109,6 +109,7 @@ class PSPNet_DensePPM(er.ERModule):
                 norm_layer=nn.BatchNorm2d,
             ),
             classes=7,
+            resume_from_last = False,
             loss=dict(
                 ignore_index=-1,
                 ce=dict()

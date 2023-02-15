@@ -1,4 +1,4 @@
-from configs.base.loveda import train, test, data, optimizer, learning_rate
+from configs.base.gid import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
@@ -9,7 +9,7 @@ config = dict(
                 weights='imagenet',
                 in_channels=3
             ),
-            classes=7,
+            classes=6,
             
             fpn=dict(
                 in_channels_list=(256, 512, 1024, 2048),

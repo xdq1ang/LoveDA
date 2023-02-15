@@ -20,4 +20,4 @@ class VisualizeSegmm(object):
         y_pred = y_pred.squeeze()
         color_y = Image.fromarray(y_pred)
         color_y.putpalette(self.palette)
-        color_y.save(os.path.join(self.out_dir, filename))
+        color_y.save(os.path.join(self.out_dir, filename[:-3]+"png"))
