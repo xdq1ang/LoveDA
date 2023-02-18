@@ -1,4 +1,4 @@
-from configs.base.gid import train, test, data, optimizer, learning_rate
+from configs.base.isprs import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
