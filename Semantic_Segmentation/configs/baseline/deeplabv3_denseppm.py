@@ -2,11 +2,11 @@ from configs.base.city_osm import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
-        type='LANet',
+        type='DeepLabV3_DensePPM',
         params=dict(
-            pretrained=True,
-            in_channels=3,
+            encoder_name='resnet50',
             classes=3,
+            encoder_weights='imagenet',
             loss=dict(
                 ce=dict()
             )

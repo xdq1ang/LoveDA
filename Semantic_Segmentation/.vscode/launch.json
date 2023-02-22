@@ -77,9 +77,22 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
+            "debugStdLib": true,
             "args": [   "--local_rank", "0",
                         "--config_path", "baseline.deeplabv3",
                         "--model_dir", "./log/normal_baseline/deeplabv3"]
+        },
+        {
+            "name": "train_deeplabv3_denseppm",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "debugStdLib": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.deeplabv3_denseppm",
+                        "--model_dir", "./log/train_in_city_osm/deeplabv3_denseppm"]
         },
         {
             "name": "train_factseg",
@@ -87,10 +100,10 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true,
+            "justMyCode": false,
             "args": [   "--local_rank", "0",
                         "--config_path", "baseline.factseg",
-                        "--model_dir", "./log/normal_baseline/factseg"]
+                        "--model_dir", "./log/train_in_city_osm/factseg"]
         },
         {
             "name": "train_resunet_a",

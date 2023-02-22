@@ -1,4 +1,4 @@
-from configs.base.isprs import train, test, data, optimizer, learning_rate
+from configs.base.city_osm import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
@@ -9,7 +9,8 @@ config = dict(
                 weights='imagenet',
                 in_channels=3
             ),
-            classes=6,
+            resume_from_last=True,
+            classes=3,
             foreground=dict(
                 fpn=dict(
                     in_channels_list=[256, 512, 1024, 2048],

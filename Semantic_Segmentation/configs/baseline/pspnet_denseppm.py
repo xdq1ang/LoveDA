@@ -1,4 +1,4 @@
-from configs.base.isprs import train, test, data, optimizer, learning_rate
+from configs.base.city_osm import train, test, data, optimizer, learning_rate
 import torch.nn as nn
 config = dict(
     model=dict(
@@ -15,7 +15,7 @@ config = dict(
                 with_cp=(False, False, False, False),
                 norm_layer=nn.BatchNorm2d,
             ),
-            classes=6,
+            classes=3,
             resume_from_last=True,
             loss=dict(
                 ignore_index=-1,

@@ -6,6 +6,7 @@ class DensePPM(nn.Module):
     def __init__(self, in_channels,reduction_dim, pool_sizes, norm_layer = nn.BatchNorm2d):
         super(DensePPM, self).__init__()
         n=1
+        self.out_channels = in_channels + reduction_dim*((len(pool_sizes)*len(pool_sizes) + len(pool_sizes))//2)
         self.stages =[]
         for pool_size in pool_sizes:
             stage=self._make_stages(in_channels+reduction_dim*((n*n-n)//2), reduction_dim*n, pool_size, norm_layer)

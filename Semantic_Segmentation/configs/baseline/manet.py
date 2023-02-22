@@ -1,11 +1,11 @@
-from configs.base.isprs import train, test, data, optimizer, learning_rate
+from configs.base.city_osm import train, test, data, optimizer, learning_rate
 
 config = dict(
     model=dict(
         type='MANet',
         params=dict(
             encoder_name='resnet50',
-            classes=6,
+            classes=3,
             encoder_weights='imagenet',
             loss=dict(
                 ignore_index=-1,

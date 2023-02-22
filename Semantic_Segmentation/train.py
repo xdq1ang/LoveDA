@@ -2,7 +2,7 @@ import ever as er
 import torch
 import numpy as np
 import os
-from data.isprs import COLOR_MAP
+from data.city_osm import COLOR_MAP
 from tqdm import tqdm
 import random
 from module.tta import tta, Scale
