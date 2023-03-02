@@ -19,7 +19,7 @@ palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 parser = argparse.ArgumentParser(description='Run CBST methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
@@ -96,12 +96,14 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                # evaluate(model, cfg, True, ckpt_path, logger)
+                evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                # evaluate(model, cfg, True, ckpt_path, logger)
+                evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
                 model.train()
         else:
             if i_iter % cfg.GENERATE_PSEDO_EVERY == 0 or targetloader is None:
@@ -156,12 +158,14 @@ def main():
                 print('save model ...')
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                # evaluate(model, cfg, True, ckpt_path, logger)
+                evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
                 break
             if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
                 ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
                 torch.save(model.state_dict(), ckpt_path)
-                evaluate(model, cfg, True, ckpt_path, logger)
+                # evaluate(model, cfg, True, ckpt_path, logger)
+                evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
                 model.train()
 
 
@@ -174,7 +178,8 @@ def val(model, targetloader, save_round_eval_path, cfg):
     save_prob_path = osp.join(save_round_eval_path, 'prob')
     save_pred_path = osp.join(save_round_eval_path, 'pred')
 
-    viz_op = er.viz.VisualizeSegmm(save_pred_vis_path, palette)
+    # viz_op = er.viz.VisualizeSegmm(save_pred_vis_path, palette)
+    viz_op = VisSeg(palette, save_pred_vis_path)
     # metric_op = er.metric.PixelMetric(len(COLOR_MAP.keys()), logdir=cfg.SNAPSHOT_DIR, logger=logger)
 
 
@@ -198,7 +203,7 @@ def val(model, targetloader, save_round_eval_path, cfg):
             for fname, pred_i, out_i in zip(labels['fname'], pred_label, output):
                 image_name_tgt_list.append(fname.split('.')[0])
                 # save prob
-                viz_op(pred_i, fname)
+                viz_op.saveVis(pred_i, fname)
                 np.save('%s/%s' % (save_prob_path, fname.replace('png', 'npy')), out_i)
                 imsave('%s/%s' % (save_pred_path, fname), pred_i.astype(np.uint8), check_contrast=False)
                 out_i = out_i.transpose(1,2,0)
@@ -256,7 +261,8 @@ def kc_parameters(conf_dict, pred_cls_num, tgt_portion, round_idx, save_stats_pa
 def label_selection(cls_thresh, image_name_tgt_list, round_idx, save_prob_path, save_pred_path, save_pseudo_label_path, save_pseudo_label_color_path, save_round_eval_path, logger):
     logger.info('###### Start pseudo-label generation in round {} ! ######'.format(round_idx))
     start_pl = time.time()
-    viz_op = er.viz.VisualizeSegmm(save_pseudo_label_color_path, palette)
+    # viz_op = er.viz.VisualizeSegmm(save_pseudo_label_color_path, palette)
+    viz_op = VisSeg(palette, save_pseudo_label_color_path)
     for sample_name in image_name_tgt_list:
         probmap_path = osp.join(save_prob_path, '{}.npy'.format(sample_name))
         pred_prob = np.load(probmap_path)
@@ -268,7 +274,7 @@ def label_selection(cls_thresh, image_name_tgt_list, round_idx, save_prob_path, 
         
         pred_label_labelIDs[weighted_conf < 1] = 0 # '0' in LoveDA Dataset ignore
         # pseudo-labels with labelID
-        viz_op(pred_label_trainIDs, '%s_color.png' % sample_name)
+        viz_op.saveVis(pred_label_trainIDs, '%s_color.png' % sample_name)
 
         # save pseudo-label map with label IDs
         imsave(os.path.join(save_pseudo_label_path, '%s.png' % sample_name), pred_label_labelIDs, check_contrast=False)

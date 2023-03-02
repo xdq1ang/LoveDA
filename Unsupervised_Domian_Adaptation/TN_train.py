@@ -14,7 +14,7 @@ from module.trans_norm import TransNorm2d
 
 parser = argparse.ArgumentParser(description='Run AdaptSeg methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
@@ -37,8 +37,6 @@ def main():
         ppm=dict(
             num_classes=7,
             use_aux=False,
-
-
         ),
         inchannels=2048,
         num_classes=7
@@ -226,7 +224,8 @@ def main():
             torch.save(model.state_dict(), ckpt_path)
             torch.save(model_D1.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '_D1.pth'))
             torch.save(model_D2.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '_D2.pth'))
-            evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            # evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
             break
 
         if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
@@ -235,7 +234,8 @@ def main():
             torch.save(model.state_dict(), ckpt_path)
             torch.save(model_D1.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '_D1.pth'))
             torch.save(model_D2.state_dict(), osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '_D2.pth'))
-            evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            # evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            evaluate(model, None, cfg, i_iter, True, ckpt_path, logger)
             model.train()
 
 

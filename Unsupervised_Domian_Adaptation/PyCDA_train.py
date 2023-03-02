@@ -20,9 +20,9 @@ import os.path as osp
 import torch
 from eval import evaluate
 
-parser = argparse.ArgumentParser(description='Run CLAN methods.')
+parser = argparse.ArgumentParser(description='Run PyCDA methods.')
 
-parser.add_argument('--config_path',  type=str,
+parser.add_argument('config_path',  type=str,
                     help='config path')
 args = parser.parse_args()
 cfg = import_config(args.config_path)
@@ -182,14 +182,16 @@ def main():
             print('save model ...')
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(cfg.NUM_STEPS_STOP) + '.pth')
             torch.save(model.state_dict(), ckpt_path)
-            evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            # evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
             break
 
         if i_iter % cfg.EVAL_EVERY == 0 and i_iter != 0:
             print('taking snapshot ...')
             ckpt_path = osp.join(cfg.SNAPSHOT_DIR, cfg.TARGET_SET + str(i_iter) + '.pth')
             torch.save(model.state_dict(), ckpt_path)
-            evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            # evaluate(model, cfg, True, ckpt_path=ckpt_path, logger=logger)
+            evaluate(model, None, cfg, i_iter, is_training=True, ckpt_path=ckpt_path, logger=logger)
             model.train()
 
 

@@ -46,8 +46,7 @@ def main():
     # 初始化wandb
     wandb.init(
         project="UDA",
-        notes="IAST + DensePPM + dev_class_dis",
-        tags=["dev_class_dis"]
+        notes="FADA",
     )
     cfg.SNAPSHOT_DIR = wandb.run.dir
     wandb.config.SNAPSHOT_DIR = cfg.SNAPSHOT_DIR

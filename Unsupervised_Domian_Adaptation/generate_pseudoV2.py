@@ -8,18 +8,29 @@ from utils.VisSeg import VisSeg
 from collections import OrderedDict
 from module.Encoder import Deeplabv2
 from data.loveda import LoveDALoader
-from configs.ToURBAN import EVAL_DATA_CONFIG
+from configs.data.gid.ToURBAN import EVAL_DATA_CONFIG
 from torch import nn
 import wandb
 
+# loveda
+# COLOR_MAP = OrderedDict(
+#     Background=(255, 255, 255),
+#     Building=(255, 0, 0),
+#     Road=(255, 255, 0),
+#     Water=(0, 0, 255),
+#     Barren=(159, 129, 183),
+#     Forest=(0, 255, 0),
+#     Agricultural=(255, 195, 128),
+# )
+
+# gid
 COLOR_MAP = OrderedDict(
-    Background=(255, 255, 255),
-    Building=(255, 0, 0),
-    Road=(255, 255, 0),
-    Water=(0, 0, 255),
-    Barren=(159, 129, 183),
-    Forest=(0, 255, 0),
-    Agricultural=(255, 195, 128),
+    background = (255, 255, 255),
+    Building = (255, 0, 0),
+    farmland = (0, 255, 0),
+    forest = (0, 255, 255),
+    meadow = (255, 255, 0),
+    water = (0, 0, 255),
 )
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
@@ -109,7 +120,7 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 # if model_D_trained:
                 #     label[ignore_index3] = 0
                 # 标签保存(0---7)
-                imsave(os.path.join(save_dir, 'pred', fname), label.astype(np.uint8))
+                imsave(os.path.join(save_dir, 'pred', fname.replace("jpg","png")), label.astype(np.uint8))
                 # 可视化标签保存(0---6)
                 # vis_mask = label.copy()
                 # vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景

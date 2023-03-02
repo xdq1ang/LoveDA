@@ -65,7 +65,7 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
                 mIoU.append(miou)
                 save_domain_dis = False
                 save_domain_cls = False
-                save_prediction = False
+                save_prediction = True
                 if cfg.SNAPSHOT_DIR is not None:
                     if (model_D != None):
                         for fname, pred, d_dis, d_cls in zip(ret_gt['fname'], cls, domain_dis, domain_cls):
@@ -92,24 +92,157 @@ def evaluate(model, model_D, cfg, step, is_training=False, ckpt_path=None, logge
 
 if __name__ == '__main__':
     seed_torch(2333)
-    ckpt_path = './log/iast_training_step_20000/2urban/URBAN20000.pth'
+    ckpt_path = r'log\trian_in_gid\adaptseg\2urban_lr5e-3\URBAN16000.pth'
     from module.Encoder import Deeplabv2
-    cfg = import_config('st.iast.2urban')
+    cfg = import_config('adv.adaptseg.2urban')
     logger = get_console_file_logger(name='Baseline', logdir=cfg.SNAPSHOT_DIR)
+    # iast
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm='ppm',
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # pycda
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #     ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm=True,
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #         norm_layer=nn.BatchNorm2d, 
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # TN
+    # from module.trans_norm import TransNorm2d
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #         resnet_type='resnet50',
+    #         output_stride=16,
+    #         pretrained=True,
+    #         norm_layer=TransNorm2d,
+    #     ),
+    #     multi_layer=True,
+    #     cascade=False,
+    #     use_ppm=False,
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # fada
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #         resnet_type='resnet50',
+    #         output_stride=16,
+    #         pretrained=True,
+    #     ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm=False,
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # AST_RS
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #         resnet_type='resnet50',
+    #         output_stride=16,
+    #         pretrained=True,
+    #     ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm='denseppm',
+    #     ppm=dict(
+    #         in_channels=2048,
+    #         num_classes=6,
+    #         reduction_dim=64,
+    #         pool_sizes=[2, 3, 4, 5, 6]
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # clan
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #         resnet_type='resnet50',
+    #         output_stride=16,
+    #         pretrained=True,
+    #     ),
+    #     multi_layer=True,
+    #     cascade=False,
+    #     use_ppm=False,
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+
+    # cbst
+    # model = Deeplabv2(dict(
+    #     backbone=dict(
+    #             resnet_type='resnet50',
+    #             output_stride=16,
+    #             pretrained=True,
+    #         ),
+    #     multi_layer=False,
+    #     cascade=False,
+    #     use_ppm=True,
+    #     ppm=dict(
+    #         num_classes=6,
+    #         use_aux=False,
+    #     ),
+    #     inchannels=2048,
+    #     num_classes=6
+    # )).cuda()
+    
+    # adaptseg
     model = Deeplabv2(dict(
         backbone=dict(
-                resnet_type='resnet50',
-                output_stride=16,
-                pretrained=True,
-            ),
-        multi_layer=False,
-        cascade=False,
-        use_ppm='ppm',
+            resnet_type='resnet50',
+            output_stride=16,
+            pretrained=True,
+        ),
+        multi_layer=True,
+        cascade=True,
+        use_ppm=False,
         ppm=dict(
-            num_classes=7,
+            num_classes=6,
             use_aux=False,
         ),
         inchannels=2048,
-        num_classes=7
+        num_classes=6
     )).cuda()
-    evaluate(model, cfg, False, ckpt_path, logger)
+
+    evaluate(model, None, cfg, None, False, ckpt_path, logger)

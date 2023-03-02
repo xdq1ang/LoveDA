@@ -2,6 +2,7 @@ from torch.utils.data import Dataset, DataLoader
 import glob
 import os
 from skimage.io import imread
+from PIL import Image
 from albumentations.pytorch import ToTensorV2
 from albumentations import HorizontalFlip, VerticalFlip, RandomRotate90, Normalize
 from albumentations import OneOf, Compose
@@ -27,6 +28,29 @@ LABEL_MAP = OrderedDict(
     Agricultural=6
 )
 
+# LABEL_MAP = OrderedDict(
+#     Background=0,
+#     Building=1,
+#     farmland=2,
+#     forest=3,
+#     meadow=4,
+#     water=5
+# )
+# LABEL_MAP = OrderedDict(
+#     Background=0,
+#     Car=1,
+#     Tree=2,
+#     LowVegetation=3,
+#     Building=4,
+#     ImperviousSurfaces=5
+# )
+
+# LABEL_MAP = OrderedDict(
+#     Background=0,
+#     Building=1,
+#     Road=2
+# )
+
 
 
 class LoveDA(Dataset):
@@ -46,32 +70,36 @@ class LoveDA(Dataset):
     def batch_generate(self, image_dir, mask_dir):
         rgb_filepath_list = glob.glob(os.path.join(image_dir, '*.tif'))
         rgb_filepath_list += glob.glob(os.path.join(image_dir, '*.png'))
+        rgb_filepath_list += glob.glob(os.path.join(image_dir, '*.jpg'))
 
         logger.info('Dataset images: %d' % len(rgb_filepath_list))
         rgb_filename_list = [os.path.split(fp)[-1] for fp in rgb_filepath_list]
         cls_filepath_list = []
         if mask_dir is not None:
             for fname in rgb_filename_list:
-                cls_filepath_list.append(os.path.join(mask_dir, fname))
+                # cls_filepath_list.append(os.path.join(mask_dir, fname.replace("jpg","png")))
+                # city_osm
+                cls_filepath_list.append(os.path.join(mask_dir, fname.replace("jpg","png").replace("image","labels")))
         self.rgb_filepath_list += rgb_filepath_list
         self.cls_filepath_list += cls_filepath_list
 
     def __getitem__(self, idx):
         image = imread(self.rgb_filepath_list[idx])
         if len(self.cls_filepath_list) > 0:
-            mask = imread(self.cls_filepath_list[idx]).astype(np.long) -1
+            # mask = imread(self.cls_filepath_list[idx]).astype(np.long) -1
+            mask = np.array(Image.open(self.cls_filepath_list[idx])).astype(np.long) -1
             if self.transforms is not None:
                 blob = self.transforms(image=image, mask=mask)
                 image = blob['image']
                 mask = blob['mask']
 
-            return image, dict(cls=mask, fname=os.path.basename(self.rgb_filepath_list[idx]))
+            return image, dict(cls=mask, fname=os.path.basename(self.rgb_filepath_list[idx].replace("jpg","png").replace("image","labels")))
         else:
             if self.transforms is not None:
                 blob = self.transforms(image=image)
                 image = blob['image']
 
-            return image, dict(fname=os.path.basename(self.rgb_filepath_list[idx]))
+            return image, dict(fname=os.path.basename(self.rgb_filepath_list[idx].replace("jpg","png").replace("image","labels")))
 
     def __len__(self):
         return len(self.rgb_filepath_list)

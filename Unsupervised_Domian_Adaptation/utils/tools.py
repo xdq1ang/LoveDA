@@ -165,7 +165,7 @@ def ias_thresh(conf_dict, n_class, alpha, w=None, gamma=1.0):
 import ever as er
 from tqdm import tqdm
 from utils.VisSeg import VisSeg
-
+# loveda
 COLOR_MAP = OrderedDict(
     Background=(255, 255, 255),
     Building=(255, 0, 0),
@@ -175,6 +175,35 @@ COLOR_MAP = OrderedDict(
     Forest=(0, 255, 0),
     Agricultural=(255, 195, 128),
 )
+
+# gid
+# COLOR_MAP = OrderedDict(
+#     background = (255, 255, 255),
+#     Building = (255, 0, 0),
+#     farmland = (0, 255, 0),
+#     forest = (0, 255, 255),
+#     meadow = (255, 255, 0),
+#     water = (0, 0, 255),
+# )
+
+# isprs
+# COLOR_MAP = OrderedDict(
+#     background = (255, 0, 0),
+#     Car = (255, 255, 0),
+#     Tree = (0, 255, 0),
+#     LowVegetation = (0, 255, 255),
+#     Building = (0, 0, 255),
+#     ImperviousSurfaces = (255, 255, 255)
+# )
+
+# city_osm
+# COLOR_MAP = OrderedDict(
+#     Background = (255, 255, 255),
+#     Building = (255, 0, 0),
+#     Road = (0, 0, 255),
+# )
+
+
 DOMAIN_CLS_COLOR_MAP = OrderedDict(
     Domain_1=(255, 255, 255),
     Domain_2=(255, 195, 128),

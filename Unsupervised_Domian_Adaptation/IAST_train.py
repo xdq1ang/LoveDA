@@ -8,7 +8,7 @@ from module.Encoder import Deeplabv2
 from module.DensePPMUNet import DensePPMUNet
 from module.Discriminator import FCDiscriminator
 from module.Discriminator import PixelDiscriminator
-from data.loveda import LoveDALoader
+from data.loveda import LoveDALoader as MyDataLoader
 from utils.tools import COLOR_MAP
 from ever.core.iterator import Iterator
 from tqdm import tqdm
@@ -41,16 +41,6 @@ def main():
     logger = get_console_file_logger(name='ISAT', logdir=cfg.SNAPSHOT_DIR)
     save_pseudo_label_dir = osp.join(cfg.SNAPSHOT_DIR, 'pseudo_label')  # in 'save_path'. Save labelIDs, not trainIDs.
     os.makedirs(save_pseudo_label_dir, exist_ok=True)
-    '''
-    model = Deeplabv2(dict(
-        backbone=dict(
-            resnet_type='resnet50',
-            output_stride=16,
-            pretrained=True,
-            multi_layer=True,
-            uselayer6=False,
-        )
-    )).cuda()'''
     # 构建模型DeepLabv2语义分割模型, 输出维度为7
     # model = Deeplabv2(dict(
     #     backbone=dict(
@@ -98,11 +88,11 @@ def main():
     # wandb.watch(model_D)
 
     # 构建训练集dataloader
-    trainloader = LoveDALoader(cfg.SOURCE_DATA_CONFIG)
+    trainloader = MyDataLoader(cfg.SOURCE_DATA_CONFIG)
     # 得到训练集的迭代器
     trainloader_iter = Iterator(trainloader)
     # 构建验证集dataloader
-    evalloader = LoveDALoader(cfg.EVAL_DATA_CONFIG)
+    evalloader = MyDataLoader(cfg.EVAL_DATA_CONFIG)
 
     # 计算总共训练的epoch数
     epochs = cfg.NUM_STEPS / len(trainloader)
@@ -190,7 +180,7 @@ def main():
                 # 将目标域数据集的mask_dir设置为伪标签
                 target_config['mask_dir'] = [pseudo_pred_dir]
                 logger.info(target_config)
-                targetloader = LoveDALoader(target_config)
+                targetloader = MyDataLoader(target_config)
                 # 获取目标域数据集的迭代器
                 targetloader_iter = Iterator(targetloader)
            

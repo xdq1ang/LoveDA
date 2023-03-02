@@ -7,24 +7,24 @@ TARGET_SET = 'URBAN'
 
 source_dir = dict(
     image_dir=[
-        './LoveDA/Train/Rural/images_png/',
+        r"D:\UDA_Datasets\CITY_OSM\train\chicago\img"
     ],
     mask_dir=[
-        './LoveDA/Train/Rural/masks_png/',
+        r"D:\UDA_Datasets\CITY_OSM\train\chicago\lab"
     ],
 )
 target_dir = dict(
     image_dir=[
-        './LoveDA/Val/Urban/images_png/',
+        r"D:\UDA_Datasets\CITY_OSM\val\zurich\img"
     ],
     mask_dir=[
-        './LoveDA/Val/Urban/masks_png/',
+        r"D:\UDA_Datasets\CITY_OSM\val\zurich\lab"
     ]
 )
 
 test_dir = dict(
     image_dir=[
-        './LoveDA/Test/Urban/images_png/'
+        r"D:\UDA_Datasets\CITY_OSM\val\zurich\img"
     ]
 )
 
@@ -91,8 +91,8 @@ EVAL_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=False,
-    batch_size=4,
-    num_workers=0,
+    batch_size=2,
+    num_workers=2,
     drop_last=False
 )
 
@@ -109,7 +109,7 @@ TEST_DATA_CONFIG = dict(
     ]),
     CV=dict(k=10, i=-1),
     training=False,
-    batch_size=8,
-    num_workers=6,
+    batch_size=2,
+    num_workers=2,
     drop_last=False
 )
