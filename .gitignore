@@ -3,3 +3,5 @@
 *.iml
 out
 gen
+Semantic_Segmentation/log/
+Unsupervised_Domian_Adaptation/log/

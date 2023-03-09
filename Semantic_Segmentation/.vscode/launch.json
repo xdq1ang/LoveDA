@@ -77,7 +77,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "debugStdLib": true,
+            "justMyCode": false,
             "args": [   "--local_rank", "0",
                         "--config_path", "baseline.deeplabv3",
                         "--model_dir", "./log/normal_baseline/deeplabv3"]
@@ -89,7 +89,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "debugStdLib": true,
+            "justMyCode": false,
             "args": [   "--local_rank", "0",
                         "--config_path", "baseline.deeplabv3_denseppm",
                         "--model_dir", "./log/train_in_city_osm/deeplabv3_denseppm"]
@@ -137,6 +137,17 @@
             "args": [   "--local_rank", "0",
                         "--config_path", "baseline.farsegv1",
                         "--model_dir", "./log/normal_baseline/farsegv1"]
+        },
+        {
+            "name": "train_resseg",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [   "--local_rank", "0",
+                        "--config_path", "baseline.resseg",
+                        "--model_dir", "./log/ablation_study/resseg"]
         },
     ]
 }

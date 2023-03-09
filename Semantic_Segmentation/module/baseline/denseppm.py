@@ -15,11 +15,13 @@ class DensePPM(nn.Module):
         self.stages=nn.ModuleList(self.stages)   
 
     def _make_stages(self, in_channels, reduction_dim, bin_sz, norm_layer):
-        prior = nn.AvgPool2d(kernel_size = bin_sz, stride=None, padding=0, ceil_mode=False, count_include_pad=True)
+        # prior = nn.AvgPool2d(kernel_size = bin_sz, stride=None, padding=0, ceil_mode=False, count_include_pad=True)
+        # prior = nn.MaxPool2d(kernel_size = bin_sz, stride=None, padding=0, ceil_mode=False)
         conv = nn.Conv2d(in_channels, reduction_dim, kernel_size=1, bias=False)
         bn = norm_layer(reduction_dim)
         relu = nn.ReLU(inplace=True)
-        return nn.Sequential(prior, conv, bn, relu)
+        # return nn.Sequential(prior, conv, bn, relu)
+        return nn.Sequential(conv, bn, relu)
     
     def forward(self, features):
         h, w = features.size()[2], features.size()[3]

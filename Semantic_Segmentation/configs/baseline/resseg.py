@@ -2,7 +2,7 @@ from configs.base.gid import train, test, data, optimizer, learning_rate
 import torch.nn as nn
 config = dict(
     model=dict(
-        type='PSPNet_DensePPM',
+        type='ResSeg',
         params=dict(
             encoder=dict(
                 resnet_type='resnet50',
@@ -20,11 +20,6 @@ config = dict(
             loss=dict(
                 ignore_index=-1,
                 ce=dict()
-            ),
-            psp=dict(
-                sizes=(2, 3, 4, 5),
-                psp_size=1024,
-                deep_features_size=1024
             )
         )
     ),
