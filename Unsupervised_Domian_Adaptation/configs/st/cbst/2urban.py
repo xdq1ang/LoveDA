@@ -1,14 +1,14 @@
-from configs.data.loveda.ToURBAN import SOURCE_DATA_CONFIG,TARGET_DATA_CONFIG, EVAL_DATA_CONFIG, TARGET_SET
+from configs.data.gid.ToURBAN import SOURCE_DATA_CONFIG,TARGET_DATA_CONFIG, EVAL_DATA_CONFIG, TARGET_SET
 MODEL = 'ResNet'
 
 
 IGNORE_LABEL = -1
 MOMENTUM = 0.9
-NUM_CLASSES = 7
+NUM_CLASSES = 6
 
 SAVE_PRED_EVERY = 1000
 
-SNAPSHOT_DIR = './log/train_in_loveda/cbst'
+SNAPSHOT_DIR = './log/train_in_gid/pseudo_label_comparison/iast'
 
 #Hyper Paramters
 WEIGHT_DECAY = 0.0005

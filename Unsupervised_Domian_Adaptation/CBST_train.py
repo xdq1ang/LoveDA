@@ -12,7 +12,9 @@ from ever.core.iterator import Iterator
 from tqdm import tqdm
 from torch.nn.utils import clip_grad
 import ever as er
+from generate_pseudoV2 import generate_pseudoV2
 from skimage.io import imsave, imread
+import re
 palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
 
@@ -50,11 +52,11 @@ def main():
         cascade=False,
         use_ppm=True,
         ppm=dict(
-            num_classes=7,
+            num_classes=6,
             use_aux=False,
         ),
         inchannels=2048,
-        num_classes=7
+        num_classes=6
     )).cuda()
     
     
@@ -70,8 +72,13 @@ def main():
     optimizer.zero_grad()
     # mix_trainloader = None
     targetloader = None
+    start = 0
+    # 恢复训练
+    # path = r"log\train_in_gid\pseudo_label_comparison\cbst\URBAN6000.pth"
+    # start = int(re.findall("\d+", path)[0])
+    # model.load_state_dict(torch.load(path))
 
-    for i_iter in tqdm(range(cfg.NUM_STEPS_STOP)):
+    for i_iter in tqdm(range(start, cfg.NUM_STEPS_STOP)):
         if i_iter < cfg.WARMUP_STEP:
             # Train with Source
             optimizer.zero_grad()
@@ -120,11 +127,27 @@ def main():
                 tgt_portion = min(cfg.TGT_PORTION + cfg.TGT_PORTION_STEP, cfg.MAX_TGT_PORTION)
                 cls_thresh = kc_parameters(conf_dict, pred_cls_num, tgt_portion, i_iter, save_stats_path, cfg, logger)
                 print('CLS THRESH', cls_thresh)
+                
                 # pseudo-label maps generation
-                label_selection(cls_thresh, image_name_tgt_list, i_iter, save_prob_path, save_pred_path, save_pseudo_label_path, save_pseudo_label_color_path, save_round_eval_path, logger)
+                # cbst 
+                # label_selection(cls_thresh, image_name_tgt_list, i_iter, save_prob_path, save_pred_path, save_pseudo_label_path, save_pseudo_label_color_path, save_round_eval_path, logger)
+                # iast
+                pseudo_dir = os.path.join(save_pseudo_label_path, str(i_iter))
+                pseudo_pred_dir = generate_pseudoV2(model,
+                                                    None, 
+                                                    None, 
+                                                    evalloader, 
+                                                    pseudo_dir, 
+                                                    i_iter,
+                                                    pseudo_dict=dict(pl_alpha=0.2,
+                                                                    pl_gamma=8.0,
+                                                                    pl_beta=0.9), 
+                                                    logger=logger)
+
+
                 ########### model retraining
                 target_config = cfg.TARGET_DATA_CONFIG
-                target_config['mask_dir'] = [save_pseudo_label_path]
+                target_config['mask_dir'] = [pseudo_pred_dir]
                 logger.info(target_config)
                 targetloader = LoveDALoader(target_config)
                 targetloader_iter = Iterator(targetloader)

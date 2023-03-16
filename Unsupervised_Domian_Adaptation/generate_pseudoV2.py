@@ -44,7 +44,8 @@ PSEIDO_DICT = dict(
 def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, step, n_class=7, pseudo_dict=dict(), logger=None):
     # 模型验证模式，不会更新参数
     model.eval()
-    model_D.eval()
+    if model_D!=None:
+        model_D.eval()
     with torch.no_grad():
         frames = []
         if logger != None:
@@ -111,25 +112,26 @@ def generate_pseudoV2(model, model_D, model_D_trained, target_loader, save_dir, 
                 # logit_2max_index2 = np.argsort(logit, axis=2)[:,:,-2]
 
                 # 概率差<0.2则忽略该像素
-                ignore_index2 = logit12_sub < 0.2
+                ignore_index2 = logit12_sub < 0.1
                 #if model_D_trained:
                     #ignore_index3 = D_logit > 0.3
                 label += 1
                 label[ignore_index] = 0
-                label[ignore_index2] = 0
+                # label[ignore_index2] = 0
                 # if model_D_trained:
                 #     label[ignore_index3] = 0
                 # 标签保存(0---7)
                 imsave(os.path.join(save_dir, 'pred', fname.replace("jpg","png")), label.astype(np.uint8))
                 # 可视化标签保存(0---6)
-                # vis_mask = label.copy()
-                # vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景
-                # vis_mask -= 1
-                # vis_mask = viz_op.saveVis(vis_mask, fname)
+                vis_mask = label.copy()
+                vis_mask[vis_mask == 0] = 1 # 为了方便观察，ignore设置为背景
+                vis_mask -= 1
+                vis_mask = viz_op.saveVis(vis_mask, fname)
                 # frames.append(wandb.Image(vis_mask, caption=fname))
         # wandb.log({"pseudo_label": frames}, step=step)
         model.train()
-        model_D.train()
+        if model_D!=None:
+            model_D.train()
         return os.path.join(save_dir, 'pred')
 
 

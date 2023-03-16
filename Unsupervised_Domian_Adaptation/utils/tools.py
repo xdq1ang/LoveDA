@@ -166,25 +166,25 @@ import ever as er
 from tqdm import tqdm
 from utils.VisSeg import VisSeg
 # loveda
-COLOR_MAP = OrderedDict(
-    Background=(255, 255, 255),
-    Building=(255, 0, 0),
-    Road=(255, 255, 0),
-    Water=(0, 0, 255),
-    Barren=(159, 129, 183),
-    Forest=(0, 255, 0),
-    Agricultural=(255, 195, 128),
-)
+# COLOR_MAP = OrderedDict(
+#     Background=(255, 255, 255),
+#     Building=(255, 0, 0),
+#     Road=(255, 255, 0),
+#     Water=(0, 0, 255),
+#     Barren=(159, 129, 183),
+#     Forest=(0, 255, 0),
+#     Agricultural=(255, 195, 128),
+# )
 
 # gid
-# COLOR_MAP = OrderedDict(
-#     background = (255, 255, 255),
-#     Building = (255, 0, 0),
-#     farmland = (0, 255, 0),
-#     forest = (0, 255, 255),
-#     meadow = (255, 255, 0),
-#     water = (0, 0, 255),
-# )
+COLOR_MAP = OrderedDict(
+    background = (255, 255, 255),
+    Building = (255, 0, 0),
+    farmland = (0, 255, 0),
+    forest = (0, 255, 255),
+    meadow = (255, 255, 0),
+    water = (0, 0, 255),
+)
 
 # isprs
 # COLOR_MAP = OrderedDict(
