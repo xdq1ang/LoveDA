@@ -6,10 +6,10 @@ import zipfile
 from module.Encoder import Deeplabv2
 import warnings
 warnings.filterwarnings("ignore")
-cfg = import_config('st.iast.2urban')
+cfg = import_config('st.rs_uda.2urban')
 
 
-def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
+def predict_test(model, cfg, ckpt_path, save_dir, zip_name=None):
     COLOR_MAP = OrderedDict(
         Background=(255, 255, 255),
         Building=(255, 0, 0),
@@ -22,7 +22,7 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
     palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
     mask_save_dir = os.path.join(save_dir, "mask")
-    mask_colorful_save_dir = os.path.join(save_dir, "mask_colorful")
+    mask_colorful_save_dir = os.path.join(save_dir, "mask_rgb")
     os.makedirs(mask_save_dir, exist_ok=True)
     os.makedirs(mask_colorful_save_dir, exist_ok=True)
     viz_op = VisSeg(palette, mask_colorful_save_dir)
@@ -36,8 +36,9 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
     print(cfg.TEST_DATA_CONFIG)
     eval_dataloader = LoveDALoader(cfg.TEST_DATA_CONFIG)
 
-    zip_name = os.path.join(save_dir, 'Urban Result.zip')
-    z = zipfile.ZipFile(zip_name,'w',zipfile.ZIP_DEFLATED)
+    if zip_name != None:
+        zip_dir = os.path.join(save_dir, zip_name)
+        z = zipfile.ZipFile(zip_dir,'w',zipfile.ZIP_DEFLATED)
     with torch.no_grad():
         for ret, ret_gt in tqdm(eval_dataloader):
             ret = ret.to(torch.device('cuda'))
@@ -46,8 +47,10 @@ def predict_test(model, cfg, ckpt_path=None, save_dir='./submit_test'):
             for fname, pred in zip(ret_gt['fname'], cls):
                 imsave(os.path.join(mask_save_dir, fname), pred.astype(np.uint8))
                 vis_mask = viz_op.saveVis(pred.astype(np.uint8),  fname)
-                z.write(os.path.join(mask_save_dir, fname), fname)
-    z.close()
+                if zip_name != None:
+                    z.write(os.path.join(mask_save_dir, fname), fname)
+    if zip_name != None:
+        z.close()
     torch.cuda.empty_cache()
 
 
@@ -82,14 +85,14 @@ if __name__ == '__main__':
             in_channels=2048,
             num_classes=7,
             reduction_dim=64,
-            pool_sizes=[2, 3, 4, 5]
+            pool_sizes=[2, 3, 4, 5, 6]
         ),
         inchannels=2048,
         num_classes=7
     )).cuda()
 
-    save_dir = 'submit_test'
-    for step in range(5000, 21000, 1000):
-        ckpt_path = r'wandb\Ablation_Study_ICS\ICS_0.4\files\URBAN'+ str(step) +'.pth'
-        save_path = os.path.join(save_dir, str(step))
-        predict_test(model, cfg, ckpt_path, save_path)
+    save_dir = 'predict_test'
+
+    ckpt_path = r'log\train_in_loveda\rs_uda\files\URBAN16000.pth'
+    save_path = os.path.join(save_dir, "RS_UDA")
+    predict_test(model, cfg, ckpt_path, save_path)

@@ -13,3 +13,4 @@ pseudo_label
 pseudoTempFile
 /wandb/
 /submit_test/
+/predict_test/
